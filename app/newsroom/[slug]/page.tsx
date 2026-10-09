@@ -60,7 +60,7 @@ export default async function ReleasePage({ params }: { params: Promise<{ slug: 
           )}
 
           {it.contact && (
-            <p className="small mt-6">{sentence(labels.pressLabel)}: <a href={`mailto:${it.contact}`}>{it.contact}</a></p>
+            <p className="small mt-6">{sentence(labels.pressLabel)}: <a href="/contact?topic=press#write">write to us</a></p>
           )}
 
           <nav className="pager mt-12" aria-label="More releases">

@@ -1,5 +1,4 @@
 import { SectionHead, SpotlightCard } from '../_components/lib';
-import { Icon } from '../_components/icons';
 import { getContent } from '@/lib/content';
 
 export const metadata = {
@@ -63,9 +62,9 @@ export default async function CalendarPage() {
         <div className="container-narrow">
           <span className="eyebrow" style={{ color: 'var(--ink-3)' }}>{c.speakBlock.eyebrow}</span>
           <h2 className="h-1 mt-4 mb-6" style={{ color: 'var(--ink)' }}>{c.speakBlock.title}</h2>
-          <p style={{ fontSize: '16px', color: 'var(--ink-5)', lineHeight: 1.6, marginBottom: '32px' }}>{c.speakBlock.body}</p>
-          <a href={`mailto:${c.speakBlock.email}`} className="btn" style={{ borderColor: 'var(--paper)', color: 'var(--ink)' }}>
-            <Icon name="mail" size={13} /> {c.speakBlock.email}
+          <p style={{ fontSize: '16px', color: 'var(--ink-2)', lineHeight: 1.6, marginBottom: '32px' }}>{c.speakBlock.body}</p>
+          <a href={`/contact?topic=${c.speakBlock.email}#write`} className="btn">
+            Write to us <span className="arr">→</span>
           </a>
         </div>
       </section>

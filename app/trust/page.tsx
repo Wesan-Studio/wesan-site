@@ -103,6 +103,7 @@ export default async function TrustPage() {
             style={{ fontSize: '16px', color: 'var(--ink-2)', lineHeight: 1.6, marginBottom: '32px' }}
             dangerouslySetInnerHTML={{ __html: c.vulnBlock.body }}
           />
+          <a href="/contact?topic=security#write" className="btn solid mb-8">Report a vulnerability <span className="arr">→</span></a>
           <p className="mono" style={{ fontSize: '11.5px', color: 'var(--ink-3)', letterSpacing: '0.06em' }}>{c.vulnBlock.safe}</p>
         </div>
       </section>

@@ -8,13 +8,14 @@ export const metadata = {
   description: 'How to reach Wesan in London: general, press, partners and security.',
 };
 
+// `addr` names a form topic; addresses are never printed on the page.
 function ContactCard({ label, addr, hint }: { label: string; addr: string; hint: string }) {
   return (
-    <article className="card">
+    <a href={`/contact?topic=${addr}#write`} className="card contact-card">
       <div className="eyebrow mb-4">{label}</div>
-      <p className="serif" style={{ fontSize: '24px', marginBottom: '6px' }}>{addr}</p>
-      <p style={{ fontSize: '13px', color: 'var(--ink-3)' }}>{hint}</p>
-    </article>
+      <p style={{ fontSize: '15px', color: 'var(--ink-2)', marginBottom: '12px' }}>{hint}</p>
+      <span className="text-link">Write to us →</span>
+    </a>
   );
 }
 
@@ -63,7 +64,7 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      <section className="section" style={{ paddingTop: 0 }}>
+      <section className="section" id="write" style={{ paddingTop: 0 }}>
         <div className="container-narrow">
           <h2 className="h-1 mb-8">Write to us</h2>
           <ContactForm />

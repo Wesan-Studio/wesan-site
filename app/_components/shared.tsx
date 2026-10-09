@@ -145,7 +145,7 @@ export function Footer() {
           <div className="foot-social">
             <a href="https://github.com/wesanjs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Icon name="github" size={16} /></a>
             <a href="https://www.linkedin.com/company/wesancompany" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Icon name="linkedin" size={15} /></a>
-            <a href="mailto:hello@wesan.co" aria-label="Email"><Icon name="mail" size={16} /></a>
+            <Link href="/contact#write" aria-label="Contact"><Icon name="mail" size={16} /></Link>
           </div>
         </div>
         {f.columns.map((col) => (
