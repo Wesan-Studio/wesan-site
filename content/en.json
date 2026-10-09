@@ -1145,8 +1145,7 @@
           { "kind": "p", "content": "We are looking for two people: a Game Director (you have shipped a game; indie or AA scale) and a Technical Artist (shaders, lighting, tooling). Both roles are on-site in İstanbul. Both are full-time." }
         ],
         "links": [
-          { "label": "Studio · division page", "href": "/studio" },
-          { "label": "Careers · Game Director", "href": "/careers/game-director" }
+          { "label": "Studio · division page", "href": "/studio" }
         ],
         "contact": "studio@wesan.co"
       },

@@ -1,3 +1,5 @@
+// Role pages are off while Wesan is not hiring: the leading underscore keeps this folder out of routing.
+// To publish roles again, rename the folder back to [slug].
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { DetailHero, sentence } from '../../_components/detail-hero';
