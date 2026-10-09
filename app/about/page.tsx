@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { sentence } from '../_components/detail-hero';
 import { Photo, Counter, SectionHead } from '../_components/lib';
 import { Icon } from '../_components/icons';
 import { getContent } from '@/lib/content';
@@ -29,10 +30,10 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="section" style={{ paddingTop: '0' }}>
+      <section className="section" style={{ paddingTop: '24px' }}>
         <div className="container">
           <div className="row row-2" style={{ gap: '64px', alignItems: 'flex-start' }}>
-            <Photo tone={c.founder.photo.tone} ratio={c.founder.photo.ratio} label={c.founder.photo.label} caption={c.founder.photo.caption} />
+            <Photo tone={c.founder.photo.tone} ratio={c.founder.photo.ratio} style={{ borderRadius: '12px' }} />
             <div>
               <span className="eyebrow mb-4" style={{ display: 'block' }}>{c.founder.eyebrow}</span>
               <h2 className="h-1 mb-6">{c.founder.name}</h2>
@@ -86,7 +87,7 @@ export default async function AboutPage() {
           <div className="row row-3 mt-8">
             {c.governance.cards.map(([h, b]) => (
               <div key={h} className="card">
-                <div className="eyebrow mb-4">{h}</div>
+                <h3 className="card-title">{sentence(h)}</h3>
                 <p style={{ fontSize: '14.5px', color: 'var(--ink-2)', lineHeight: 1.6 }}>{b}</p>
               </div>
             ))}

@@ -18,22 +18,20 @@ import { TONE_SCENE } from './dither-shader';
 interface PhotoProps {
   tone?: 'architecture' | 'workstation' | 'stage' | 'industrial' | 'dawn' | 'geology' | 'systems';
   ratio?: string;
+  /** Accepted from content but not drawn: pictures carry no figure labels. */
   caption?: ReactNode;
   label?: ReactNode;
   children?: ReactNode;
   style?: CSSProperties;
   className?: string;
+  gain?: number;
 }
 
-
-export function Photo({ tone = 'architecture', ratio = '16/9', caption, label, children, style, className = '' }: PhotoProps) {
+export function Photo({ tone = 'architecture', ratio = '16/9', children, style, className = '', gain = 0.8 }: PhotoProps) {
   const [scene, seed] = TONE_SCENE[tone];
   return (
-    <div className={`photo photo-cross ${className}`} style={{ aspectRatio: ratio, ...style }}>
-      <DitherStill scene={scene} seed={seed} />
-      <div className="corners" />
-      {label && <span className="cap-tr">{label}</span>}
-      {caption && <span className="cap">{caption}</span>}
+    <div className={`photo ${className}`} style={{ aspectRatio: ratio, ...style }}>
+      <DitherStill scene={scene} seed={seed} gain={gain} />
       {children}
     </div>
   );
@@ -101,41 +99,6 @@ export function Marquee({ items, label }: { items: ReactNode[]; label?: string }
           ))}
         </div>
       </div>
-    </div>
-  );
-}
-
-export function TracingBeam({ children, padTop = 80, padBottom = 120 }: { children: ReactNode; padTop?: number; padBottom?: number }) {
-  const wrap = useRef<HTMLDivElement>(null);
-  const [beam, setBeam] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const el = wrap.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const total = el.offsetHeight - padTop - padBottom;
-      const center = window.innerHeight / 2;
-      const offsetTop = -rect.top;
-      const progress = (offsetTop - padTop + center) / total;
-      const clamped = Math.max(0, Math.min(1, progress));
-      setBeam(Math.round(clamped * el.offsetHeight));
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
-  }, [padTop, padBottom]);
-
-  return (
-    <div ref={wrap} className="tbeam" style={{ ['--beam' as string]: `${beam}px` } as CSSProperties}>
-      <div className="tbeam-rail" />
-      <div className="tbeam-fill" />
-      <div className="tbeam-head" />
-      {children}
     </div>
   );
 }
@@ -313,21 +276,17 @@ export function useReveal() {
 }
 
 interface SectionHeadProps {
-  num: ReactNode;
-  label: ReactNode;
+  /** Kept for content compatibility; the numbered label row is no longer shown. */
+  num?: ReactNode;
+  label?: ReactNode;
   title: ReactNode;
   sub?: ReactNode;
   align?: 'left' | 'center';
 }
 
-export function SectionHead({ num, label, title, sub, align = 'left' }: SectionHeadProps) {
+export function SectionHead({ title, sub, align = 'left' }: SectionHeadProps) {
   return (
-    <header>
-      <div className="section-label">
-        <span className="num">{num}</span>
-        <span>{label}</span>
-        <span className="rule" />
-      </div>
+    <header style={{ marginBottom: '32px' }}>
       <div style={{ textAlign: align, maxWidth: align === 'center' ? 720 : 'none', margin: align === 'center' ? '0 auto' : '0' }}>
         <h2 className="h-1" style={{ marginBottom: sub ? '18px' : '0' }}>{title}</h2>
         {sub && <p className="lead" style={{ margin: align === 'center' ? '0 auto' : '0' }}>{sub}</p>}

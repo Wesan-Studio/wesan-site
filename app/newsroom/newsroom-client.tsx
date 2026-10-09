@@ -1,5 +1,7 @@
 'use client';
 
+import { DitherStill } from '../_components/dither';
+import { sceneForDivision } from '../_components/detail-hero';
 import { useState } from 'react';
 import Link from 'next/link';
 import { SectionHead } from '../_components/lib';
@@ -44,8 +46,8 @@ export function NewsroomClient({
         <section className="section" style={{ paddingTop: '0' }}>
           <div className="container">
             <article className="row row-2" style={{ gap: '48px', alignItems: 'center', paddingBottom: '40px', borderBottom: '1px solid var(--rule)' }}>
-              <div className="frame frame-cross" style={{ aspectRatio: '16/10' }}>
-                <span className="mono" style={{ fontSize: '10px', letterSpacing: '0.1em' }}>[ {featured.slug.replace(/-/g, ' ').toUpperCase()} · UI ]</span>
+              <div className="photo" style={{ aspectRatio: '16/10', borderRadius: '12px' }}>
+                <DitherStill scene={sceneForDivision(featured.who)} seed={4} gain={0.8} />
               </div>
               <div>
                 <div className="gap-12 mb-4" style={{ alignItems: 'baseline' }}>

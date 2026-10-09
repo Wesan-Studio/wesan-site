@@ -10,7 +10,7 @@ export function sceneForDivision(division: string): Scene {
 }
 
 interface DetailHeroProps {
-  back: { href: string; label: string };
+  back?: { href: string; label: string };
   title: string;
   meta?: string[];
   lede?: ReactNode;
@@ -23,7 +23,7 @@ export function DetailHero({ back, title, meta, lede, figure, children }: Detail
   return (
     <header className="detail">
       <div className="read-col">
-        <Link href={back.href} className="back-link">{back.label}</Link>
+        {back && <Link href={back.href} className="back-link">{back.label}</Link>}
         {meta && meta.length > 0 && (
           <p className="detail-meta">
             {meta.map((m, i) => (

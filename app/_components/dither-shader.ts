@@ -103,9 +103,10 @@ float orbit(vec2 uv, float asp) {
 float swell(vec2 uv, float asp) {
   vec2 q = vec2((uv.x - 0.5) * asp, uv.y - 0.5);
   vec2 s1 = vec2(-0.35 + 0.05 * sin(uSeed), -0.2), s2 = vec2(0.4, 0.25);
-  float a = sin(length(q - s1) * 46.0 - uTime * 0.8);
-  float b = sin(length(q - s2) * 46.0 - uTime * 0.6);
-  return clamp(0.5 + 0.28 * (a + b), 0.0, 1.0) * (0.35 + 0.65 * uv.y);
+  float a = sin(length(q - s1) * 26.0 - uTime * 0.8);
+  float b = sin(length(q - s2) * 26.0 - uTime * 0.6);
+  float contour = 1.0 - smoothstep(0.0, 0.22, abs(a + b));
+  return contour * (0.3 + 0.6 * uv.y);
 }
 
 float bayer2(vec2 a) { a = floor(a); return fract(dot(a, vec2(0.5, a.y * 0.75))); }

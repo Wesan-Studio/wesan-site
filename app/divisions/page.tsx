@@ -1,6 +1,7 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { SectionHead, SpotlightCard } from '../_components/lib';
+import { SectionHead } from '../_components/lib';
+import { DitherStill } from '../_components/dither';
+import { sceneForDivision, sentence } from '../_components/detail-hero';
 import { getContent } from '@/lib/content';
 
 interface DivRow {
@@ -10,11 +11,7 @@ interface DivRow {
   desc: string;
   products: string[];
   meta: string[];
-  dashedProducts?: boolean;
-  image?: { src: string; alt: string; dim?: boolean };
-  stage?: { label: string; tagline: string };
   cta: { href: string; label: string; variant: 'solid' | 'ghost-dashed' };
-  alt: boolean;
   mediaSide: 'left' | 'right';
 }
 
@@ -33,32 +30,6 @@ function statusClass(variant: string) {
   }
 }
 
-function MediaCell({ row }: { row: DivRow }) {
-  if (row.image) {
-    return (
-      <div className={`media frame frame-cross${row.image.dim ? ' dim' : ''}`} style={row.image.dim ? { borderRight: '1px dashed var(--rule)' } : undefined}>
-        <Image unoptimized width={1200} height={800}
-          className={row.image.alt?.toLowerCase().includes('saturn') ? 'wmsketch' : 'wmsketch'}
-          src={row.image.src}
-          alt={row.image.alt}
-          style={row.image.dim ? { maxWidth: '60%', maxHeight: '80%' } : { maxWidth: '70%', maxHeight: '70%' }}
-        />
-      </div>
-    );
-  }
-  if (row.stage) {
-    return (
-      <div className="media frame frame-cross">
-        <div style={{ textAlign: 'center', padding: '20px' }}>
-          <div className="mono mb-2" style={{ fontSize: '10px', letterSpacing: '0.14em', color: 'var(--ink-3)' }}>{row.stage.label}</div>
-          <div style={{ fontFamily: 'var(--font-serif)', fontSize: '20px', fontStyle: 'italic', color: 'var(--ink-2)' }}>{row.stage.tagline}</div>
-        </div>
-      </div>
-    );
-  }
-  return null;
-}
-
 export default async function DivisionsPage() {
   const c = ((await getContent()).pages.divisions as unknown) as DivisionsContent;
 
@@ -70,49 +41,25 @@ export default async function DivisionsPage() {
         </div>
       </section>
 
-      <div style={{ maxWidth: '1320px', margin: '0 auto' }}>
+      <div className="container" style={{ padding: '0 32px' }}>
         {c.rows.map((row) => (
-          <SpotlightCard key={row.spine} as="article" className={`div-row${row.alt ? ' alt' : ''}`}>
-            <div className="spine">{row.spine}</div>
-            {row.mediaSide === 'left' && <MediaCell row={row} />}
-            <div className="body" style={row.mediaSide === 'left' ? { borderLeft: '1px solid var(--rule)', borderRight: 'none' } : undefined}>
-              <div className="gap-12 mb-4" style={{ alignItems: 'baseline' }}>
-                <h2 className="h-2">{row.title}</h2>
+          <article key={row.spine} className={`div-split${row.mediaSide === 'left' ? ' flip' : ''}`}>
+            <div>
+              <div className="gap-12 mb-4" style={{ alignItems: 'center', flexWrap: 'wrap' }}>
+                <h2 className="h-1">{row.title}</h2>
                 <span className={statusClass(row.statusTag.variant)}>{row.statusTag.label}</span>
               </div>
-              <p style={{ fontSize: '16px', color: 'var(--ink-2)', marginBottom: '20px', maxWidth: '46ch' }}>{row.desc}</p>
-              <div className="gap-wrap mb-6">
-                {row.products.map((p, i) => (
-                  <span
-                    key={i}
-                    className={`tag${row.dashedProducts ? ' dashed' : ''}`}
-                    style={row.dashedProducts
-                      ? { opacity: 0.75 }
-                      : { fontFamily: 'var(--font-display)', fontSize: '13px', textTransform: 'none', letterSpacing: '0' }
-                    }
-                    dangerouslySetInnerHTML={{ __html: p }}
-                  />
-                ))}
-              </div>
-              <div className="gap-8" style={{ flexWrap: 'wrap' }}>
-                {row.meta.map((m, i) => (
-                  <span key={i} className={`tag${row.dashedProducts && i === row.meta.length - 1 ? ' dashed' : ''}`}>{m}</span>
-                ))}
-              </div>
+              <p className="div-desc">{row.desc}</p>
+              <p className="div-products" dangerouslySetInnerHTML={{ __html: row.products.join('<span class="sep"> · </span>') }} />
+              <p className="div-meta">{row.meta.join(' · ')}</p>
+              <Link href={row.cta.href} className={row.cta.variant === 'solid' ? 'btn solid' : 'btn'}>
+                {sentence(row.cta.label)} <span className="arr">→</span>
+              </Link>
             </div>
-            {row.mediaSide === 'right' && <MediaCell row={row} />}
-            <div className="cta">
-              {row.cta.variant === 'ghost-dashed' ? (
-                <Link href={row.cta.href} className="btn ghost" style={{ borderStyle: 'dashed' }}>
-                  {row.cta.label} <span className="arr">→</span>
-                </Link>
-              ) : (
-                <Link href={row.cta.href} className="btn solid">
-                  {row.cta.label} <span className="arr">→</span>
-                </Link>
-              )}
+            <div className="photo div-media">
+              <DitherStill scene={sceneForDivision(row.title)} seed={row.spine.length} gain={0.75} />
             </div>
-          </SpotlightCard>
+          </article>
         ))}
       </div>
 

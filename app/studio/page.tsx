@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
+import { sentence } from '../_components/detail-hero';
 import { Photo, Telemetry, SectionHead } from '../_components/lib';
 import { getContent, type Tone } from '@/lib/content';
 
@@ -19,18 +20,12 @@ export default async function StudioPage() {
 
   return (
     <>
-      <section style={{ background: 'var(--paper-2)', color: 'var(--ink)' }}>
-        <div className="hero-dark" style={{ maxWidth: '1320px', margin: '0 auto', padding: '64px 32px' }}>
-          <div className="gap-12 mb-8" style={{ alignItems: 'center' }}>
-            {c.hero.tags.map((t) => (
-              <span key={t.label} className={`tag${t.variant === 'accent' ? ' accent' : ''}`} style={{ background: 'transparent' }}>{t.label}</span>
-            ))}
-            <span className="mono" style={{ fontSize: '11px', color: 'var(--ink-4)', marginLeft: 'auto', letterSpacing: '0.1em' }}>{c.hero.fig}</span>
-          </div>
-          <h1 className="h-display" style={{ maxWidth: '20ch', color: 'var(--ink)' }}>{c.hero.title}</h1>
-        </div>
-        <Photo {...c.hero.photo} style={{ borderLeft: 'none', borderRight: 'none' }} />
+      <section style={{ maxWidth: '1320px', margin: '0 auto', padding: '88px 32px 48px' }}>
+        <h1 className="h-display" style={{ maxWidth: '20ch' }}>{c.hero.title}</h1>
       </section>
+      <div className="page-figure">
+        <Photo tone={c.hero.photo.tone} ratio="3/1" gain={0.7} />
+      </div>
 
       <Telemetry items={c.telemetry.map(([k, v]) => [k, v] as [ReactNode, ReactNode])} />
 
@@ -91,7 +86,7 @@ export default async function StudioPage() {
           <div className="row row-3 mt-8">
             {c.principles.map(([h, b]) => (
               <div key={h} className="card">
-                <div className="eyebrow mb-4">{h}</div>
+                <h3 className="card-title">{sentence(h)}</h3>
                 <p style={{ fontSize: '14.5px', color: 'var(--ink-2)', lineHeight: 1.6 }}>{b}</p>
               </div>
             ))}

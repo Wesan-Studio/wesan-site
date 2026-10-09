@@ -19,7 +19,7 @@ export default async function HomePage() {
                 <span key={t.label} className={`tag glass${t.variant === 'accent' ? ' accent' : ''}`}>{t.label}</span>
               ))}
             </div>
-            <h1 className="h-display mb-6" style={{ maxWidth: '16ch', whiteSpace: 'pre-line' }}>
+            <h1 className="h-display caps mb-6" style={{ maxWidth: '16ch', whiteSpace: 'pre-line' }}>
               {c.hero.title}
             </h1>
             <p className="hero-lead mb-8">{c.hero.lead}</p>
