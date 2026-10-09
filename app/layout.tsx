@@ -31,14 +31,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className={`${inter.variable} ${interTight.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}>
       <body>
+        <a href="#main" className="skip-link">Skip to content</a>
         <ContentProvider value={content}>
           <DraftingFrame />
           <CommandPalette />
           <Nav />
-          <main style={{ animation: 'fadeIn 0.4s ease forwards' }}>{children}</main>
+          <main id="main" tabIndex={-1}>{children}</main>
           <Footer />
         </ContentProvider>
-        <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }`}</style>
       </body>
     </html>
   );
