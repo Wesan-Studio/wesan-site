@@ -117,25 +117,25 @@ export default async function RolePage({ params }: { params: Promise<{ slug: str
         </div>
       </section>
 
-      <section className="section" style={{ background: 'var(--ink)', color: 'var(--paper)' }}>
+      <section className="section" style={{ background: 'var(--paper-2)', color: 'var(--ink)' }}>
         <div className="container">
-          <div className="section-label" style={{ color: '#6b6e74' }}>
-            <span className="num" style={{ color: 'var(--paper)', borderColor: 'var(--paper)' }}>{labels.compHead.num}</span>
+          <div className="section-label" style={{ color: 'var(--ink-3)' }}>
+            <span className="num" style={{ color: 'var(--ink)', borderColor: 'var(--paper)' }}>{labels.compHead.num}</span>
             <span>{labels.compHead.title}</span>
-            <span className="rule" style={{ background: '#2a2e36' }} />
+            <span className="rule" style={{ background: 'var(--rule)' }} />
           </div>
           <div className="row row-3" style={{ gap: '32px' }}>
             <div>
-              <div className="mono mb-2" style={{ fontSize: '11px', color: '#6b6e74', letterSpacing: '0.12em' }}>COMPENSATION</div>
-              <p className="serif" style={{ fontSize: '19px', color: 'var(--paper)', lineHeight: 1.5 }}>{role.comp}</p>
+              <div className="mono mb-2" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.12em' }}>COMPENSATION</div>
+              <p className="serif" style={{ fontSize: '19px', color: 'var(--ink)', lineHeight: 1.5 }}>{role.comp}</p>
             </div>
             <div>
-              <div className="mono mb-2" style={{ fontSize: '11px', color: '#6b6e74', letterSpacing: '0.12em' }}>REPORTING TO</div>
-              <p className="serif" style={{ fontSize: '19px', color: 'var(--paper)', lineHeight: 1.5 }}>{role.reportingTo}</p>
+              <div className="mono mb-2" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.12em' }}>REPORTING TO</div>
+              <p className="serif" style={{ fontSize: '19px', color: 'var(--ink)', lineHeight: 1.5 }}>{role.reportingTo}</p>
             </div>
             <div>
-              <div className="mono mb-2" style={{ fontSize: '11px', color: '#6b6e74', letterSpacing: '0.12em' }}>TEAM</div>
-              <p className="serif" style={{ fontSize: '19px', color: 'var(--paper)', lineHeight: 1.5 }}>{role.teamMeta}</p>
+              <div className="mono mb-2" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.12em' }}>TEAM</div>
+              <p className="serif" style={{ fontSize: '19px', color: 'var(--ink)', lineHeight: 1.5 }}>{role.teamMeta}</p>
             </div>
           </div>
         </div>

@@ -83,14 +83,14 @@ export default async function ReportsPage() {
         </div>
       </section>
 
-      <section className="section" style={{ background: 'var(--ink)', color: 'var(--paper)', textAlign: 'center' }}>
+      <section className="section" style={{ background: 'var(--paper-2)', color: 'var(--ink)', textAlign: 'center' }}>
         <div className="container-narrow">
-          <span className="eyebrow" style={{ color: '#6b7280' }}>{c.subscribeBlock.eyebrow}</span>
-          <h2 className="h-1 mt-4 mb-6" style={{ color: 'var(--paper)' }}>{c.subscribeBlock.title}</h2>
+          <span className="eyebrow" style={{ color: 'var(--ink-3)' }}>{c.subscribeBlock.eyebrow}</span>
+          <h2 className="h-1 mt-4 mb-6" style={{ color: 'var(--ink)' }}>{c.subscribeBlock.title}</h2>
           <p style={{ fontSize: '16px', color: 'var(--ink-5)', lineHeight: 1.6, marginBottom: '32px' }}>{c.subscribeBlock.body}</p>
           <div className="gap-12" style={{ justifyContent: 'center' }}>
-            <Link href="/newsroom" className="btn" style={{ borderColor: 'var(--paper)', color: 'var(--paper)' }}>Newsroom <span className="arr">→</span></Link>
-            <a href="#" className="btn" style={{ borderColor: 'var(--paper)', color: 'var(--paper)' }}>
+            <Link href="/newsroom" className="btn" style={{ borderColor: 'var(--paper)', color: 'var(--ink)' }}>Newsroom <span className="arr">→</span></Link>
+            <a href="#" className="btn" style={{ borderColor: 'var(--paper)', color: 'var(--ink)' }}>
               <Icon name="ext" size={12} /> RSS feed
             </a>
           </div>

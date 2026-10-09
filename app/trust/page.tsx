@@ -88,15 +88,15 @@ export default async function TrustPage() {
         </div>
       </section>
 
-      <section className="section" style={{ background: 'var(--ink)', color: 'var(--paper)', textAlign: 'center' }}>
+      <section className="section" style={{ background: 'var(--paper-2)', color: 'var(--ink)', textAlign: 'center' }}>
         <div className="container-narrow">
-          <span className="eyebrow" style={{ color: '#6b7280' }}>{c.vulnBlock.eyebrow}</span>
-          <h2 className="h-1 mt-4 mb-6" style={{ color: 'var(--paper)' }}>{c.vulnBlock.title}</h2>
+          <span className="eyebrow" style={{ color: 'var(--ink-3)' }}>{c.vulnBlock.eyebrow}</span>
+          <h2 className="h-1 mt-4 mb-6" style={{ color: 'var(--ink)' }}>{c.vulnBlock.title}</h2>
           <p
             style={{ fontSize: '16px', color: 'var(--ink-5)', lineHeight: 1.6, marginBottom: '32px' }}
             dangerouslySetInnerHTML={{ __html: c.vulnBlock.body }}
           />
-          <p className="mono" style={{ fontSize: '11.5px', color: '#6b7280', letterSpacing: '0.06em' }}>{c.vulnBlock.safe}</p>
+          <p className="mono" style={{ fontSize: '11.5px', color: 'var(--ink-3)', letterSpacing: '0.06em' }}>{c.vulnBlock.safe}</p>
         </div>
       </section>
     </>

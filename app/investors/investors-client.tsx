@@ -56,12 +56,12 @@ export function InvestorsClient({ c }: { c: InvestorsContent }) {
         </div>
       </section>
 
-      <section className="section" style={{ background: 'var(--ink)', color: 'var(--paper)' }}>
+      <section className="section" style={{ background: 'var(--paper-2)', color: 'var(--ink)' }}>
         <div className="container">
-          <span className="eyebrow" style={{ color: '#6b7280' }}>{c.capTableEyebrow}</span>
+          <span className="eyebrow" style={{ color: 'var(--ink-3)' }}>{c.capTableEyebrow}</span>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'var(--font-mono)', fontSize: '13.5px', marginTop: '32px' }}>
             <thead>
-              <tr style={{ color: '#6b7280', fontSize: '10.5px', textTransform: 'uppercase', letterSpacing: '0.12em', borderBottom: '1px solid #2a2e36' }}>
+              <tr style={{ color: 'var(--ink-3)', fontSize: '10.5px', textTransform: 'uppercase', letterSpacing: '0.12em', borderBottom: '1px solid var(--rule)' }}>
                 <th style={{ textAlign: 'left', padding: '14px 0', fontWeight: 400 }}>Holder</th>
                 <th style={{ textAlign: 'left', padding: '14px 0', fontWeight: 400 }}>Class</th>
                 <th style={{ textAlign: 'right', padding: '14px 0', fontWeight: 400 }}>Share</th>
@@ -70,16 +70,16 @@ export function InvestorsClient({ c }: { c: InvestorsContent }) {
             </thead>
             <tbody>
               {c.capTable.map((row, i, a) => (
-                <tr key={i} style={{ borderBottom: i < a.length - 1 ? '1px solid #2a2e36' : 'none' }}>
-                  <td style={{ padding: '16px 0', color: 'var(--paper)' }}>{row[0]}</td>
-                  <td style={{ padding: '16px 0', color: '#9aa0a8' }}>{row[1]}</td>
-                  <td style={{ padding: '16px 0', textAlign: 'right', color: 'var(--paper)' }}>{row[2]}</td>
-                  <td style={{ padding: '16px 0', textAlign: 'right', color: 'var(--paper)' }}>{row[3]}</td>
+                <tr key={i} style={{ borderBottom: i < a.length - 1 ? '1px solid var(--rule)' : 'none' }}>
+                  <td style={{ padding: '16px 0', color: 'var(--ink)' }}>{row[0]}</td>
+                  <td style={{ padding: '16px 0', color: 'var(--ink-3)' }}>{row[1]}</td>
+                  <td style={{ padding: '16px 0', textAlign: 'right', color: 'var(--ink)' }}>{row[2]}</td>
+                  <td style={{ padding: '16px 0', textAlign: 'right', color: 'var(--ink)' }}>{row[3]}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <p className="mono mt-6" style={{ fontSize: '11px', color: '#6b7280', letterSpacing: '0.06em' }}>{c.capTableFooter}</p>
+          <p className="mono mt-6" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.06em' }}>{c.capTableFooter}</p>
         </div>
       </section>
 

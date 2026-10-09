@@ -94,14 +94,14 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="section" style={{ background: 'var(--ink)', color: 'var(--paper)' }}>
+      <section className="section" style={{ background: 'var(--paper-2)', color: 'var(--ink)' }}>
         <div className="container">
-          <span className="eyebrow" style={{ color: '#6b7280' }}>{c.numbers.eyebrow}</span>
+          <span className="eyebrow" style={{ color: 'var(--ink-3)' }}>{c.numbers.eyebrow}</span>
           <div className="row row-4 mt-8">
             {c.numbers.items.map((n) => (
               <div key={n.label}>
-                <div className="mono" style={{ fontSize: '11px', color: '#6b7280', letterSpacing: '0.12em' }}>{n.label}</div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '56px', color: 'var(--paper)', letterSpacing: '-0.02em', marginTop: '8px' }}>
+                <div className="mono" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.12em' }}>{n.label}</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '56px', color: 'var(--ink)', letterSpacing: '-0.02em', marginTop: '8px' }}>
                   <Counter to={n.value} />
                 </div>
               </div>

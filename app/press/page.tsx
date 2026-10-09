@@ -129,17 +129,17 @@ export default async function PressPage() {
         </div>
       </section>
 
-      <section className="section" style={{ background: 'var(--ink)', color: 'var(--paper)' }}>
+      <section className="section" style={{ background: 'var(--paper-2)', color: 'var(--ink)' }}>
         <div className="container">
-          <span className="eyebrow" style={{ color: '#6b7280' }}>{c.factsEyebrow}</span>
+          <span className="eyebrow" style={{ color: 'var(--ink-3)' }}>{c.factsEyebrow}</span>
           <div className="row row-2 mt-6" style={{ gap: '0' }}>
             {[c.factsLeft, c.factsRight].map((tbl, ti) => (
               <table key={ti} style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'var(--font-mono)', fontSize: '13px' }}>
                 <tbody>
                   {tbl.map(([k, v], i) => (
-                    <tr key={i} style={{ borderBottom: '1px solid #2a2e36' }}>
-                      <td style={{ padding: '14px 0', color: '#6b7280', width: '40%' }}>{k.toUpperCase()}</td>
-                      <td style={{ padding: '14px 0', color: 'var(--paper)' }}>{v}</td>
+                    <tr key={i} style={{ borderBottom: '1px solid var(--rule)' }}>
+                      <td style={{ padding: '14px 0', color: 'var(--ink-3)', width: '40%' }}>{k.toUpperCase()}</td>
+                      <td style={{ padding: '14px 0', color: 'var(--ink)' }}>{v}</td>
                     </tr>
                   ))}
                 </tbody>

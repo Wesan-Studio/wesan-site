@@ -12,6 +12,8 @@ import {
 } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { DitherStill } from './dither';
+import { TONE_SCENE } from './dither-shader';
 
 interface PhotoProps {
   tone?: 'architecture' | 'workstation' | 'stage' | 'industrial' | 'dawn' | 'geology' | 'systems';
@@ -23,9 +25,12 @@ interface PhotoProps {
   className?: string;
 }
 
+
 export function Photo({ tone = 'architecture', ratio = '16/9', caption, label, children, style, className = '' }: PhotoProps) {
+  const [scene, seed] = TONE_SCENE[tone];
   return (
-    <div className={`photo photo-cross ${tone} ${className}`} style={{ aspectRatio: ratio, ...style }}>
+    <div className={`photo photo-cross ${className}`} style={{ aspectRatio: ratio, ...style }}>
+      <DitherStill scene={scene} seed={seed} />
       <div className="corners" />
       {label && <span className="cap-tr">{label}</span>}
       {caption && <span className="cap">{caption}</span>}

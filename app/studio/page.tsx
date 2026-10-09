@@ -19,7 +19,7 @@ export default async function StudioPage() {
 
   return (
     <>
-      <section style={{ background: 'var(--ink)', color: 'var(--paper)' }}>
+      <section style={{ background: 'var(--paper-2)', color: 'var(--ink)' }}>
         <div className="hero-dark" style={{ maxWidth: '1320px', margin: '0 auto', padding: '64px 32px' }}>
           <div className="gap-12 mb-8" style={{ alignItems: 'center' }}>
             {c.hero.tags.map((t) => (
@@ -27,7 +27,7 @@ export default async function StudioPage() {
             ))}
             <span className="mono" style={{ fontSize: '11px', color: 'var(--ink-4)', marginLeft: 'auto', letterSpacing: '0.1em' }}>{c.hero.fig}</span>
           </div>
-          <h1 className="h-display" style={{ maxWidth: '20ch', color: 'var(--paper)' }}>{c.hero.title}</h1>
+          <h1 className="h-display" style={{ maxWidth: '20ch', color: 'var(--ink)' }}>{c.hero.title}</h1>
         </div>
         <Photo {...c.hero.photo} style={{ borderLeft: 'none', borderRight: 'none' }} />
       </section>
@@ -50,13 +50,13 @@ export default async function StudioPage() {
               const body = (
                 <>
                   {p.img ? (
-                    <div style={{ aspectRatio: '16/10', marginBottom: '24px', position: 'relative', overflow: 'hidden', border: '1px solid var(--rule)', background: 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ aspectRatio: '16/10', marginBottom: '24px', position: 'relative', overflow: 'hidden', border: '1px solid var(--rule)', background: 'var(--paper-2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <div aria-hidden style={{ position: 'absolute', inset: '-20%', backgroundImage: `url(${p.img})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(34px) saturate(1.2)', opacity: 0.5 }} />
-                      <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(5,7,12,0.22), rgba(5,7,12,0.58))' }} />
+                      <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgb(var(--dither-ground) / 0.15), rgb(var(--dither-ground) / 0.6))' }} />
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={p.img} alt={`${p.name} app icon`} width={132} height={132} style={{ position: 'relative', borderRadius: '28px', boxShadow: '0 14px 44px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.14)' }} />
-                      <span className="mono" style={{ position: 'absolute', left: '14px', bottom: '12px', fontSize: '10.5px', letterSpacing: '0.12em', color: 'rgba(255,255,255,0.72)', textTransform: 'uppercase', zIndex: 3 }}>{p.name}</span>
-                      {live && <span className="mono" style={{ position: 'absolute', right: '14px', top: '12px', fontSize: '10px', letterSpacing: '0.14em', color: '#4ade80', textTransform: 'uppercase', zIndex: 3 }}>● {p.status}</span>}
+                      <img src={p.img} alt={`${p.name} app icon`} width={132} height={132} style={{ position: 'relative', borderRadius: '28px', boxShadow: '0 14px 44px rgba(0,0,0,0.5)', border: '1px solid var(--rule)' }} />
+                      <span className="mono" style={{ position: 'absolute', left: '14px', bottom: '12px', fontSize: '10.5px', letterSpacing: '0.12em', color: 'var(--ink-2)', textTransform: 'uppercase', zIndex: 3 }}>{p.name}</span>
+                      {live && <span className="mono" style={{ position: 'absolute', right: '14px', top: '12px', fontSize: '10px', letterSpacing: '0.14em', color: 'var(--ok)', textTransform: 'uppercase', zIndex: 3 }}>● {p.status}</span>}
                     </div>
                   ) : (
                     <div className="frame frame-cross" style={{ aspectRatio: '16/10', marginBottom: '24px' }}>

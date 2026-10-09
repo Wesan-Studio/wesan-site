@@ -48,9 +48,9 @@ export default async function SitemapPage() {
         </div>
       </section>
 
-      <section className="section" style={{ background: 'var(--ink)', color: 'var(--paper)' }}>
+      <section className="section" style={{ background: 'var(--paper-2)', color: 'var(--ink)' }}>
         <div className="container-narrow">
-          <span className="eyebrow" style={{ color: '#6b7280' }}>{c.treeEyebrow}</span>
+          <span className="eyebrow" style={{ color: 'var(--ink-3)' }}>{c.treeEyebrow}</span>
           <pre className="mono mt-6" style={{ fontSize: '13px', lineHeight: 1.9, color: 'var(--ink-5)', whiteSpace: 'pre-wrap' }}>{c.tree}</pre>
         </div>
       </section>

@@ -1,5 +1,7 @@
 import Link from 'next/link';
-import { Photo, Counter, Marquee, SectionHead, SpotlightCard, Telemetry } from './_components/lib';
+import { Photo, Counter, Marquee, SectionHead, SpotlightCard } from './_components/lib';
+import { TONE_SCENE } from './_components/dither-shader';
+import { DitherField, DitherStill } from './_components/dither';
 import { getContent, getNewsBySlugs } from '@/lib/content';
 
 export default async function HomePage() {
@@ -8,41 +10,35 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="section" style={{ paddingTop: '64px', paddingBottom: '40px' }}>
-        <div className="container">
-          <div className="gap-12 mb-8" style={{ alignItems: 'center', flexWrap: 'wrap' }}>
-            {c.hero.tags.map((t) => (
-              <span key={t.label} className={`tag${t.variant === 'accent' ? ' accent' : ''}`}>{t.label}</span>
-            ))}
-            <span className="eyebrow" style={{ marginLeft: 'auto' }}>{c.hero.fig}</span>
+      <section className="hero">
+        <DitherField scene="horizon" seed={1} cell={3} />
+        <div className="hero-inner">
+          <div>
+            <div className="gap-8 mb-6" style={{ flexWrap: 'wrap' }}>
+              {c.hero.tags.map((t) => (
+                <span key={t.label} className={`tag glass${t.variant === 'accent' ? ' accent' : ''}`}>{t.label}</span>
+              ))}
+            </div>
+            <h1 className="h-display mb-6" style={{ maxWidth: '16ch', whiteSpace: 'pre-line' }}>
+              {c.hero.title}
+            </h1>
+            <p className="hero-lead mb-8">{c.hero.lead}</p>
+            <div className="gap-12" style={{ flexWrap: 'wrap' }}>
+              {c.hero.ctas.map((cta) => (
+                <Link key={cta.href} href={cta.href} className={`btn${cta.variant === 'solid' ? ' solid' : ''}`}>
+                  {cta.label}{cta.variant === 'solid' ? <> <span className="arr">→</span></> : null}
+                </Link>
+              ))}
+            </div>
           </div>
-          <h1 className="h-display mb-6" style={{ maxWidth: '18ch', whiteSpace: 'pre-line' }}>
-            {c.hero.title}
-          </h1>
-          <p className="lead mb-8" style={{ fontSize: '20px' }}>{c.hero.lead}</p>
-          <div className="gap-12">
-            {c.hero.ctas.map((cta) => (
-              <Link key={cta.href} href={cta.href} className={`btn${cta.variant === 'solid' ? ' solid' : ''}`}>
-                {cta.label}{cta.variant === 'solid' ? <> <span className="arr">→</span></> : null}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="container mt-16 home-visual">
-          <Photo tone={c.heroPhoto.tone} ratio={c.heroPhoto.ratio} caption={c.heroPhoto.caption} label={c.heroPhoto.label}>
-            {c.heroPhoto.overlay && (
-              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'flex-end', padding: '40px', zIndex: 3 }}>
-                <p className="serif" style={{ fontSize: '26px', color: 'rgba(255,255,255,0.85)', maxWidth: '36ch', lineHeight: 1.35, letterSpacing: '-0.01em' }}>
-                  {c.heroPhoto.overlay}
-                </p>
+          <div className="hero-telemetry glass" aria-label="Wesan at a glance">
+            {c.telemetry.map((t) => (
+              <div key={t.label}>
+                <div className="v"><Counter to={t.value} suffix={t.suffix} /></div>
+                <div className="k">{t.label}</div>
               </div>
-            )}
-          </Photo>
-        </div>
-
-        <div className="container mt-4">
-          <Telemetry items={c.telemetry.map((t) => [t.label, <Counter key={t.label} to={t.value} suffix={t.suffix} />])} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -69,7 +65,8 @@ export default async function HomePage() {
             {c.bento.map((card) => {
               const real = !!(card.icons && card.icons.length > 0);
               return (
-              <SpotlightCard key={card.href} href={card.href} className={`${card.size} photo ${real ? '' : card.tone}`}>
+              <SpotlightCard key={card.href} href={card.href} className={`${card.size} photo`}>
+                {!real && card.tone && <DitherStill scene={TONE_SCENE[card.tone][0]} seed={TONE_SCENE[card.tone][1] + 10} />}
                 <div className="corners" />
                 {real && (
                   <>
@@ -77,7 +74,7 @@ export default async function HomePage() {
                     <div style={{ position: 'absolute', top: '26px', left: '32px', display: 'flex', gap: '12px', zIndex: 3 }}>
                       {card.icons!.map((ic) => (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img key={ic} src={ic} alt="" width={58} height={58} style={{ borderRadius: '13px', boxShadow: '0 8px 22px rgba(0,0,0,0.55)', border: '1px solid rgba(255,255,255,0.16)' }} />
+                        <img key={ic} src={ic} alt="" width={58} height={58} style={{ borderRadius: '13px', boxShadow: 'var(--glass-shadow)', border: '1px solid var(--glass-line)' }} />
                       ))}
                     </div>
                   </>
@@ -89,7 +86,7 @@ export default async function HomePage() {
                 {card.tags && card.tags.length > 0 && (
                   <div style={{ display: 'flex', gap: '8px', marginTop: '14px', flexWrap: 'wrap' }}>
                     {card.tags.map((t) => (
-                      <span key={t} className="tag" style={{ background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.9)', borderColor: 'rgba(255,255,255,0.3)' }}>{t}</span>
+                      <span key={t} className="tag glass">{t}</span>
                     ))}
                   </div>
                 )}

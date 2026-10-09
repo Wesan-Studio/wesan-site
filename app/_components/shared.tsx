@@ -107,6 +107,44 @@ export function Nav() {
   );
 }
 
+type ThemeChoice = 'auto' | 'light' | 'dark';
+
+function readTheme(): ThemeChoice {
+  const t = document.documentElement.dataset.theme;
+  return t === 'light' || t === 'dark' ? t : 'auto';
+}
+
+function applyTheme(next: ThemeChoice) {
+  const root = document.documentElement;
+  if (next === 'auto') root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme', next);
+  try {
+    if (next === 'auto') localStorage.removeItem('theme');
+    else localStorage.setItem('theme', next);
+  } catch {}
+}
+
+function ThemeSwitch() {
+  const [choice, setChoice] = useState<ThemeChoice>('auto');
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setChoice(readTheme()));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  const pick = (next: ThemeChoice) => {
+    applyTheme(next);
+    setChoice(next);
+  };
+
+  return (
+    <div className="theme-switch" role="group" aria-label="Color theme">
+      {(['auto', 'light', 'dark'] as const).map((t) => (
+        <button key={t} type="button" aria-pressed={choice === t} onClick={() => pick(t)}>{t}</button>
+      ))}
+    </div>
+  );
+}
+
 export function Footer() {
   const c = useContent();
   const f = c.footer;
@@ -116,13 +154,13 @@ export function Footer() {
       <div className="foot-inner">
         <div>
           <Link href="/" className="foot-mark">
-            <Image src="/logo-light.png" alt={c.common.brand} width={28} height={28} className="foot-logo" />
+            <Image src="/logo.png" alt={c.common.brand} width={28} height={28} className="foot-logo" />
             <span className="word">{c.common.brand}</span>
           </Link>
-          <p style={{ color: '#8c9098', fontSize: '13.5px', maxWidth: '300px', marginBottom: '20px' }}>
+          <p style={{ color: 'var(--ink-3)', fontSize: '14px', maxWidth: '300px', marginBottom: '20px' }}>
             {f.blurb}
           </p>
-          <div className="gap-8" style={{ color: '#6b6e74' }}>
+          <div className="gap-8" style={{ color: 'var(--ink-3)' }}>
             <a href="https://github.com/wesan-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Icon name="github" /></a>
             <a href="https://x.com/wesanco" target="_blank" rel="noopener noreferrer" aria-label="X"><Icon name="twitter" /></a>
             <a href="mailto:hello@wesan.co" aria-label="Email"><Icon name="mail" /></a>
@@ -141,6 +179,7 @@ export function Footer() {
         <span>{c.common.footerCopyright}</span>
         <span>{c.common.footerEst}</span>
         <span>{c.common.footerStatus}</span>
+        <ThemeSwitch />
       </div>
     </footer>
   );

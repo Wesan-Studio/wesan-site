@@ -18,7 +18,7 @@ export default async function IndustriesPage() {
 
   return (
     <>
-      <section style={{ background: 'var(--ink)', color: 'var(--paper)' }}>
+      <section style={{ background: 'var(--paper-2)', color: 'var(--ink)' }}>
         <div className="hero-dark" style={{ maxWidth: '1320px', margin: '0 auto', padding: '64px 32px' }}>
           <div className="gap-12 mb-8" style={{ alignItems: 'center' }}>
             {c.hero.tags.map((t) => (
@@ -26,7 +26,7 @@ export default async function IndustriesPage() {
             ))}
             <span className="mono" style={{ fontSize: '11px', color: 'var(--ink-4)', marginLeft: 'auto', letterSpacing: '0.1em' }}>{c.hero.fig}</span>
           </div>
-          <h1 className="h-display" style={{ maxWidth: '22ch', color: 'var(--paper)' }}>{c.hero.title}</h1>
+          <h1 className="h-display" style={{ maxWidth: '22ch', color: 'var(--ink)' }}>{c.hero.title}</h1>
         </div>
         <Photo {...c.hero.photo} style={{ borderLeft: 'none', borderRight: 'none' }}>
         </Photo>
