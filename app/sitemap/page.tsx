@@ -1,6 +1,11 @@
 import { SectionHead, SpotlightCard } from '../_components/lib';
 import { getContent } from '@/lib/content';
 
+export const metadata = {
+  title: 'Sitemap',
+  description: 'Every page on wesan.co.',
+};
+
 interface SitemapItem { k: string; l: string; d: string }
 interface SitemapContent {
   head: { num: string; label: string; title: string; sub: string };

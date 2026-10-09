@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const meta = await getResearchMeta(slug);
   if (!meta) return { title: 'Research note not found' };
-  return { title: `${meta.title} · Research · Wesan`, description: meta.topic };
+  return { title: `${meta.title} · Research`, description: meta.topic };
 }
 
 export default async function ResearchPage({ params }: { params: Promise<{ slug: string }> }) {

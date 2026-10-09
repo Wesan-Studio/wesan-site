@@ -4,6 +4,11 @@ import { Photo, Counter, SectionHead } from '../_components/lib';
 import { Icon } from '../_components/icons';
 import { getContent } from '@/lib/content';
 
+export const metadata = {
+  title: 'About',
+  description: 'Wesan is a founder-led software company in London, building Meltir and Levios AI for a long horizon.',
+};
+
 interface AboutContent {
   head: { num: string; label: string; title: string; sub: string };
   founder: {

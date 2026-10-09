@@ -10,9 +10,14 @@ import './globals.css';
 const barlow = Barlow({ variable: '--font-barlow', subsets: ['latin', 'latin-ext'], weight: ['400', '500', '600'], style: ['normal', 'italic'] });
 const jetbrainsMono = JetBrains_Mono({ variable: '--font-jetbrains-mono', subsets: ['latin'] });
 
+const DESCRIPTION = 'Wesan is a London software company building Meltir, an AI workspace, and Levios AI, a social content assistant for small businesses.';
+
 export const metadata: Metadata = {
-  title: 'Wesan',
-  description: 'Wesan builds Meltir, an AI workspace, and Levios AI, a social content assistant for small businesses, alongside commerce software, daily tracking and mobile games.',
+  metadataBase: new URL('https://wesan.co'),
+  title: { default: 'Wesan · Practical AI, useful software', template: '%s · Wesan' },
+  description: DESCRIPTION,
+  openGraph: { type: 'website', siteName: 'Wesan', locale: 'en_GB', description: DESCRIPTION },
+  twitter: { card: 'summary_large_image' },
   icons: {
     // Dark mark by default (light browser chrome); white mark when the OS/browser is in dark mode.
     icon: [

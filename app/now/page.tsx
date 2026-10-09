@@ -1,6 +1,11 @@
 import { SectionHead } from '../_components/lib';
 import { getContent } from '@/lib/content';
 
+export const metadata = {
+  title: 'Now',
+  description: 'What the founder of Wesan is working on this month.',
+};
+
 export default async function NowPage() {
   const c = (await getContent()).pages.now;
 

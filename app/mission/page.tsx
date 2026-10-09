@@ -3,6 +3,11 @@ import { DetailHero } from '../_components/detail-hero';
 import { renderBlock } from '../_components/blocks';
 import { getContent } from '@/lib/content';
 
+export const metadata = {
+  title: 'Mission',
+  description: 'What Wesan means when it says it builds for the next century.',
+};
+
 export default async function MissionPage() {
   const c = (await getContent()).pages.mission;
 

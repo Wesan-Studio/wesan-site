@@ -10,9 +10,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const it = await getNewsItem(slug);
-  if (!it) return { title: 'Release not found · Wesan newsroom' };
+  if (!it) return { title: 'Release not found' };
   return {
-    title: `${it.what} · ${it.who} · Wesan newsroom`,
+    title: it.what,
     description: it.lede,
   };
 }

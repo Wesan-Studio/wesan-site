@@ -3,6 +3,11 @@ import { sentence } from '../_components/detail-hero';
 import { Photo, SectionHead } from '../_components/lib';
 import { getContent, type Tone } from '@/lib/content';
 
+export const metadata = {
+  title: 'Studio',
+  description: 'Wesan Studio makes games. Empire Inc. and Block Forge are live on the App Store.',
+};
+
 interface StudioContent {
   hero: { tags: { label: string; variant: string }[]; fig: string; title: string; photo: { tone: Tone; ratio: string; caption: string; label: string } };
   manifesto: string;

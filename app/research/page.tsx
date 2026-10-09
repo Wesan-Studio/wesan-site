@@ -3,7 +3,7 @@ import { SectionHead } from '../_components/lib';
 import { getAllResearchMeta } from '@/lib/research';
 
 export const metadata = {
-  title: 'Research · Wesan',
+  title: 'Research',
   description: 'Internal research notes on brand positioning, product competition, and market timing.',
 };
 

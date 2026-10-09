@@ -2,6 +2,11 @@ import type { ReactNode } from 'react';
 import { SectionHead } from '../_components/lib';
 import { getContent } from '@/lib/content';
 
+export const metadata = {
+  title: 'Contact',
+  description: 'How to reach Wesan in London: general, press, partners and security.',
+};
+
 function ContactCard({ label, addr, hint }: { label: string; addr: string; hint: string }) {
   return (
     <article className="card">

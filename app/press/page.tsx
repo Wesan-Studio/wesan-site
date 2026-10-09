@@ -3,6 +3,11 @@ import { SectionHead } from '../_components/lib';
 import { Icon } from '../_components/icons';
 import { getContent } from '@/lib/content';
 
+export const metadata = {
+  title: 'Press',
+  description: 'Press kit for Wesan: boilerplate, facts, logos and contacts.',
+};
+
 interface Logo { label: string; file: string; fg: string; bg: string; markOnly: boolean }
 interface TypeDef { fam: string; use: string; sample: string; cssFam: string }
 interface Boiler { len: string; body: string }

@@ -2,6 +2,11 @@ import { SectionHead, SpotlightCard } from '../_components/lib';
 import { Icon } from '../_components/icons';
 import { getContent } from '@/lib/content';
 
+export const metadata = {
+  title: 'Calendar',
+  description: 'Public dates from Wesan: releases, talks and the annual field report.',
+};
+
 interface CalendarContent {
   head: { num: string; label: string; title: string; sub: string };
   events: { when: string; weekday: string; time: string; where: string; type: string; title: string; who: string; lede: string; cta: string; status: string }[];

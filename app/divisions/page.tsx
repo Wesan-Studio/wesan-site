@@ -4,6 +4,11 @@ import { DitherStill } from '../_components/dither';
 import { sceneForDivision, sentence } from '../_components/detail-hero';
 import { getContent } from '@/lib/content';
 
+export const metadata = {
+  title: 'Divisions',
+  description: 'How Wesan is organised: Software in build today, a Studio with two games live on the App Store.',
+};
+
 interface DivRow {
   spine: string;
   title: string;

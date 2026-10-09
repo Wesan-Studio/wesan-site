@@ -11,8 +11,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const p = await getProduct(slug);
-  if (!p) return { title: 'Product not found · Wesan Software' };
-  return { title: `${p.name} · Wesan Software` };
+  if (!p) return { title: 'Product not found' };
+  return { title: `${p.name} · ${p.title}`, description: p.body.find((b) => b.kind === 'p')?.text?.replace(/<[^>]+>/g, '') };
 }
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {

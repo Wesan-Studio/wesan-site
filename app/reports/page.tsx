@@ -3,6 +3,11 @@ import { SectionHead } from '../_components/lib';
 import { Icon } from '../_components/icons';
 import { getContent } from '@/lib/content';
 
+export const metadata = {
+  title: 'Field reports',
+  description: "Every April, each Wesan division publishes what worked, what didn't and what it spent.",
+};
+
 interface ReportsContent {
   head: { num: string; label: string; title: string; sub: string };
   missionQuoteEyebrow: string;
