@@ -54,14 +54,7 @@ export function Nav() {
           <nav className="nav-groups" aria-label="Main">
             {nav.links.map((l) => (
               <div key={l.label} className={`nav-group${isActive(l, pathname) ? ' active' : ''}`}>
-                <Link href={l.href} className="nav-top">{l.label}</Link>
-                {l.children && (
-                  <div className="nav-sub">
-                    {l.children.map((c) => (
-                      <Link key={c.label} href={c.href} aria-current={c.href === pathname ? 'page' : undefined}>{c.label}</Link>
-                    ))}
-                  </div>
-                )}
+                <Link href={l.href} className="nav-top" aria-current={isActive(l, pathname) ? 'page' : undefined}>{l.label}</Link>
               </div>
             ))}
           </nav>
