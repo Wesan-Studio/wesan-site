@@ -13,15 +13,16 @@
     "year": "2026",
     "footerCopyright": "© 2026 Wesan",
     "footerEst": "EST · MMXXVI",
-    "footerStatus": "Building for the long term"
+    "footerStatus": "All systems normal"
   },
 
   "nav": {
     "links": [
-      { "href": "/software", "label": "Products" },
-      { "href": "/studio", "label": "Games" },
       { "href": "/about", "label": "About" },
-      { "href": "/newsroom", "label": "Updates" }
+      { "href": "/divisions", "label": "Divisions" },
+      { "href": "/mission", "label": "Mission" },
+      { "href": "/newsroom", "label": "Newsroom" },
+      { "href": "/careers", "label": "Careers" }
     ],
     "search": "Search",
     "searchPlaceholder": "Search pages, names, topics…",
@@ -85,17 +86,17 @@
 
         ],
         "fig": "FIG 01 / 09 · WESAN",
-        "title": "Built for\nwhat comes next.",
-        "lead": "AI workspaces, business tools and games. Built with care today, designed to grow.",
+        "title": "Practical AI.\nUseful software.\nBuilt around your work.",
+        "lead": "Wesan is an independent software studio building Meltir, an AI workspace for desktop and mobile, and Levios AI, a social content assistant for small businesses. Alongside them, we develop commerce tools, a daily tracker and mobile games.",
         "ctas": [
-          { "href": "/software", "label": "Explore products", "variant": "solid" },
-          { "href": "/about", "label": "About Wesan", "variant": "default" }
+          { "href": "/software", "label": "Explore our products", "variant": "solid" },
+          { "href": "/mission", "label": "Read the mission", "variant": "default" }
         ]
       },
       "heroPhoto": {
         "tone": "architecture",
         "ratio": "21/9",
-        "caption": "· A WIDE HORIZON · Belgium",
+        "caption": "· A WIDE HORIZON · LONDON",
         "label": "FIG 01 / 09",
         "overlay": "A piece of infrastructure, photographed from a distance. No people, no logos - just the structure itself."
       },
@@ -165,7 +166,7 @@
         "label": "A LETTER · FROM THE FOUNDER",
         "quote": "We are not in a hurry, and we are not slow. We work on the timescale of the things we're building. If a thing should last a century, then the company that builds it should act like one. That is what we are trying to be.",
         "ctaHref": "/mission",
-        "ctaLabel": "About Wesan"
+        "ctaLabel": "Read the mission"
       }
     },
 
@@ -328,8 +329,8 @@
       "head": {
         "num": "01",
         "label": "ABOUT WESAN",
-        "title": "Built with care.\nDesigned to grow.",
-        "sub": "Wesan is an independent software studio. We build AI workspaces, business tools and games, with a long-term ambition to take on larger engineering work."
+        "title": "One company. Three rooms. Built by a small group with a long view.",
+        "sub": "Wesan is a holding for long-horizon work. We are organised so that three different kinds of company - software, studio, industries - can each take the time they need to do their work well."
       },
       "founder": {
         "eyebrow": "FOUNDER",
@@ -1235,7 +1236,7 @@
           { "kind": "p", "content": "Today is day one. The roof is up. The rooms are being built. We will see you in April 2027 for the first field reports." }
         ],
         "links": [
-          { "label": "About Wesan", "href": "/mission" },
+          { "label": "Read the mission", "href": "/mission" },
           { "label": "The three divisions", "href": "/divisions" },
           { "label": "About · founder", "href": "/about" }
         ],
@@ -1268,7 +1269,7 @@
           { "kind": "p", "text": "Friday is built with Friday. The compounding is the whole point - and the reason a runtime, not another agent, is what was missing." },
           { "kind": "hr" },
           { "kind": "quote", "text": "The agent is the easy part. The runtime - the thing that keeps it alive and lets you reach it from anywhere - is the product." },
-          { "kind": "sign", "text": "- WESAN SOFTWARE" }
+          { "kind": "sign", "text": "- WESAN SOFTWARE · Belgium" }
         ],
         "continue": {
           "label": "FRIDAY",
@@ -1298,7 +1299,7 @@
           { "kind": "p", "text": "Every tracker you install is another notification, another login, another thing to forget. Dante's bet is the opposite: one place, six trackers, no noise. On TestFlight now; App Store soon." },
           { "kind": "hr" },
           { "kind": "quote", "text": "The best tracker is the one you actually open - and the one whose data never leaves your hands." },
-          { "kind": "sign", "text": "- WESAN SOFTWARE" }
+          { "kind": "sign", "text": "- WESAN SOFTWARE · Belgium" }
         ],
         "continue": {
           "label": "DANTE",
@@ -1326,7 +1327,7 @@
           { "kind": "p", "text": "Notch treats your habits the way a journal treats your days: an append-only log, one entry at a time, reviewed once at the end of the day. Nothing to optimise, no number to protect - only the quiet satisfaction of a checkmark and a record that's true. The log is the point." },
           { "kind": "hr" },
           { "kind": "quote", "text": "Discipline doesn't need a notification. The log is the reward." },
-          { "kind": "sign", "text": "- WESAN SOFTWARE" }
+          { "kind": "sign", "text": "- WESAN SOFTWARE · Belgium" }
         ],
         "continue": {
           "label": "NOTCH",
@@ -1355,7 +1356,7 @@
           { "kind": "p", "text": "Underneath is wesanjs - the runtime the rest of Wesan is built on. Levios is the layer that turns a wesanjs domain into a usable surface, so a new internal panel is a description, not a project. It is the tool that builds Wesan's own tools." },
           { "kind": "hr" },
           { "kind": "quote", "text": "Stop hand-building the same admin panel. Describe the domain; let the panels follow." },
-          { "kind": "sign", "text": "- WESAN SOFTWARE" }
+          { "kind": "sign", "text": "- WESAN SOFTWARE · Belgium" }
         ],
         "continue": {
           "label": "LEVIOS",

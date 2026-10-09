@@ -22,7 +22,7 @@
   --accent-ink:  #1d3a5f;
   --signal:      #d4a017;
 
-  --font-display: var(--font-inter), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: var(--font-inter-tight), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-serif:   var(--font-newsreader), 'EB Garamond', Georgia, serif;
   --font-sans:    var(--font-inter), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-mono:    var(--font-jetbrains-mono), ui-monospace, monospace;
@@ -44,6 +44,100 @@ body {
     radial-gradient(circle at 20% 20%, rgba(14, 17, 22, 0.015) 0, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(14, 17, 22, 0.015) 0, transparent 50%);
   background-attachment: fixed;
+}
+
+.drafting-frame {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 40;
+}
+.drafting-frame > * { pointer-events: auto; }
+
+.ruler {
+  position: fixed; top: 0; bottom: 0;
+  width: 20px;
+  pointer-events: none;
+  z-index: 39;
+  background-image:
+    linear-gradient(
+      to bottom,
+      var(--rule) 0,
+      var(--rule) 1px,
+      transparent 1px,
+      transparent 80px
+    );
+  opacity: 0.55;
+}
+.ruler.left  { left: 0;  background-position: 0 0; }
+.ruler.right { right: 0; background-position: 0 0; }
+.ruler::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(
+      to bottom,
+      var(--rule-strong) 0,
+      var(--rule-strong) 1px,
+      transparent 1px,
+      transparent 320px
+    );
+  opacity: 0.7;
+}
+.ruler.left::before  { background-position: 0 0; }
+.ruler.right::before { background-position: 0 0; }
+.ruler.left::after,
+.ruler.right::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; width: 6px;
+  background-image:
+    linear-gradient(
+      to bottom,
+      var(--rule-strong) 0,
+      var(--rule-strong) 1px,
+      transparent 1px,
+      transparent 80px
+    );
+}
+.ruler.left::after  { left: 0; }
+.ruler.right::after { right: 0; transform: scaleX(-1); }
+
+.tb {
+  position: fixed;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  background: rgba(233, 234, 236, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--rule);
+  padding: 6px 10px;
+  z-index: 41;
+  pointer-events: none;
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 8px;
+}
+.tb strong {
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+.tb .sep {
+  display: inline-block;
+  width: 1px; height: 10px;
+  background: var(--rule-strong);
+}
+.tb-tl { top: 78px;    left: 28px; }
+.tb-tr { top: 78px;    right: 28px; }
+.tb-bl { bottom: 18px; left: 28px; }
+.tb-br { bottom: 18px; right: 28px; }
+
+@media (max-width: 900px) {
+  .ruler { display: none; }
+  .tb-tl, .tb-tr { display: none; }
+  .tb-bl, .tb-br { font-size: 8.5px; padding: 5px 8px; }
+  .tb-bl { left: 12px; bottom: 12px; }
+  .tb-br { right: 12px; bottom: 12px; }
 }
 
 * { box-sizing: border-box; }
@@ -795,6 +889,13 @@ li { margin-bottom: 6px; }
 }
 .photo > * { position: relative; z-index: 3; }
 
+.photo.architecture { background-image: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80&auto=format&fit=crop'); }
+.photo.workstation  { background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1600&q=80&auto=format&fit=crop'); }
+.photo.stage        { background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1600&q=80&auto=format&fit=crop'); }
+.photo.industrial   { background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1600&q=80&auto=format&fit=crop'); }
+.photo.dawn         { background-image: url('https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?w=1600&q=80&auto=format&fit=crop'); }
+.photo.geology      { background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600&q=80&auto=format&fit=crop'); }
+.photo.systems      { background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=80&auto=format&fit=crop'); }
 
 .photo .cap {
   position: absolute; left: 14px; bottom: 14px;
@@ -1210,4 +1311,14 @@ li { margin-bottom: 6px; }
 .research-prose tr:hover td { background: rgba(44, 82, 130, 0.02); }
 @media (max-width: 760px) {
   .research-prose table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+
+@media (max-width: 600px) {
+  .tb-bl, .tb-br { display: none; }
+  .home-visual .photo { aspect-ratio: 4 / 3 !important; }
+  .home-visual .photo > div:last-child { padding: 24px !important; padding-bottom: 52px !important; }
+  .home-visual .photo > div:last-child p { font-size: 21px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

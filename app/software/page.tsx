@@ -1,24 +1,136 @@
-import Image from 'next/image';
+import type { ReactNode } from 'react';
 import Link from 'next/link';
-import { getProducts, type ProductPage } from '@/lib/content';
+import { Photo, Telemetry, SectionHead } from '../_components/lib';
+import { getContent, type Tone } from '@/lib/content';
 
-function ProductListing({ product }: { product: ProductPage }) {
-  const intro = product.body.find((b) => b.kind === 'p');
-  const image = product.slug === 'meltir' ? '/images/meltir-workspace.webp' : product.slug === 'levios-ai' ? '/images/levios-cafe.webp' : undefined;
+interface Product { slug?: string; name: string; version: string; url: string; tagline: string; meta: string; desc: string; status: string; img?: string }
+
+interface SoftwareContent {
+  hero: { tags: { label: string; variant: string }[]; fig: string; title: string; photo: { tone: Tone; ratio: string; caption: string; label: string } };
+  telemetry: [string, string][];
+  manifesto: string;
+  productsHead: { num: string; label: string; title: string };
+  products: Product[];
+  releaseLogHead: { num: string; label: string };
+  releases: [string, string, string, string, string, string][];
+  principlesHead: { num: string; label: string; title: string };
+  principles: [string, string][];
+  footerStamp: { eyebrow: string; line: string };
+}
+
+function ProductCard({ p }: { p: Product }) {
   return (
-    <article className={`software-product${image ? ' with-image' : ''}`}>
-      {image && <Link href={`/software/${product.slug}`} className="software-product-image"><Image src={image} alt={product.slug === 'meltir' ? 'A calm working desk in daylight' : 'An espresso and croissant prepared for a cafe social post'} fill sizes="(max-width: 760px) 100vw, 50vw" /></Link>}
-      <div><span className="availability">{product.status}</span><h2><Link href={`/software/${product.slug}`}>{product.name}</Link></h2><p className="software-product-title">{product.title.replace(/\n/g, ' ')}</p>{intro?.kind === 'p' && <p>{intro.text.replace(/<[^>]*>/g, '')}</p>}<Link className="text-link" href={`/software/${product.slug}`}>Explore {product.name}<span aria-hidden="true">↗</span></Link></div>
-    </article>
+    <Link href={`/software/${(p.slug ?? p.name.toLowerCase())}`} className="card" style={{ display: 'flex', flexDirection: 'column', minHeight: '420px', color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}>
+      <div className="photo-cross" style={{ aspectRatio: '4/3', marginBottom: '20px', background: 'var(--ink)', border: '1px solid var(--rule)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <span className="corners" />
+        {p.img ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={p.img} alt={`${p.name} logo`} style={{ width: '44%', maxWidth: '120px', height: 'auto', objectFit: 'contain', position: 'relative', zIndex: 3, opacity: 0.95 }} />
+        ) : (
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: '92px', fontWeight: 500, color: 'rgba(255,255,255,0.9)', lineHeight: 1, letterSpacing: '-0.02em', position: 'relative', zIndex: 3 }}>{p.name.charAt(0)}</span>
+        )}
+        <span className="mono" style={{ position: 'absolute', left: '14px', bottom: '12px', fontSize: '10px', letterSpacing: '0.12em', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', zIndex: 3 }}>{p.name}</span>
+      </div>
+      <div className="gap-8 mb-2" style={{ alignItems: 'baseline' }}>
+        <h3 className="h-3" style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: '24px' }}>{p.name}</h3>
+        <span className="tag">{p.version}</span>
+        <span className="tag status-on" style={{ marginLeft: 'auto' }}>{p.status}</span>
+      </div>
+      <div className="mono mb-4" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{p.tagline} · {p.meta}</div>
+      <p style={{ fontSize: '14px', color: 'var(--ink-2)', lineHeight: 1.55, marginBottom: '20px', flex: 1 }}>{p.desc}</p>
+      <div className="between">
+        <span className="mono" style={{ fontSize: '11.5px', color: 'var(--accent)' }}>{p.url}</span>
+        <span className="mono" style={{ fontSize: '11px', color: 'var(--ink-3)' }}>→</span>
+      </div>
+    </Link>
   );
 }
 
 export default async function SoftwarePage() {
-  const products = await getProducts();
+  const c = ((await getContent()).pages.software as unknown) as SoftwareContent;
+
   return (
-    <div className="site-container software-catalog">
-      <header className="catalog-header"><h1>Software that<br />moves work forward.</h1><p>AI workspaces, business tools and everyday applications. Each product solves a different part of the day.</p></header>
-      <div className="software-products">{products.map((product) => <ProductListing key={product.slug} product={product} />)}</div>
-    </div>
+    <>
+      <section style={{ background: 'var(--ink)', color: 'var(--paper)', position: 'relative' }}>
+        <div className="hero-dark" style={{ maxWidth: '1320px', margin: '0 auto', padding: '64px 32px' }}>
+          <div className="gap-12 mb-8" style={{ alignItems: 'center' }}>
+            {c.hero.tags.map((t) => (
+              <span key={t.label} className={`tag${t.variant === 'accent' ? ' accent' : ''}`} style={{ background: 'transparent' }}>{t.label}</span>
+            ))}
+            <span className="mono" style={{ fontSize: '11px', color: 'var(--ink-4)', letterSpacing: '0.1em', marginLeft: 'auto' }}>{c.hero.fig}</span>
+          </div>
+          <h1 className="h-display" style={{ maxWidth: '20ch', color: 'var(--paper)' }}>{c.hero.title}</h1>
+        </div>
+        <Photo {...c.hero.photo} style={{ borderLeft: 'none', borderRight: 'none' }} />
+      </section>
+
+      <Telemetry items={c.telemetry.map(([k, v]) => [k, v] as [ReactNode, ReactNode])} />
+
+      <section className="section">
+        <div className="container">
+          <p className="serif" style={{ fontSize: '32px', lineHeight: 1.4, letterSpacing: '-0.012em', maxWidth: '36ch' }}>{c.manifesto}</p>
+        </div>
+      </section>
+
+      <section className="section" style={{ background: 'var(--paper-2)' }}>
+        <div className="container">
+          <SectionHead num={c.productsHead.num} label={c.productsHead.label} title={c.productsHead.title} />
+          <div className="row row-3">
+            {c.products.map((p) => <ProductCard key={p.name} p={p} />)}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ background: 'var(--ink)', color: 'var(--ink-5)' }}>
+        <div className="container">
+          <div className="section-label" style={{ color: '#6b6e74' }}>
+            <span className="num" style={{ color: 'var(--paper)', borderColor: 'var(--paper)' }}>{c.releaseLogHead.num}</span>
+            <span>{c.releaseLogHead.label}</span>
+            <span className="rule" style={{ background: '#2a2e36' }} />
+          </div>
+          <table className="data-table on-dark">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Product</th>
+                <th>Release</th>
+                <th>Notes</th>
+                <th className="right">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {c.releases.map((row, i) => (
+                <tr key={i}>
+                  <td>{row[0]}</td>
+                  <td>{row[1]}</td>
+                  <td>{row[2]}</td>
+                  <td className="muted">{row[3]}</td>
+                  <td className="right" style={{ color: row[5] }}>{row[4]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <SectionHead num={c.principlesHead.num} label={c.principlesHead.label} title={c.principlesHead.title} />
+          <div className="row row-3 mt-8">
+            {c.principles.map(([h, b]) => (
+              <div key={h} className="card">
+                <div className="eyebrow mb-4">{h}</div>
+                <p style={{ fontSize: '14.5px', color: 'var(--ink-2)', lineHeight: 1.6 }}>{b}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ textAlign: 'center', background: 'var(--paper-2)' }}>
+        <span className="eyebrow">{c.footerStamp.eyebrow}</span>
+        <p style={{ fontSize: '14px', color: 'var(--ink-3)', marginTop: '8px' }}>{c.footerStamp.line}</p>
+      </section>
+    </>
   );
 }
