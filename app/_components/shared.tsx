@@ -149,10 +149,10 @@ export function Footer() {
           <p style={{ color: 'var(--ink-3)', fontSize: '14px', maxWidth: '300px', marginBottom: '20px' }}>
             {f.blurb}
           </p>
-          <div className="gap-8" style={{ color: 'var(--ink-3)' }}>
-            <a href="https://github.com/wesan-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Icon name="github" /></a>
-            <a href="https://x.com/wesanco" target="_blank" rel="noopener noreferrer" aria-label="X"><Icon name="twitter" /></a>
-            <a href="mailto:hello@wesan.co" aria-label="Email"><Icon name="mail" /></a>
+          <div className="foot-social">
+            <a href="https://github.com/wesan-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Icon name="github" size={16} /></a>
+            <a href="https://x.com/wesanco" target="_blank" rel="noopener noreferrer" aria-label="X"><Icon name="twitter" size={14} /></a>
+            <a href="mailto:hello@wesan.co" aria-label="Email"><Icon name="mail" size={16} /></a>
           </div>
         </div>
         {f.columns.map((col) => (

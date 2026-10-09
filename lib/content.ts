@@ -288,10 +288,32 @@ const staticBundle = en as unknown as ContentBundle;
 /** Build-time / SSG slug lists - always from committed JSON. */
 export const staticContent = staticBundle;
 
+/** Routes taken offline. Every content link pointing at one of them is dropped,
+ *  so pages, nav, footer and cards stop linking there without editing the copy. */
+const HIDDEN_ROUTES = ['/industries'];
+
+function isHidden(href: unknown) {
+  return typeof href === 'string' && HIDDEN_ROUTES.some((r) => href === r || href.startsWith(`${r}/`));
+}
+
+/** Drops list items that link to a hidden route: by href, by their call to action,
+ *  or by a sitemap route key (`k`, rendered as `/${k}`). */
+function stripHidden<T>(node: T): T {
+  if (Array.isArray(node)) {
+    return node
+      .filter((item) => !(item && typeof item === 'object'
+        && (isHidden(item.href) || isHidden(item.cta?.href) || (typeof item.k === 'string' && isHidden(`/${item.k}`)))))
+      .map(stripHidden) as T;
+  }
+  if (node && typeof node === 'object') {
+    return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, stripHidden(v)])) as T;
+  }
+  return node;
+}
+
 export const getContent = cache(async (lang: Lang = 'en'): Promise<ContentBundle> => {
   const remote = await fetchHelmContent(lang);
-  if (!remote) return staticBundle;
-  return deepMerge(staticBundle, remote);
+  return stripHidden(remote ? deepMerge(staticBundle, remote) : staticBundle);
 });
 
 // --- Helpers ---

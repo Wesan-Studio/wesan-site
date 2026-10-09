@@ -21,7 +21,8 @@ const SEARCH_INDEX: SearchEntry[] = [
   { k: 'divisions', l: 'Divisions · index', t: ['three rooms', 'overview'], section: 'DIVISIONS' },
   { k: 'software', l: 'Software', t: ['friday', 'dante', 'notch', 'apps', 'developer'], section: 'DIVISIONS' },
   { k: 'studio', l: 'Studio', t: ['games', 'empire inc', 'block forge', 'live'], section: 'DIVISIONS' },
-  { k: 'industries', l: 'Industries', t: ['aerospace', 'defense', 'heavy', 'planned'], section: 'DIVISIONS' },
+  // Industries is offline; restore this entry when the page is published again.
+  // { k: 'industries', l: 'Industries', t: ['aerospace', 'defense', 'heavy', 'planned'], section: 'DIVISIONS' },
   { k: 'newsroom', l: 'Newsroom', t: ['press', 'releases', 'announcements'], section: 'REPORTING' },
   { k: 'reports', l: 'Field reports', t: ['annual', 'april', 'transparency'], section: 'REPORTING' },
   { k: 'investors', l: 'Investors', t: ['capital', 'funding', 'no investors', 'cap table'], section: 'REPORTING' },

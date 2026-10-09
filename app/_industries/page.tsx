@@ -1,3 +1,5 @@
+// Industries is offline: the leading underscore keeps this folder out of routing.
+// To publish it again, rename the folder back to industries and remove '/industries' from HIDDEN_ROUTES in lib/content.ts.
 import { Photo, SectionHead } from '../_components/lib';
 import { getContent, type Tone } from '@/lib/content';
 
