@@ -1,6 +1,11 @@
 import { SectionHead } from '../_components/lib';
 import { getContent } from '@/lib/content';
 
+export const metadata = {
+  title: 'Trust & security',
+  description: 'What is true today about how Wesan handles data and security, and what comes next.',
+};
+
 interface TrustContent {
   head: { num: string; label: string; title: string; sub: string };
   tags: { label: string; variant: string }[];
@@ -64,6 +69,7 @@ export default async function TrustPage() {
       <section className="section">
         <div className="container">
           <SectionHead num={c.subprocessorsHead.num} label={c.subprocessorsHead.label} title={c.subprocessorsHead.title} />
+          {c.subprocessors.length > 0 && (
           <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'var(--font-mono)', fontSize: '13px' }}>
             <thead>
               <tr style={{ color: 'var(--ink-3)', fontSize: '10.5px', textTransform: 'uppercase', letterSpacing: '0.12em', borderBottom: '1px solid var(--rule-strong)' }}>
@@ -84,7 +90,8 @@ export default async function TrustPage() {
               ))}
             </tbody>
           </table>
-          <p className="mono mt-6" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.06em' }}>{c.subprocessorsFooter}</p>
+          )}
+          <p className="lead mt-6">{c.subprocessorsFooter}</p>
         </div>
       </section>
 
@@ -93,7 +100,7 @@ export default async function TrustPage() {
           <span className="eyebrow" style={{ color: 'var(--ink-3)' }}>{c.vulnBlock.eyebrow}</span>
           <h2 className="h-1 mt-4 mb-6" style={{ color: 'var(--ink)' }}>{c.vulnBlock.title}</h2>
           <p
-            style={{ fontSize: '16px', color: 'var(--ink-5)', lineHeight: 1.6, marginBottom: '32px' }}
+            style={{ fontSize: '16px', color: 'var(--ink-2)', lineHeight: 1.6, marginBottom: '32px' }}
             dangerouslySetInnerHTML={{ __html: c.vulnBlock.body }}
           />
           <p className="mono" style={{ fontSize: '11.5px', color: 'var(--ink-3)', letterSpacing: '0.06em' }}>{c.vulnBlock.safe}</p>

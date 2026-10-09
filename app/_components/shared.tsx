@@ -143,8 +143,8 @@ export function Footer() {
             {f.blurb}
           </p>
           <div className="foot-social">
-            <a href="https://github.com/wesan-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Icon name="github" size={16} /></a>
-            <a href="https://x.com/wesanco" target="_blank" rel="noopener noreferrer" aria-label="X"><Icon name="twitter" size={14} /></a>
+            <a href="https://github.com/wesanjs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Icon name="github" size={16} /></a>
+            <a href="https://www.linkedin.com/company/wesancompany" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Icon name="linkedin" size={15} /></a>
             <a href="mailto:hello@wesan.co" aria-label="Email"><Icon name="mail" size={16} /></a>
           </div>
         </div>

@@ -185,7 +185,7 @@
       "divisionsHead": {
         "num": "03",
         "label": "THE THREE DIVISIONS",
-        "title": "Three divisions. One roof.",
+        "title": "Two divisions today. One roof.",
         "sub": "Each card is a doorway. Each division stands on its own brand, hires its own people, picks its own fights."
       },
       "bento": [
@@ -275,33 +275,29 @@
         "label": "WHAT'S HAPPENING RIGHT NOW",
         "title": "A short note from the founder, updated monthly."
       },
-      "tags": [
-        { "label": "UPDATED · MAY 2026", "variant": "accent" },
-        { "label": "NEXT UPDATE · LATE JUNE", "variant": "default" }
-      ],
-      "lead": "Everything is parallel right now. Friday in early beta, Dante in TestFlight, this site getting its bones - no single focus, just a lot of small fronts being worked.",
+      "tags": [{ "label": "UPDATED · OCTOBER 2026", "variant": "accent" }, { "label": "NEXT UPDATE · NOVEMBER", "variant": "default" }],
+      "lead": "Two products, two months. Until the end of the year everything at Wesan goes into Meltir and Levios AI.",
       "thisMonth": {
         "heading": "What I am doing this month",
         "items": [
-          { "n": "01", "text": "Friday - pushing the beta closer to public release. A few early users testing, free for now, no monetization yet." },
-          { "n": "02", "text": "Dante - finishing TestFlight, prepping App Store submission. Subscriptions wired up via RevenueCat, four tiers." },
-          { "n": "03", "text": "Wesan - this site, the brand, getting the structure right before anything else has to scale." },
-          { "n": "04", "text": "Preparing the move to London for Q3. The work doesn't stop in transit." }
+          { "n": "01", "text": "Meltir - an AI workspace that brings calendar, email, tasks and notes into one assistant. Shaping the first version." },
+          { "n": "02", "text": "Levios AI - turning a small business's photos into ready-to-share posts. Building the core workflow for cafes, salons and shops." },
+          { "n": "03", "text": "Wesan - setting up the company in England and getting this site ready to show the work." },
+          { "n": "04", "text": "Everything else - Friday, Dante, Notch, wesanjs - stays where it is until these two are out." }
         ]
       },
       "divisions": {
         "heading": "Where the divisions stand",
         "cards": [
-          { "label": "SOFTWARE", "body": "Friday in early beta (free, few users). Dante in TestFlight, soon on App Store. Notch - small daily habit tracker, in development." },
-          { "label": "STUDIO", "body": "Idea, not yet started. Will form once the software division earns its keep." },
-          { "label": "INDUSTRIES", "body": "Long-term horizon. No timeline yet. The work that takes a decade - written down, not started." }
+          { "label": "SOFTWARE", "body": "Meltir and Levios AI in focus. Friday, Dante, Notch and wesanjs in development." },
+          { "label": "STUDIO", "body": "Two games live on the App Store: Empire Inc. and Block Forge." }
         ]
       },
       "onMyMind": {
         "heading": "One thing on my mind",
-        "body": "How to do three products well, alone, without choosing one. The honest answer is: I'm not sure. Everything I read says focus. Everything I want to build says don't pick yet. Let's see who wins."
+        "body": "Focus. In May I wrote that I was not sure how to do three products well alone. The answer was to stop trying: two products, done properly, then the next."
       },
-      "sign": "- Can AKYUZ · Belgium · MAY 2026",
+      "sign": "- Can Akyuz · London · October 2026",
       "convention": "This page follows the <a class=\"link\" href=\"https://nownownow.com\" target=\"_blank\" rel=\"noreferrer\">/now page</a> convention. One per month, no more."
     },
 
@@ -418,17 +414,17 @@
         "head": { "num": "02", "label": "THE STORY", "title": "How we got here, very briefly." },
         "timeline": [
           ["BEFORE", "Mathematics degree. Then five-plus years teaching myself software while building things people used."],
-          ["2024–2025", "Built Friday (coding agent) and Dante (daily tracker) in parallel. Realised they needed a roof, not separate launches."],
+          ["2024-2025", "Built Friday (coding agent) and Dante (daily tracker) in parallel. Realised they needed a roof, not separate launches."],
           ["2026 · JAN", "Wesan starts taking shape on paper. The structure first, the products under it."],
           ["2026 · MAY", "Three software products in build. Studio and Industries written down as long-term."],
-          ["2026 · Q3", "Moving to London. Operations stay distributed; the founder relocates."],
+          ["2026 · Q3", "Based in London. The company is being set up in England."],
           ["-", "The next century."]
         ]
       },
       "governance": {
         "head": { "num": "03", "label": "GOVERNANCE", "title": "How decisions get made." },
         "cards": [
-          ["THE HOLDING", "Wesan is in formation as a private holding. The founder is the sole decision-maker today. Formal entity registration follows once the structure is settled."],
+          ["THE COMPANY", "Wesan is a private company being set up in England. The founder is the sole decision-maker today."],
           ["THE DIVISIONS", "Each division is being scoped to operate independently - its own brand, its own roadmap, its own runway. Today this is one person with three divisions in mind."],
           ["THE REPORTING", "Annual field reports, intended for April, every year, on this site. The first report - April 2027 - will be the first real one. Honest, even if small."]
         ]
@@ -448,8 +444,8 @@
       "head": {
         "num": "01",
         "label": "OUR DIVISIONS",
-        "title": "Three companies. Three different timescales. One standard.",
-        "sub": "Each division operates independently - its own leadership, its own balance sheet, its own facilities. What they share is the room in which they were started, and the patience we ask of them."
+        "title": "Two divisions today. One standard.",
+        "sub": "Each division runs on its own timescale. What they share is the room in which they were started, and the patience we ask of them."
       },
       "rows": [
         {
@@ -518,12 +514,12 @@
       "manifesto": "Our current focus is Meltir and Levios AI: an AI workspace for everyday work and a social content assistant for small businesses. Alongside them, wesanjs supports commerce, Dante brings daily tracking into one app, and Friday supports software development. Products are developed and tested separately.",
       "productsHead": { "num": "02", "label": "PRODUCTS · IN BUILD", "title": "Our software portfolio." },
       "products": [
-      {"slug": "meltir", "name": "Meltir", "version": "In development", "url": "-", "tagline": "One workspace for your working day", "meta": "Desktop · Mobile", "desc": "An AI workspace in development, bringing calendar, email, tasks, voice and meeting notes into one assistant. Designed to connect context with practical actions while keeping the user in control.", "status": "WIP"},
-      {"slug": "levios-ai", "name": "Levios AI", "version": "In development", "url": "-", "tagline": "Your photos, ready to share", "meta": "Mobile · Small business", "desc": "A social content assistant in development for cafes, salons, shops and other small businesses. Upload a photo and describe the result. Get brand-aware visual variations, captions and a content plan to review.", "status": "WIP"},
+      {"slug": "meltir", "focus": true, "name": "Meltir", "version": "In development", "url": "-", "tagline": "One workspace for your working day", "meta": "Desktop · Mobile", "desc": "An AI workspace in development, bringing calendar, email, tasks, voice and meeting notes into one assistant. Designed to connect context with practical actions while keeping the user in control.", "status": "WIP"},
+      {"slug": "levios-ai", "focus": true, "name": "Levios AI", "version": "In development", "url": "-", "tagline": "Your photos, ready to share", "meta": "Mobile · Small business", "desc": "A social content assistant in development for cafes, salons, shops and other small businesses. Upload a photo and describe the result. Get brand-aware visual variations, captions and a content plan to review.", "status": "WIP"},
       {"slug": "wesanjs", "name": "wesanjs", "version": "In development", "url": "-", "tagline": "Commerce built around your business", "meta": "Web · Commerce platform", "desc": "A multi-tenant commerce platform in development, supporting storefronts, product data and business operations. It provides shared infrastructure for our commerce products.", "status": "WIP"},
         { "name": "Friday", "version": "v0.x", "url": "-", "tagline": "Agent runtime, not another agent", "meta": "macOS · Linux · Windows · Mobile companion", "desc": "A daemon that runs your coding agents. Claude Code today, others tomorrow. Detach, attach, ship from anywhere - terminal, desktop, or phone. BYOM. In development, no public link yet.", "status": "WIP" },
         { "name": "Dante", "version": "v0.x", "url": "danteapp.co", "tagline": "One app, six trackers", "meta": "iOS · iPad", "desc": "Tasks, workouts, nutrition, supplements, spending, habits - consolidated into one quiet surface. Turkish food + supplement database built in. Local-first. TestFlight now, App Store soon.", "status": "TESTFLIGHT", "img": "/products/dante-logo.png" },
-        { "name": "Notch", "version": "v0.x", "url": "notch.dev", "tagline": "Habits, in the discipline of a daily log", "meta": "iOS · Mac", "desc": "A habit tracker built for people who already keep a log somewhere. One screen, one tap, end-of-day review. No streaks-as-pressure, no notifications. Just the checkmark, done quietly.", "status": "WIP", "img": "/products/notch.svg" },
+        { "name": "Notch", "version": "v0.x", "url": "-", "tagline": "Habits, in the discipline of a daily log", "meta": "iOS · Mac", "desc": "A habit tracker built for people who already keep a log somewhere. One screen, one tap, end-of-day review. No streaks-as-pressure, no notifications. Just the checkmark, done quietly.", "status": "WIP", "img": "/products/notch.svg" },
         { "name": "Levios", "version": "v0.x", "url": "-", "tagline": "Panels, generated from the domain", "meta": "Web · wesanjs · DDD", "desc": "A system that turns a domain model into working admin and ops panels. Built on the wesanjs runtime with domain-driven design - define the domain once, generate the panels around it. In development.", "status": "WIP" }
       ],
       "releaseLogHead": { "num": "03", "label": "2026 RELEASE LOG" },
@@ -572,7 +568,7 @@
       "principlesHead": { "num": "03", "label": "HOW THE STUDIO WORKS", "title": "Patience is the only schedule." },
       "principles": [
         ["NO QUARTERLY", "We don't set release dates we don't believe in. The studio ships when the thing is done; nobody is ever the first to learn the date."],
-        ["SMALL CREWS", "Each project carries 4–8 people, end-to-end. The same hand that designs the world writes the dialogue and edits the trailer."],
+        ["SMALL CREWS", "Each project carries 4-8 people, end-to-end. The same hand that designs the world writes the dialogue and edits the trailer."],
         ["ART OVER PRESSURE", "The studio is funded from the holding, not from the calendar. Nothing about the room is structured to reward looking busy."]
       ],
       "footerStamp": { "eyebrow": "STUDIO IS A WESAN DIVISION", "line": "Two games live on the App Store · İstanbul" }
@@ -692,7 +688,7 @@
       "timeline": [
         ["2026 · NOW", "Director and cinematographer in. First short in pre-production.", "IN PROGRESS"],
         ["2026 · Q4", "Short 01 · THE FIRST FERRY - public release at its own URL.", "TARGET"],
-        ["2027", "Shorts 02–06, one every two months. Open release on the day each is finished.", "PLANNED"],
+        ["2027", "Shorts 02-06, one every two months. Open release on the day each is finished.", "PLANNED"],
         ["2027 · END", "A single archive page collecting all six. A small physical edition for festivals.", "TARGET"]
       ],
       "ctaEyebrow": "WHEN THE FIRST SHORT IS UP",
@@ -746,45 +742,37 @@
     },
 
     "trust": {
-      "head": { "num": "01", "label": "TRUST & SECURITY", "title": "Plain answers to the hard questions.", "sub": "Wesan is small and self-financed. We don't have a SOC 2 report yet, because no customer has needed one. When the first one does - and they will - we will get one. This page is where we'll publish it." },
-      "tags": [{ "label": "VERSION · 2026.05", "variant": "accent" }, { "label": "REVIEWED QUARTERLY", "variant": "default" }],
-      "todayHead": { "num": "02", "label": "WHAT WE DO TODAY", "title": "The minimum, done well." },
+      "head": { "num": "01", "label": "TRUST & SECURITY", "title": "Plain answers to the hard questions.", "sub": "Wesan is early: a founder-led company being set up in England, with products in development and private beta. We hold very little customer data today. This page says what is true now and what we add as we grow." },
+      "tags": [{ "label": "UPDATED · OCTOBER 2026", "variant": "accent" }, { "label": "CHANGES ANNOUNCED HERE", "variant": "default" }],
+      "todayHead": { "num": "02", "label": "WHAT WE DO TODAY", "title": "What is true today." },
       "today": [
-        ["IDENTITY", "Hardware security keys (WebAuthn) required for every employee with access to production. No SMS, no TOTP. SSO via Workspace, with break-glass procedures documented and tested quarterly."],
-        ["ENCRYPTION", "TLS 1.3 in transit, AES-256 at rest. Customer data encrypted with per-tenant keys; key rotation is automated, ninety-day cycle, no manual touch."],
-        ["NETWORK", "No public SSH. Bastion-only access, audited. Production lives in eu-central-1 and eu-west-1 (AWS). No instance has both ingress and egress to the open internet."],
-        ["CODE", "Every production change is a reviewed pull request. We do not push directly to main. Deploy keys are short-lived (8 hours) and tied to a specific build artifact, not a human."],
-        ["INCIDENT RESPONSE", "Sev-1 incidents are paged within five minutes; the founder is on the rotation. Post-incident reports are written within seven days, public for our own products, available under NDA for B2B."],
-        ["BACKUPS", "Daily encrypted backups, retained 30 days. Quarterly restore tests, results published internally. We have never had to restore from backup in production. Yet."]
+        ["DATA", "Our products are in development and private beta. We collect only what a feature needs, and we do not sell or share personal data."],
+        ["ENCRYPTION", "Traffic to our sites and products is encrypted in transit over HTTPS."],
+        ["ACCESS", "Production systems are accessed by the founder only. Access is reviewed whenever someone joins or leaves."],
+        ["CODE", "Source code lives in private repositories. Every change runs automated checks before it is deployed."],
+        ["INCIDENTS", "If something affects your data, we tell affected users directly and publish a short note in the newsroom."]
       ],
       "gapsHead": { "num": "03", "label": "WHAT WE DON'T HAVE YET", "title": "Honest about the gaps." },
       "gaps": [
-        ["SOC 2", "Not started. We will engage an auditor the first time a B2B customer requires it. Estimated 6 months from start to Type I report.", "PLANNED"],
-        ["ISO 27001", "Not started. Will follow SOC 2 by approximately 12 months if there is European enterprise demand.", "PLANNED"],
-        ["HIPAA · BAA", "Not applicable today. We don't handle PHI; if a product ever does, we will go through the full process and disclose here.", "N/A"],
-        ["FedRAMP", "Not started. Will be required for any U.S. federal work in Industries. Multi-year process.", "FUTURE"],
-        ["BUG BOUNTY", "Not run. We accept disclosed vulnerabilities at security@wesan.co and respond within 5 business days. A formal bounty program will start in 2027.", "INFORMAL"],
-        ["PEN-TEST", "Internal red-team quarterly. External pen-test scheduled annually starting Q3 2026.", "SCHEDULED"]
+        ["SOC 2", "Not started. We will engage an auditor when our first business customer needs it.", "PLANNED"],
+        ["ISO 27001", "Not started. Will follow SOC 2 if European enterprise customers ask for it.", "PLANNED"],
+        ["HIPAA · BAA", "Not applicable. We do not handle health records.", "N/A"],
+        ["PEN-TEST", "Not done yet. An external test comes before Meltir and Levios AI open to business customers.", "PLANNED"],
+        ["BUG BOUNTY", "No paid programme yet. We accept reports at security@wesan.co and reply within five business days.", "INFORMAL"]
       ],
       "subprocessorsHead": { "num": "04", "label": "SUBPROCESSORS", "title": "Who else touches our customers' data." },
-      "subprocessors": [
-        ["AWS", "Compute · storage · network", "All", "EU-CENTRAL-1 · EU-WEST-1"],
-        ["Cloudflare", "CDN · DDoS mitigation", "Request metadata", "Global"],
-        ["Fastmail", "Corporate email", "Email · contacts", "EU (Sydney for archives)"],
-        ["Stripe", "Billing", "Payment metadata · billing email", "Global"],
-        ["Sentry", "Error reporting", "Stack traces · device metadata", "EU"]
-      ],
-      "subprocessorsFooter": "* Material changes to this list are announced at least 30 days in advance via newsroom and direct notice to active B2B customers.",
+      "subprocessors": [],
+      "subprocessorsFooter": "We will publish the full list of subprocessors before Meltir and Levios AI open to customers, and announce changes here at least 30 days in advance.",
       "vulnBlock": {
         "eyebrow": "REPORT A VULNERABILITY",
         "title": "security@wesan.co",
-        "body": "PGP key: <span class=\"mono\" style=\"color: var(--paper)\">0xA8F4 9D2C C7E1 88B2</span> · we acknowledge within 24 hours and aim for a fix in 5 business days for Sev-1.",
+        "body": "Write to us with the details and steps to reproduce. We acknowledge within two business days.",
         "safe": "SAFE HARBOR · GOOD-FAITH RESEARCH WELCOME · NO LEGAL ACTION FOR VULNERABILITIES DISCLOSED HERE"
       }
     },
 
     "legal": {
-      "head": { "num": "01", "label": "LEGAL", "title": "The fine print. Plain language. No tricks.", "sub": "Wesan operates under Turkish company law. The documents below apply to wesan.co and all Wesan division websites. Each product (Friday, Dante, Notch) has its own additional terms; those live on the product's own site." },
+      "head": { "num": "01", "label": "LEGAL", "title": "The fine print. Plain language. No tricks.", "sub": "Wesan is a company being set up in England, United Kingdom. Until incorporation completes, these documents are issued by the founder, Can Akyuz. They apply to wesan.co and all Wesan product websites; each product may add its own terms." },
       "tabs": [
         ["privacy", "Privacy policy"],
         ["terms", "Terms of use"],
@@ -794,7 +782,7 @@
       ],
       "docs": {
         "privacy": {
-          "title": "Privacy policy", "updated": "2026.05.23",
+          "title": "Privacy policy", "updated": "2026.10.09",
           "body": [
             ["In one sentence", "We collect as little as possible, store it as briefly as possible, share it with as few people as possible."],
             ["What we collect", "When you visit wesan.co we collect the standard request log (IP, user-agent, page visited, timestamp). We use this only to find bugs and detect abuse. Logs are kept 30 days, then deleted."],
@@ -806,37 +794,37 @@
           ]
         },
         "terms": {
-          "title": "Terms of use", "updated": "2026.05.23",
+          "title": "Terms of use", "updated": "2026.10.09",
           "body": [
             ["In one sentence", "Browse the site, share the writing, link to anything - just don't pretend to be us, and don't hammer the server."],
             ["What the site is", "wesan.co is the marketing and information site for Wesan A.Ş. and its divisions. Nothing on this site is a contract, a financial offer, or a regulatory commitment."],
             ["What you can do", "You can read, share, link, quote, and screenshot anything here. No need to ask. Attribution is appreciated."],
             ["What you can't do", "Don't impersonate Wesan. Don't scrape the site to train a model without telling us. Don't use the trademarks on a product that isn't ours."],
             ["No warranties", "The site is provided as-is. We don't promise it will be online every second; we do try."],
-            ["Governing law", "These terms are governed by Turkish law. Disputes go to the İstanbul Anatolian courts."]
+            ["Governing law", "These terms are governed by the laws of England and Wales. Disputes go to the courts of England and Wales."]
           ]
         },
         "cookies": {
-          "title": "Cookies", "updated": "2026.05.23",
+          "title": "Cookies", "updated": "2026.10.09",
           "body": [
             ["How many cookies do we use?", "Zero persistent ones. One session cookie if you actively interact with a form, deleted when you close the tab."],
-            ["No banners", "No cookie banner, because there is nothing that requires consent under EU or Turkish law. The session cookie is strictly necessary; that's the only kind we use."],
+            ["No banners", "No cookie banner, because there is nothing that requires consent under UK or EU law. The session cookie is strictly necessary; that's the only kind we use."],
             ["No analytics", "We don't use Google Analytics, Plausible, Fathom, or any third-party analytics on this site. We look at the server logs once a week. That's it."],
             ["When products use cookies", "Friday, Dante, and Notch - when they have web surfaces - use their own cookies, documented on their own privacy pages."]
           ]
         },
         "trademark": {
-          "title": "Trademarks", "updated": "2026.05.23",
+          "title": "Trademarks", "updated": "2026.10.09",
           "body": [
             ["Wesan™ and the W-mark", "Wesan™ and the stylised W-mark are trademarks of Wesan, with registration pending in Türkiye, the EU, US, and Japan."],
-            ["Product marks", "Friday™, Dante™, and Notch™ are trademarks of Wesan A.Ş. They are not registered yet."],
+            ["Product marks", "Meltir™, Levios AI™, Friday™, Dante™ and Notch™ are trademarks used by Wesan. They are not registered yet."],
             ["Fair use", "You may use the Wesan name and W-mark to refer to our company - in articles, presentations, news. You may not modify them, combine them with another mark, or use them in a way that suggests endorsement."],
             ["Press kit", "For official versions of the logos, see the press kit at /press."],
             ["Questions", "If you're not sure whether your use is OK, write to hello@wesan.co. We will reply yes or no, in writing, within a week."]
           ]
         },
         "dpa": {
-          "title": "Data Processing Agreement · for business customers", "updated": "2026.05.23",
+          "title": "Data Processing Agreement · for business customers", "updated": "2026.10.09",
           "body": [
             ["When this applies", "Only when you (a business) use a Wesan product in a way that has Wesan acting as a data processor for personal data you control. For most uses, this does not apply."],
             ["Standard contractual clauses", "We sign the EU Standard Contractual Clauses (2021/914) and the UK addendum if your jurisdiction requires it. We do not use binding corporate rules."],
@@ -850,34 +838,34 @@
     },
 
     "investors": {
-      "head": { "num": "01", "label": "INVESTORS · CAPITAL STRUCTURE", "title": "There are no outside investors. There are no plans to raise.", "sub": "This page exists because we are asked, often, who funds Wesan. The answer is short: Wesan funds itself. The longer answer is below." },
+      "head": { "num": "01", "label": "INVESTORS", "title": "Founder-owned today. Built for a long horizon.", "sub": "Wesan is founder-funded and based in England. Our focus is two products, Meltir and Levios AI, and we are open to conversations with investors who think in decades, not quarters." },
       "structure": [
-        ["HOW WE FUND THE WORK", "Wesan is privately held by its founder. The Software division generates operating cash; that cash is the only source of capital for the company. We do not draw bank lines, we do not have a venture round, and we have not taken any outside equity."],
-        ["WHY IT IS THIS WAY", "Long-horizon work needs runway, not a board meeting. Every division gets a minimum 10-year runway from the holding before any expectation of returning capital. That guarantee is meaningless if a third party can revoke it at the next valuation milestone."],
-        ["WHAT WOULD CHANGE OUR MIND", "In principle, never. In practice - if a sovereign or foundation came forward with capital that matched our timescale and accepted our governance, we would consider it. We have not had that conversation with anyone."]
+        ["HOW WE FUND THE WORK", "Wesan is founder-funded and founder-owned. There is no outside equity, no venture round and no debt today."],
+        ["WHAT WE ARE BUILDING", "Meltir, an AI workspace for everyday work, and Levios AI, a social content assistant for small businesses. Both are in development and are our focus for the rest of 2026."],
+        ["WHO WE WANT TO MEET", "Investors and partners who back long-horizon companies and care about how software is built, not only how fast it grows. Write to partner@wesan.co; we reply to every message."]
       ],
-      "capTableEyebrow": "CAPITAL TABLE · JUNE 2026",
+      "capTableEyebrow": "CAPITAL TABLE · OCTOBER 2026",
       "capTable": [
-        ["Can AKYUZ", "Founder · sole owner", "100.0%", "100.0%"],
+        ["Can Akyuz", "Founder · sole owner", "100.0%", "100.0%"],
         ["EMPLOYEE EQUITY", "Reserved for the first hires", "- (planned, not granted)", "0.0%"],
         ["OUTSIDE INVESTORS", "-", "0.0%", "0.0%"]
       ],
-      "capTableFooter": "* No formal entity registration yet - Wesan is in formation. Employee equity will be designed when the first hire comes in; no pool exists today.",
+      "capTableFooter": "* Wesan is being incorporated in England and Wales. Employee equity will be designed with the first hires; no pool exists today.",
       "principlesHead": { "num": "03", "label": "FINANCIAL PRINCIPLES", "title": "What we do with the money we make." },
       "principles": [
-        ["ONE", "A division's operating cash funds that division's runway. Software's margin is Software's to spend."],
-        ["TWO", "A division does not subsidise another division indefinitely. Studio and Industries have explicit budgets from the holding, with explicit timelines for being self-sustaining."],
-        ["THREE", "No dividends. Profits are reinvested into the next division until the company itself is a hundred years older."],
-        ["FOUR", "No share buybacks. Wesan does not have public shares to buy back, and will not create them."],
-        ["FIVE", "No leverage at the holding level. Each division may take on operational debt; the roof carries none."]
+        ["ONE", "Spend follows focus. Capital goes to the products in focus first; everything else waits its turn."],
+        ["TWO", "Every product earns its next stage. Budgets come with explicit timelines for becoming self-sustaining."],
+        ["THREE", "No dividends. Profits are reinvested into the work."],
+        ["FOUR", "Numbers in the open. From April 2027, an annual field report with revenue, costs, headcount and runway."],
+        ["FIVE", "No leverage at the company level."]
       ],
-      "faqHead": { "num": "04", "label": "WE GET ASKED", "title": "Five questions, five answers." },
+      "faqHead": { "num": "04", "label": "WE GET ASKED", "title": "Questions we get asked." },
       "faq": [
-        ["Are you really not raising?", "Yes. The structure was set up to make raising hard, on purpose."],
-        ["Could we acquire one of the divisions?", "No. Divisions are not for sale, and the structure does not allow a division to be spun out under outside ownership."],
-        ["Is the founder open to a side conversation?", "No. Every signal would have to come through partner@wesan.co, in writing, and it would be declined. We say this so nobody has to interpret silence."],
-        ["Will you ever IPO?", "Not in the next twenty years. After that, we will see what the next person at the helm thinks."],
-        ["Could a sovereign or foundation fund Industries?", "Only with governance that matched our existing structure - non-controlling, non-voting, non-redeemable. We have not had that conversation."]
+        ["Are you raising?", "Not actively. We are open to conversations with long-horizon investors. Write to partner@wesan.co."],
+        ["What is the focus?", "Meltir and Levios AI. Everything else in our portfolio is in development and comes after these two."],
+        ["Where is Wesan based?", "In England, United Kingdom. The company is being incorporated there."],
+        ["Can we talk to the founder?", "Yes. Send a short note to partner@wesan.co with who you are and what you back."],
+        ["Will you publish numbers?", "Yes. Every April from 2027, in our annual field report."]
       ]
     },
 
@@ -908,18 +896,18 @@
       ],
       "boilerplateHead": { "num": "05", "label": "BOILERPLATE", "title": "Copy this. Edit it as much as you need." },
       "boilerplate": [
-        { "len": "ONE SENTENCE", "body": "Wesan is a holding-in-formation for long-horizon work - software in build now, studio and industries on the long horizon." },
-        { "len": "ONE PARAGRAPH", "body": "Wesan is a private holding-in-formation, started in 2026 by Can Akyuz. It will operate three divisions on different timescales - Software (three products in build: Friday and Dante in beta, Notch in development), Studio (games and interactive video, idea stage), and Industries (heavy work, long-term horizon). Currently solo development from Belgium, moving to London Q3 2026." },
-        { "len": "TWO PARAGRAPHS", "body": "Wesan is a private holding-in-formation, started in 2026 by Can Akyuz to operate three divisions on different timescales: Software (in build), Studio (idea), and Industries (long-term). The structure is being designed so each division will have the runway it needs to do the work without quarterly pressure - the roof exists to remove fear from the engineering room.\n\nCurrently solo development. Self-financed, no outside investors, no plans to raise. Every year in April starting 2027, each division will publish a field report - what worked, what didn't, what it spent." }
+        { "len": "ONE SENTENCE", "body": "Wesan is a London-based software company building Meltir, an AI workspace, and Levios AI, a social content assistant for small businesses." },
+        { "len": "ONE PARAGRAPH", "body": "Wesan is a founder-led software company based in London, started in 2026 by Can Akyuz. Its focus is two products: Meltir, an AI workspace that brings calendar, email, tasks and notes into one assistant, and Levios AI, which turns small-business photos into ready-to-share social content. Wesan also develops Friday, Dante, Notch and wesanjs, and its Studio has two games live on the App Store." },
+        { "len": "TWO PARAGRAPHS", "body": "Wesan is a founder-led software company based in London, started in 2026 by Can Akyuz. Its focus is two products: Meltir, an AI workspace that brings calendar, email, tasks and notes into one assistant, and Levios AI, which turns small-business photos into ready-to-share social content. Wesan also develops Friday, Dante, Notch and wesanjs, and its Studio has two games live on the App Store.\n\nWesan is founder-funded and is being incorporated in England. It builds for a long horizon: every April from 2027 it will publish a field report with its revenue, costs, headcount and runway." }
       ],
       "factsEyebrow": "FAST FACTS",
       "factsLeft": [
-        ["Working name", "Wesan"],
-        ["Headquarters", "Belgium, Türkiye · moving to London Q3 2026"],
+        ["Name", "Wesan"],
+        ["Headquarters", "London, United Kingdom"],
         ["Started", "2026"],
         ["Founder", "Can Akyuz"],
-        ["Status", "Private · self-financed · in formation"],
-        ["Divisions · planned", "3 - Software (active), Studio (idea), Industries (long-term)"]
+        ["Status", "Private · founder-funded · incorporating in England"],
+        ["Focus", "Meltir and Levios AI"]
       ],
       "factsRight": [
         ["Press email", "press@wesan.co"],
@@ -1002,8 +990,8 @@
         ],
         "firstSixMonths": [
           "Month 1: read every line of the existing daemon. Use Friday daily, list every grievance.",
-          "Month 2–3: design the v1.0 protocol with the founder. Land the new daemon scaffolding.",
-          "Month 4–5: cut the agent loop over to the new protocol. Migrate desktop and CLI clients.",
+          "Month 2-3: design the v1.0 protocol with the founder. Land the new daemon scaffolding.",
+          "Month 4-5: cut the agent loop over to the new protocol. Migrate desktop and CLI clients.",
           "Month 6: open the public beta wider - first 500 users, real feedback loop."
         ],
         "requirements": [
@@ -1041,8 +1029,8 @@
         ],
         "firstSixMonths": [
           "Month 1: use Dante daily for two weeks. List every grievance.",
-          "Month 2–3: redesign the daily-review screen. Land before the App Store submission.",
-          "Month 4–5: design the iPad-native layout - drag-to-reorder, multi-column.",
+          "Month 2-3: redesign the daily-review screen. Land before the App Store submission.",
+          "Month 4-5: design the iPad-native layout - drag-to-reorder, multi-column.",
           "Month 6: present a writeup of \"how to design an all-in-one without feeling bloated\"."
         ],
         "requirements": [
@@ -1076,9 +1064,9 @@
           "Pair with the founder daily for the first three months. After that, split the codebase by area."
         ],
         "firstSixMonths": [
-          "Month 1–2: ship v0.x polish - onboarding, widget, daily review screen.",
+          "Month 1-2: ship v0.x polish - onboarding, widget, daily review screen.",
           "Month 3: open beta via TestFlight, pull the first hundred users in.",
-          "Month 4–5: macOS companion app - same data, different surface.",
+          "Month 4-5: macOS companion app - same data, different surface.",
           "Month 6: v1.0 App Store launch + pricing decision."
         ],
         "requirements": [
@@ -1112,9 +1100,9 @@
           "Be the public face of the studio when the time comes - interviews, festival showings, the things directors do."
         ],
         "firstSixMonths": [
-          "Month 1–2: meet every potential team member; read every shortlisted writer; pick the engine.",
-          "Month 3–4: write the design pillars; lock the protagonist and the opening hour.",
-          "Month 5–6: vertical slice for the Q4 prototype showing - one location, one hour, end-to-end."
+          "Month 1-2: meet every potential team member; read every shortlisted writer; pick the engine.",
+          "Month 3-4: write the design pillars; lock the protagonist and the opening hour.",
+          "Month 5-6: vertical slice for the Q4 prototype showing - one location, one hour, end-to-end."
         ],
         "requirements": [
           "You've directed a shipped game. Indie or AA scale. We don't care about the budget; we care that you finished it.",
@@ -1147,9 +1135,9 @@
           "Profile and optimise the rendering pipeline. Hit the perf budget on target hardware."
         ],
         "firstSixMonths": [
-          "Month 1–2: stand up the shader library. Pipe one full location through the lighting model.",
-          "Month 3–4: ship v1 of the art-team tooling. Reduce iteration time by 50%.",
-          "Month 5–6: hit the vertical-slice perf budget on the target console + Mac."
+          "Month 1-2: stand up the shader library. Pipe one full location through the lighting model.",
+          "Month 3-4: ship v1 of the art-team tooling. Reduce iteration time by 50%.",
+          "Month 5-6: hit the vertical-slice perf budget on the target console + Mac."
         ],
         "requirements": [
           "5+ years as a TA or graphics engineer on shipped games.",
@@ -1380,7 +1368,7 @@
         "name": "Notch",
         "status": "IN DEVELOPMENT",
         "meta": "iOS · Mac",
-        "url": "notch.dev",
+        "url": "-",
         "tags": [{ "label": "NOTCH · WESAN SOFTWARE", "variant": "accent" }, { "label": "IN DEVELOPMENT" }],
         "title": "Habits, in the discipline\nof a daily log.",
         "body": [
@@ -1397,10 +1385,7 @@
         ],
         "continue": {
           "label": "NOTCH",
-          "links": [
-            { "href": "https://notch.dev", "label": "notch.dev →" },
-            { "href": "/software", "label": "Back to Software →" }
-          ]
+          "links": [{ "href": "/software", "label": "Back to Software →" }]
         }
       },
       {
