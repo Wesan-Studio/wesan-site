@@ -37,7 +37,7 @@
   --font-mono:    var(--font-jetbrains-mono), ui-monospace, monospace;
 
   --grid: 80px;
-  --nav-h: 115px;
+  --nav-h: 124px;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
@@ -163,7 +163,6 @@ li { margin-bottom: 6px; }
   position: sticky; top: 0; z-index: 50;
   background: var(--glass-bg);
   backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
   border-bottom: 1px solid var(--glass-line);
   box-shadow: inset 0 -1px 0 var(--glass-edge);
 }
@@ -1021,7 +1020,6 @@ li { margin-bottom: 6px; }
 .glass {
   background: var(--glass-bg);
   backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
   border: 1px solid var(--glass-line);
   box-shadow: inset 0 1px 0 var(--glass-edge), var(--glass-shadow);
   border-radius: 10px;
@@ -1243,9 +1241,45 @@ canvas.dither { display: block; width: 100%; height: 100%; image-rendering: pixe
 .drawer-group a { display: block; padding: 6px 0; font-family: var(--font-display); font-size: 20px; color: var(--ink); }
 .drawer-group a.active { color: var(--accent); }
 @media (max-width: 800px) {
-  :root { --nav-h: 53px; }
+  :root { --nav-h: 58px; }
   .nav-groups { display: none; }
   .nav-burger { margin-left: auto; }
   .nav-inner { align-items: center; padding-top: 12px; padding-bottom: 12px; }
   .nav-drawer-inner { font-family: var(--font-sans); letter-spacing: 0; text-transform: none; }
 }
+
+/* ── Floating glass nav: the hero runs underneath it ── */
+.nav { position: fixed; left: 0; right: 0; top: 0; padding: 12px 20px 0; background: transparent; border: 0; box-shadow: none; backdrop-filter: none; pointer-events: none; }
+.nav-inner {
+  pointer-events: auto; max-width: 1320px; padding: 14px 24px 12px;
+  background: var(--glass-bg); backdrop-filter: blur(20px) saturate(160%);  border: 1px solid var(--glass-line); border-radius: 16px; box-shadow: inset 0 1px 0 var(--glass-edge), var(--glass-shadow);
+}
+.nav-groups { gap: 40px; }
+.nav-group { min-width: 0; padding: 0; }
+main { padding-top: var(--nav-h); }
+.hero { margin-top: calc(-1 * var(--nav-h)); min-height: 100dvh; padding-top: calc(var(--nav-h) + 72px); }
+.nav-drawer { top: calc(var(--nav-h) - 4px); }
+@media (max-width: 800px) {
+  .nav { padding: 8px 10px 0; }
+  .nav-inner { padding: 10px 14px; border-radius: 14px; }
+}
+
+/* ── Glass controls: outline buttons, tags and switches sit on glass ── */
+.btn:not(.solid) {
+  background: var(--glass-bg); border-color: var(--rule-strong); color: var(--ink);
+  backdrop-filter: blur(14px) saturate(150%);  box-shadow: inset 0 1px 0 var(--glass-edge);
+}
+.btn:not(.solid):hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.btn { border-radius: 10px; }
+.btn.solid { border-radius: 10px; }
+.theme-switch { background: var(--glass-bg); border-color: var(--glass-line); border-radius: 10px; backdrop-filter: blur(14px); box-shadow: inset 0 1px 0 var(--glass-edge); }
+.theme-switch button { border-radius: 7px; font-family: var(--font-sans); text-transform: none; letter-spacing: 0; font-size: 13px; }
+
+/* ── Footer: compact, sentence case, one quiet bottom line ── */
+.foot { padding: 64px 32px 32px; }
+.foot-inner { grid-template-columns: 1.6fr repeat(4, 1fr); gap: 32px; }
+.foot h4 { font-family: var(--font-sans); font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--ink); margin-bottom: 12px; }
+.foot a { padding: 4px 0; font-size: 14px; color: var(--ink-3); }
+.foot .word { font-size: 18px; }
+.foot-strip { margin-top: 48px; padding-top: 20px; font-family: var(--font-sans); font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--ink-3); }
+@media (max-width: 900px) { .foot-inner { grid-template-columns: 1fr 1fr; } .foot-strip { flex-direction: row; } }

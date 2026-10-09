@@ -113,9 +113,9 @@
           { "href": "/software/meltir", "label": "Meltir" },
           { "href": "/software/levios-ai", "label": "Levios AI" },
           { "href": "/software/wesanjs", "label": "wesanjs" },
-          { "href": "/software", "label": "Friday" },
-          { "href": "/software", "label": "Dante" },
-          { "href": "/software", "label": "Notch" }
+          { "href": "/software/friday", "label": "Friday" },
+          { "href": "/software/dante", "label": "Dante" },
+          { "href": "/software/notch", "label": "Notch" }
         ]
       },
       {

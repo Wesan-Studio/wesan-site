@@ -165,9 +165,7 @@ export function Footer() {
         ))}
       </div>
       <div className="foot-strip">
-        <span>{c.common.footerCopyright}</span>
-        <span>{c.common.footerEst}</span>
-        <span>{c.common.footerStatus}</span>
+        <span>{c.common.footerCopyright} · {c.common.location}</span>
         <ThemeSwitch />
       </div>
     </footer>
