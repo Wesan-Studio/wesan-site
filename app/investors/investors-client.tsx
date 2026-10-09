@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { SectionHead } from '../_components/lib';
+import { ContactForm } from '../_components/contact-form';
 
 export interface InvestorsContent {
   head: { num: string; label: string; title: string; sub: string };
@@ -105,6 +106,14 @@ export function InvestorsClient({ c }: { c: InvestorsContent }) {
         <div className="container-narrow">
           <SectionHead num={c.faqHead.num} label={c.faqHead.label} title={c.faqHead.title} />
           <FAQ items={c.faq} />
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container-narrow">
+          <h2 className="h-1 mb-4">Start a conversation</h2>
+          <p className="lead mb-8">A few lines about who you are and what you back. It reaches the founder directly.</p>
+          <ContactForm topic="investors" showTopic={false} />
         </div>
       </section>
     </>

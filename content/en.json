@@ -787,7 +787,7 @@
             ["In one sentence", "We collect as little as possible, store it as briefly as possible, share it with as few people as possible."],
             ["What we collect", "When you visit wesan.co we collect the standard request log (IP, user-agent, page visited, timestamp). We use this only to find bugs and detect abuse. Logs are kept 30 days, then deleted."],
             ["What we do not collect", "No tracking pixels. No third-party analytics on this site. No cookies that survive the session. No advertising identifiers, ever."],
-            ["When you write to us", "Emails sent to press@, partner@, or hello@wesan.co are stored in our mail provider (Fastmail, in the EU). We keep correspondence for as long as we are talking; we delete threads on request."],
+            ["When you write to us", "Messages you send by email or through our contact form are delivered by Resend and stored in our Google Workspace mailbox. We keep correspondence for as long as we are talking, and delete threads on request."],
             ["When you apply for a job", "Applications go to a separate tracker. We keep them for 12 months after the role closes, then delete. You can ask for deletion at any time at hello@wesan.co."],
             ["Your rights", "If you are in the EU, EEA, UK, or Türkiye: you have the right to access, correct, export, or delete any data we hold about you. Write to hello@wesan.co - we reply within 14 days, usually faster."],
             ["Changes", "We will date the top of this page when we change it. If the change is material, we will note it on the homepage for 30 days."]

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { SectionHead } from '../_components/lib';
 import { getContent } from '@/lib/content';
+import { ContactForm } from '../_components/contact-form';
 
 export const metadata = {
   title: 'Contact',
@@ -59,6 +60,13 @@ export default async function ContactPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container-narrow">
+          <h2 className="h-1 mb-8">Write to us</h2>
+          <ContactForm />
         </div>
       </section>
 
