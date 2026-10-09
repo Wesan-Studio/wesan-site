@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { Barlow, JetBrains_Mono } from 'next/font/google';
 import { Nav, Footer } from './_components/shared';
 import { CommandPalette } from './_components/cmdk';
+import { Motion } from './_components/motion';
 import { ContentProvider } from '@/lib/content-provider';
 import { getContent } from '@/lib/content';
 import './globals.css';
@@ -41,6 +42,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <a href="#main" className="skip-link">Skip to content</a>
         <ContentProvider value={content}>
           <CommandPalette />
+          <Motion />
           <Nav />
           <main id="main" tabIndex={-1}>{children}</main>
           <Footer />
