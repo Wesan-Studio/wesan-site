@@ -923,7 +923,7 @@
         "product": "Friday",
         "name": "Staff Engineer · Agent runtime",
         "desc": "Rust + TS, distributed systems, you've shipped an agent loop before. PTY sandbox experience a plus.",
-        "where": "REMOTE OK · ENGLISH",
+        "where": "Remote OK · English",
         "type": "FULL-TIME",
         "lede": "You will own the loop. The plan/execute/verify state machine that decides when Friday stops, when it re-plans, and how it orchestrates agent runs - that is the work. Solo development today; you'd be #2.",
         "responsibilities": [
@@ -962,7 +962,7 @@
         "product": "Dante",
         "name": "Senior Designer",
         "desc": "Information design, dense screens, the patience to make six trackers feel like one tool. SwiftUI on iOS.",
-        "where": "REMOTE OK · ENGLISH OR TURKISH",
+        "where": "Remote OK · English or Turkish",
         "type": "FULL-TIME",
         "lede": "Dante is an all-in-one daily tracker. You will own how six different domains - tasks, workouts, nutrition, spending, supplements, habits - share one home screen without feeling like six different apps.",
         "responsibilities": [
@@ -999,7 +999,7 @@
         "product": "Notch",
         "name": "Founding Engineer",
         "desc": "Swift, SwiftUI, the discipline to design a tracker that doesn't gamify. Comfortable being the second pair of hands on a small product.",
-        "where": "REMOTE OK · ENGLISH OR TURKISH",
+        "where": "Remote OK · English or Turkish",
         "type": "FULL-TIME",
         "lede": "Notch is a habit tracker built in the discipline of an engineer's daily log. You will be the second engineer - meaning you write the parts the founder is too close to, and you push back on the parts that need pushing back on.",
         "responsibilities": [
@@ -1035,7 +1035,7 @@
         "product": "Wesan Studio",
         "name": "Game Director",
         "desc": "You've directed a shipped game. Indie or AA scale. Hire the team, set the vision, take the time.",
-        "where": "WHEN STUDIO FORMS · TBD",
+        "where": "When Studio forms · TBD",
         "type": "FULL-TIME",
         "lede": "You will lead Project 01 - a narrative game set in a fictional Anatolian coastal town. You will pick the engine, hire the team of six, and you will own the calendar. The studio is funded for the long horizon; the only deadline is that the game is good.",
         "responsibilities": [
@@ -1070,7 +1070,7 @@
         "product": "Wesan Studio",
         "name": "Technical Artist",
         "desc": "Shaders, lighting, tooling. You bridge the engineering and art rooms and you actually like both.",
-        "where": "WHEN STUDIO FORMS · TBD",
+        "where": "When Studio forms · TBD",
         "type": "FULL-TIME",
         "lede": "You sit between the engine programmers and the environment artists. You build the tools that let the art team work fast, you write the shaders that make the world look like itself, and you keep both rooms speaking to each other.",
         "responsibilities": [

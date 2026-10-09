@@ -11,28 +11,41 @@ export function sceneForDivision(division: string): Scene {
 
 interface DetailHeroProps {
   back: { href: string; label: string };
-  scene: Scene;
-  seed?: number;
   title: string;
-  meta?: ReactNode;
+  meta?: string[];
   lede?: ReactNode;
+  /** Optional picture under the header; text never sits on top of it. */
+  figure?: { scene: Scene; seed?: number };
   children?: ReactNode;
 }
 
-export function DetailHero({ back, scene, seed = 3, title, meta, lede, children }: DetailHeroProps) {
-  const sentence = title.length > 40;
+export function DetailHero({ back, title, meta, lede, figure, children }: DetailHeroProps) {
   return (
-    <section className="hero hero-detail">
-      <DitherStill scene={scene} seed={seed} cell={3} gain={0.55} />
-      <div className="hero-inner">
-        <div>
-          <Link href={back.href} className="back-link">{back.label}</Link>
-          {meta && <div className="detail-meta">{meta}</div>}
-          <h1 className={sentence ? 'h-1 h-sentence' : 'h-display'} style={{ whiteSpace: 'pre-line' }}>{title}</h1>
-          {lede && <p className="hero-lead mt-6">{lede}</p>}
-          {children && <div className="gap-12 mt-8" style={{ flexWrap: 'wrap', alignItems: 'center' }}>{children}</div>}
-        </div>
+    <header className="detail">
+      <div className="read-col">
+        <Link href={back.href} className="back-link">{back.label}</Link>
+        {meta && meta.length > 0 && (
+          <p className="detail-meta">
+            {meta.map((m, i) => (
+              <span key={m}>{i > 0 && <span className="sep" aria-hidden="true">·</span>}{m}</span>
+            ))}
+          </p>
+        )}
+        <h1 className="detail-title">{title}</h1>
+        {lede && <p className="detail-lede">{lede}</p>}
+        {children && <div className="detail-actions">{children}</div>}
       </div>
-    </section>
+      {figure && (
+        <div className="detail-figure">
+          <DitherStill scene={figure.scene} seed={figure.seed ?? 3} cell={2} gain={0.75} />
+        </div>
+      )}
+    </header>
   );
+}
+
+/** Sentence-cases labels that arrive in all caps from content. */
+export function sentence(label: string) {
+  const s = label.toLowerCase();
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }

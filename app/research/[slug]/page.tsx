@@ -25,35 +25,29 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
-      <section className="section" style={{ paddingTop: '64px', paddingBottom: '32px' }}>
-        <div className="container-narrow">
-          <Link href="/research" className="mono" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.1em', display: 'inline-block', marginBottom: '24px' }}>
-            ← ALL RESEARCH
-          </Link>
+      <div className="detail" style={{ paddingBottom: 0 }}>
+        <div className="read-col">
+          <Link href="/research" className="back-link">← Research</Link>
         </div>
-      </section>
+      </div>
 
-      <section className="section" style={{ paddingTop: '0' }}>
-        <article className="container-narrow research-prose">
+      <section>
+        <article className="read-col research-prose read" style={{ paddingTop: 0 }}>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{md}</ReactMarkdown>
         </article>
       </section>
 
       {others.length > 0 && (
-        <section className="section" style={{ background: 'var(--paper-2)' }}>
-          <div className="container-narrow">
-            <div className="eyebrow mb-6">OTHER RESEARCH</div>
-            <div className="row row-2" style={{ gap: '20px' }}>
+        <section className="read" style={{ paddingTop: 0 }}>
+          <div className="read-col">
+            <h2>Other research</h2>
+            <ul className="link-list">
               {others.map((o) => (
-                <Link key={o.slug} href={`/research/${o.slug}`} className="card" style={{ display: 'block', color: 'inherit', textDecoration: 'none' }}>
-                  <div className="mono mb-2" style={{ fontSize: '11px', color: 'var(--accent)', letterSpacing: '0.08em' }}>{o.date}</div>
-                  <h3 className="serif" style={{ fontSize: '20px', lineHeight: 1.35 }}>{o.title}</h3>
-                </Link>
+                <li key={o.slug}>
+                  <Link href={`/research/${o.slug}`}>{o.title}<span className="m">{o.date}</span></Link>
+                </li>
               ))}
-            </div>
-            <div className="mt-8" style={{ textAlign: 'center' }}>
-              <Link href="/research" className="btn">All research</Link>
-            </div>
+            </ul>
           </div>
         </section>
       )}
