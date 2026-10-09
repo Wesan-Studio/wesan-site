@@ -1,6 +1,5 @@
-import type { ReactNode } from 'react';
 import Link from 'next/link';
-import { Photo, Telemetry, SectionHead } from '../_components/lib';
+import { Photo, SectionHead } from '../_components/lib';
 import { sentence } from '../_components/detail-hero';
 import { getContent, type Tone } from '@/lib/content';
 
@@ -8,7 +7,6 @@ interface Product { slug?: string; name: string; version: string; url: string; t
 
 interface SoftwareContent {
   hero: { tags: { label: string; variant: string }[]; fig: string; title: string; photo: { tone: Tone; ratio: string; caption: string; label: string } };
-  telemetry: [string, string][];
   manifesto: string;
   productsHead: { num: string; label: string; title: string };
   products: Product[];
@@ -54,7 +52,6 @@ export default async function SoftwarePage() {
         <Photo tone={c.hero.photo.tone} ratio="3/1" gain={0.7} />
       </div>
 
-      <Telemetry items={c.telemetry.map(([k, v]) => [k, v] as [ReactNode, ReactNode])} />
 
       <section className="section">
         <div className="container">

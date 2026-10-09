@@ -18,11 +18,78 @@
 
   "nav": {
     "links": [
-      { "href": "/about", "label": "About" },
-      { "href": "/divisions", "label": "Divisions" },
-      { "href": "/mission", "label": "Mission" },
-      { "href": "/newsroom", "label": "Newsroom" },
-      { "href": "/careers", "label": "Careers" }
+      {
+        "href": "/about",
+        "label": "Company",
+        "children": [
+          {
+            "href": "/about",
+            "label": "About"
+          },
+          {
+            "href": "/mission",
+            "label": "Mission"
+          },
+          {
+            "href": "/now",
+            "label": "Now"
+          }
+        ]
+      },
+      {
+        "href": "/divisions",
+        "label": "Divisions",
+        "children": [
+          {
+            "href": "/software",
+            "label": "Software"
+          },
+          {
+            "href": "/studio",
+            "label": "Studio"
+          },
+          {
+            "href": "/industries",
+            "label": "Industries"
+          }
+        ]
+      },
+      {
+        "href": "/newsroom",
+        "label": "Newsroom",
+        "children": [
+          {
+            "href": "/newsroom",
+            "label": "Releases"
+          },
+          {
+            "href": "/reports",
+            "label": "Reports"
+          },
+          {
+            "href": "/press",
+            "label": "Press"
+          }
+        ]
+      },
+      {
+        "href": "/contact",
+        "label": "Contact",
+        "children": [
+          {
+            "href": "/contact",
+            "label": "Contact"
+          },
+          {
+            "href": "/investors",
+            "label": "Investors"
+          },
+          {
+            "href": "/trust",
+            "label": "Trust"
+          }
+        ]
+      }
     ],
     "search": "Search",
     "searchPlaceholder": "Search pages, names, topics…",

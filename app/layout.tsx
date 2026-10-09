@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Barlow, JetBrains_Mono } from 'next/font/google';
 import { Nav, Footer } from './_components/shared';
-import { DraftingFrame } from './_components/lib';
 import { CommandPalette } from './_components/cmdk';
 import { ContentProvider } from '@/lib/content-provider';
 import { getContent } from '@/lib/content';
@@ -36,7 +35,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Script id="theme-init" strategy="beforeInteractive">{THEME_INIT}</Script>
         <a href="#main" className="skip-link">Skip to content</a>
         <ContentProvider value={content}>
-          <DraftingFrame />
           <CommandPalette />
           <Nav />
           <main id="main" tabIndex={-1}>{children}</main>

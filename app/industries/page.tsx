@@ -1,10 +1,8 @@
-import type { ReactNode } from 'react';
-import { Photo, Telemetry, SectionHead } from '../_components/lib';
+import { Photo, SectionHead } from '../_components/lib';
 import { getContent, type Tone } from '@/lib/content';
 
 interface IndustriesContent {
   hero: { tags: { label: string; variant: string }[]; fig: string; title: string; photo: { tone: Tone; ratio: string; caption: string; label: string } };
-  telemetry: [string, string][];
   manifesto: string;
   sectorsHead: { num: string; label: string; title: string };
   sectors: { code: string; name: string; desc: string; start: string }[];
@@ -25,7 +23,6 @@ export default async function IndustriesPage() {
         <Photo tone={c.hero.photo.tone} ratio="3/1" gain={0.7} />
       </div>
 
-      <Telemetry items={c.telemetry.map(([k, v]) => [k, v] as [ReactNode, ReactNode])} />
 
       <section className="section">
         <div className="container">

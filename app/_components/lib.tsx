@@ -2,7 +2,6 @@
 
 import {
   useEffect,
-  useMemo,
   useRef,
   useState,
   type CSSProperties,
@@ -11,7 +10,6 @@ import {
   type ReactNode,
 } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { DitherStill } from './dither';
 import { TONE_SCENE } from './dither-shader';
 
@@ -80,29 +78,6 @@ export function SpotlightCard({ children, className = '', style, onClick, as: Co
   );
 }
 
-export function Marquee({ items, label }: { items: ReactNode[]; label?: string }) {
-  const doubled = [...items, ...items];
-  return (
-    <div style={{ position: 'relative' }}>
-      {label && (
-        <div className="mono" style={{ fontSize: '10.5px', color: 'var(--ink-3)', letterSpacing: '0.14em', textTransform: 'uppercase', textAlign: 'center', marginBottom: '12px' }}>
-          {label}
-        </div>
-      )}
-      <div className="marquee">
-        <div className="marquee-track">
-          {doubled.map((it, i) => (
-            <span key={i} className="marquee-item">
-              {it}
-              <span className="sep" />
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 interface CounterProps {
   to: number;
   duration?: number;
@@ -154,90 +129,6 @@ export function Counter({ to, duration = 1400, suffix = '', prefix = '', decimal
       {display}
       {suffix}
     </span>
-  );
-}
-
-const pageMap: Record<string, string> = {
-  '/': '01',
-  '/about': '02',
-  '/divisions': '03',
-  '/software': '04',
-  '/studio': '05',
-  '/industries': '06',
-  '/mission': '07',
-  '/newsroom': '08',
-  '/careers': '09',
-  '/contact': '10',
-  '/press': '11',
-  '/legal': '12',
-  '/investors': '13',
-  '/reports': '14',
-  '/trust': '15',
-  '/now': '16',
-  '/sitemap': '17',
-  '/calendar': '18',
-};
-
-function fmtTime() {
-  return new Intl.DateTimeFormat('en-GB', {
-    hour: '2-digit', minute: '2-digit', timeZone: 'Europe/London',
-  }).format(new Date());
-}
-
-export function DraftingFrame() {
-  const pathname = usePathname() || '/';
-  const [scrollPct, setScrollPct] = useState(0);
-  const [time, setTime] = useState('');
-
-  useEffect(() => {
-    const frame = requestAnimationFrame(() => setTime(fmtTime()));
-    const onScroll = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = max > 0 ? Math.min(100, Math.round((window.scrollY / max) * 100)) : 0;
-      setScrollPct(pct);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    const tid = setInterval(() => setTime(fmtTime()), 30000);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      clearInterval(tid);
-      cancelAnimationFrame(frame);
-    };
-  }, []);
-
-  const pageLabel = (pathname === '/' ? 'HOME' : pathname.slice(1).toUpperCase()).replace(/-/g, ' · ');
-  const pageNum = pageMap[pathname] || '01';
-  const totalPages = '20';
-
-  return (
-    <>
-      <div className="ruler left" aria-hidden="true" />
-      <div className="ruler right" aria-hidden="true" />
-      <div className="tb tb-tl">
-        <strong>WESAN</strong>
-        <span className="sep" />
-        <span>EST. MMXXVI</span>
-      </div>
-      <div className="tb tb-tr">
-        <span>SHEET</span>
-        <strong>
-          {pageNum} / {totalPages}
-        </strong>
-        <span className="sep" />
-        <span>{pageLabel}</span>
-      </div>
-      <div className="tb tb-bl">
-        <span>LONDON</span>
-        <span className="sep" />
-        <span>{time || '-'}</span>
-      </div>
-      <div className="tb tb-br">
-        <span>SCALE 1:1</span>
-        <span className="sep" />
-        <span>SCROLL</span>
-        <strong>{String(scrollPct).padStart(2, '0')}%</strong>
-      </div>
-    </>
   );
 }
 
@@ -294,17 +185,3 @@ export function SectionHead({ title, sub, align = 'left' }: SectionHeadProps) {
     </header>
   );
 }
-
-export function Telemetry({ items }: { items: [ReactNode, ReactNode][] }) {
-  return (
-    <div className="telemetry">
-      {items.map(([k, v], i) => (
-        <div key={i}>
-          <strong>{v}</strong> · {k}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-export { useMemo };

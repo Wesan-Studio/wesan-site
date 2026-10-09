@@ -1,12 +1,57 @@
 import Link from 'next/link';
-import { Photo, Counter, Marquee, SectionHead, SpotlightCard } from './_components/lib';
-import { TONE_SCENE } from './_components/dither-shader';
+import type { Scene } from './_components/dither-shader';
 import { DitherField, DitherStill } from './_components/dither';
+import { sceneForDivision } from './_components/detail-hero';
 import { getContent, getNewsBySlugs } from '@/lib/content';
+
+interface WorkItem { name: string; line: string; href: string; img?: string; external?: boolean }
+
+const SCENES: Scene[] = ['orbit', 'horizon', 'ridges', 'swell'];
+
+async function getWork(): Promise<WorkItem[]> {
+  const pages = (await getContent()).pages as unknown as {
+    software: { products: { name: string; tagline: string; slug?: string; img?: string }[] };
+    studio: { projects: { name: string; desc: string; href: string; img?: string }[] };
+  };
+  const software = pages.software.products.map((p) => ({
+    name: p.name, line: p.tagline, img: p.img, href: `/software/${p.slug ?? p.name.toLowerCase()}`,
+  }));
+  const games = pages.studio.projects.map((g) => ({
+    name: g.name, line: g.desc.split(':')[0], img: g.img, href: g.href, external: true,
+  }));
+  return [...software, ...games];
+}
+
+function WorkTile({ item, index }: { item: WorkItem; index: number }) {
+  const body = (
+    <>
+      <div className="work-media">
+        <DitherStill scene={SCENES[index % SCENES.length]} seed={index + 3} gain={item.img ? 0.3 : 0.75} />
+        {item.img && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={item.img} alt="" width={96} height={96} className="work-icon" />
+        )}
+      </div>
+      <div className="work-caption">
+        <div>
+          <h3 className="work-name">{item.name}</h3>
+          <p className="work-line">{item.line}</p>
+        </div>
+        <span className="work-arr" aria-hidden="true">{item.external ? '↗' : '→'}</span>
+      </div>
+    </>
+  );
+  return item.external
+    ? <a href={item.href} target="_blank" rel="noreferrer" className="work-tile">{body}</a>
+    : <Link href={item.href} className="work-tile">{body}</Link>;
+}
 
 export default async function HomePage() {
   const c = (await getContent()).pages.home;
   const featured = await getNewsBySlugs(c.newsroomSlugs);
+  const work = await getWork();
+  const horizon = c.telemetry[c.telemetry.length - 1];
+  const [lead, ...rest] = featured;
 
   return (
     <>
@@ -14,11 +59,9 @@ export default async function HomePage() {
         <DitherField scene="horizon" seed={1} cell={3} />
         <div className="hero-inner">
           <div>
-            <div className="gap-8 mb-6" style={{ flexWrap: 'wrap' }}>
-              {c.hero.tags.map((t) => (
-                <span key={t.label} className={`tag glass${t.variant === 'accent' ? ' accent' : ''}`}>{t.label}</span>
-              ))}
-            </div>
+            <p className="hero-est">
+              {c.hero.tags[0]?.label} <span aria-hidden="true">→</span> {horizon.value}{horizon.suffix} {horizon.label}
+            </p>
             <h1 className="h-display caps mb-6" style={{ maxWidth: '16ch', whiteSpace: 'pre-line' }}>
               {c.hero.title}
             </h1>
@@ -31,100 +74,72 @@ export default async function HomePage() {
               ))}
             </div>
           </div>
-          <div className="hero-telemetry glass" aria-label="Wesan at a glance">
-            {c.telemetry.map((t) => (
-              <div key={t.label}>
-                <div className="v"><Counter to={t.value} suffix={t.suffix} /></div>
-                <div className="k">{t.label}</div>
-              </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <p className="statement">{c.manifesto.body}</p>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div className="between mb-8">
+            <h2 className="h-1">What we build</h2>
+            <Link href="/software" className="text-link">All software →</Link>
+          </div>
+          <div className="work-grid">
+            {work.map((item, i) => <WorkTile key={item.name} item={item} index={i} />)}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <h2 className="h-1 mb-8">{c.divisionsHead.title}</h2>
+          <div className="division-links">
+            {c.bento.filter((b) => b.href !== '/mission').map((b) => (
+              <Link key={b.href} href={b.href} className="division-link">
+                <span className="division-name">{b.title} <span aria-hidden="true">→</span></span>
+                <span className="division-desc">{b.desc}</span>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <Marquee label={c.marquee.label} items={c.marquee.items} />
-
-      <section className="section" style={{ background: 'var(--paper-2)' }}>
-        <div className="container">
-          <SectionHead num={c.manifesto.num} label={c.manifesto.label} title={null} />
-          <p className="serif" style={{ fontSize: '34px', lineHeight: 1.3, letterSpacing: '-0.015em', maxWidth: '32ch' }}>
-            {c.manifesto.body}
-          </p>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <SectionHead
-            num={c.divisionsHead.num}
-            label={c.divisionsHead.label}
-            title={c.divisionsHead.title}
-            sub={c.divisionsHead.sub}
-          />
-          <div className="bento mt-8">
-            {c.bento.map((card) => {
-              const real = !!(card.icons && card.icons.length > 0);
-              return (
-              <SpotlightCard key={card.href} href={card.href} className={`${card.size} photo`}>
-                <DitherStill scene={TONE_SCENE[card.tone][0]} seed={TONE_SCENE[card.tone][1] + 10} gain={0.6} />
-                <div className="corners" />
-                {real && (
-                  <div className="bento-icons">
-                    {card.icons!.map((ic) => (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img key={ic} src={ic} alt="" width={56} height={56} />
-                    ))}
-                  </div>
-                )}
-                <span className="bento-arr">{card.arr}</span>
-                <span className="bento-label">{card.label}</span>
-                <h3 className="bento-title" style={card.titleSize ? { fontSize: `${card.titleSize}px` } : undefined}>{card.title}</h3>
-                <p className="bento-desc" style={card.size === 'b-4' ? { maxWidth: '60ch' } : undefined}>{card.desc}</p>
-                {card.tags && card.tags.length > 0 && (
-                  <div style={{ display: 'flex', gap: '8px', marginTop: '14px', flexWrap: 'wrap' }}>
-                    {card.tags.map((t) => (
-                      <span key={t} className="tag glass">{t}</span>
-                    ))}
-                  </div>
-                )}
-              </SpotlightCard>
-              );
-            })}
+      {lead && (
+        <section className="section chapter">
+          <div className="container">
+            <div className="between mb-8">
+              <h2 className="h-1">{c.newsroomHead.title}</h2>
+              <Link href={c.newsroomHead.viewAllHref!} className="text-link">{c.newsroomHead.viewAllLabel} →</Link>
+            </div>
+            <div className="news-grid">
+              <Link href={`/newsroom/${lead.slug}`} className="news-card news-lead">
+                <div className="photo news-media"><DitherStill scene={sceneForDivision(lead.who)} seed={2} gain={0.75} /></div>
+                <p className="news-meta">{lead.date}</p>
+                <h3 className="news-title">{lead.what}</h3>
+              </Link>
+              <div className="news-side">
+                {rest.map((it, i) => (
+                  <Link key={it.slug} href={`/newsroom/${it.slug}`} className="news-card">
+                    <div className="photo news-media"><DitherStill scene={sceneForDivision(it.who)} seed={i + 5} gain={0.75} /></div>
+                    <p className="news-meta">{it.date}</p>
+                    <h3 className="news-title small">{it.what}</h3>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section" style={{ background: 'var(--paper-2)' }}>
-        <div className="container">
-          <div className="between mb-8">
-            <SectionHead num={c.newsroomHead.num} label={c.newsroomHead.label} title={c.newsroomHead.title} />
-            <Link href={c.newsroomHead.viewAllHref!} className="btn ghost">{c.newsroomHead.viewAllLabel} <span className="arr">→</span></Link>
-          </div>
-          <div className="row row-3">
-            {featured.map((it) => {
-              const tone = it.who === 'STUDIO' ? 'stage' : it.who === 'INDUSTRIES' ? 'industrial' : it.who === 'WESAN' ? 'architecture' : 'workstation';
-              return (
-                <SpotlightCard key={it.slug} href={`/newsroom/${it.slug}`} className="media-link">
-                  <Photo tone={tone} ratio="16/10" style={{ marginBottom: '16px' }} caption={`· ${it.who}`} label={it.date.split('.').slice(1).join('.')} />
-                  <div className="gap-12 mb-2" style={{ alignItems: 'baseline' }}>
-                    <span className="mono" style={{ fontSize: '11px', color: 'var(--ink-3)' }}>{it.date}</span>
-                    <span className="mono" style={{ fontSize: '11px', color: 'var(--accent)', letterSpacing: '0.08em' }}>{it.who}</span>
-                  </div>
-                  <h3 className="serif" style={{ fontSize: '22px', lineHeight: 1.25 }}>{it.what}</h3>
-                </SpotlightCard>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="section">
         <div className="container-narrow" style={{ textAlign: 'center' }}>
-          <span className="eyebrow">{c.founderLetter.label}</span>
-          <p className="serif mt-6 mb-8" style={{ fontSize: '30px', fontStyle: 'italic', lineHeight: 1.45, letterSpacing: '-0.01em' }}>
-            &ldquo;{c.founderLetter.quote}&rdquo;
-          </p>
-          <Link href={c.founderLetter.ctaHref} className="btn">{c.founderLetter.ctaLabel} <span className="arr">→</span></Link>
+          <p className="founder-quote">&ldquo;{c.founderLetter.quote}&rdquo;</p>
+          <Link href={c.founderLetter.ctaHref} className="btn mt-8">{c.founderLetter.ctaLabel} <span className="arr">→</span></Link>
         </div>
       </section>
     </>

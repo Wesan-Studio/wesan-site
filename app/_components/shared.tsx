@@ -6,29 +6,26 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Icon } from './icons';
 import { useContent } from '@/lib/content-provider';
+import type { NavLink } from '@/lib/content';
 
-export function Wordmark({ size = 18, withCrumb = null }: { size?: number; withCrumb?: string | null }) {
+export function Wordmark({ size = 18 }: { size?: number }) {
   const brand = useContent().common.brand;
   const mark = size + 10;
   return (
     <Link href="/" className="nav-mark">
       <Image src="/logo.png" alt={brand} width={mark} height={mark} className="nav-logo" priority />
       <span className="word">{brand}</span>
-      {withCrumb && <span className="crumb">/ {withCrumb}</span>}
     </Link>
   );
+}
+
+function isActive(l: NavLink, pathname: string) {
+  return l.href === pathname || !!l.children?.some((c) => c.href === pathname);
 }
 
 export function Nav() {
   const nav = useContent().nav;
   const pathname = usePathname() || '/';
-  const isDivisionDetail = ['/software', '/studio', '/industries'].includes(pathname);
-  const activeKey = isDivisionDetail ? '/divisions' : pathname;
-  const crumb =
-    pathname === '/software' ? 'SOFTWARE' :
-    pathname === '/studio' ? 'STUDIO' :
-    pathname === '/industries' ? 'INDUSTRIES' :
-    null;
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
@@ -49,29 +46,25 @@ export function Nav() {
     };
   }, [mobileOpen]);
 
-  const openCmdK = () => {
-    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true, ctrlKey: true }));
-  };
-
   return (
     <>
       <header className="nav">
         <div className="nav-inner">
-          <Wordmark withCrumb={crumb} />
-          <div className="nav-links">
+          <Wordmark />
+          <nav className="nav-groups" aria-label="Main">
             {nav.links.map((l) => (
-              <Link key={l.href} href={l.href} className={activeKey === l.href ? 'active' : ''}>
-                {l.label}
-              </Link>
+              <div key={l.label} className={`nav-group${isActive(l, pathname) ? ' active' : ''}`}>
+                <Link href={l.href} className="nav-top">{l.label}</Link>
+                {l.children && (
+                  <div className="nav-sub">
+                    {l.children.map((c) => (
+                      <Link key={c.label} href={c.href} aria-current={c.href === pathname ? 'page' : undefined}>{c.label}</Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
-          </div>
-          <span className="nav-grow" />
-          <button className="nav-cmdk" onClick={openCmdK} aria-label="Open search">
-            <Icon name="search" size={11} />
-            <span>{nav.search}</span>
-            <kbd>⌘K</kbd>
-          </button>
-          <Link href="/contact" className="nav-cta nav-cta-desktop">{nav.contact}</Link>
+          </nav>
           <button
             className="nav-burger"
             onClick={() => setMobileOpen((o) => !o)}
@@ -87,19 +80,15 @@ export function Nav() {
 
       {mobileOpen && (
         <div className="nav-drawer" onClick={() => setMobileOpen(false)}>
-          <nav className="nav-drawer-inner" onClick={(e) => e.stopPropagation()}>
+          <nav className="nav-drawer-inner" onClick={(e) => e.stopPropagation()} aria-label="Main">
             {nav.links.map((l) => (
-              <Link key={l.href} href={l.href} className={activeKey === l.href ? 'active' : ''}>
-                {l.label}
-              </Link>
+              <div key={l.label} className="drawer-group">
+                <div className="drawer-label">{l.label}</div>
+                {(l.children ?? [l]).map((c) => (
+                  <Link key={c.label} href={c.href} className={c.href === pathname ? 'active' : ''}>{c.label}</Link>
+                ))}
+              </div>
             ))}
-            <Link href="/contact" className={activeKey === '/contact' ? 'active' : ''}>{nav.contact}</Link>
-            <hr className="ghr" style={{ margin: '12px 0' }} />
-            <button onClick={() => { setMobileOpen(false); openCmdK(); }} className="nav-drawer-search">
-              <Icon name="search" size={12} />
-              <span>{nav.search}</span>
-              <kbd>⌘K</kbd>
-            </button>
           </nav>
         </div>
       )}

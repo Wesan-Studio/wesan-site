@@ -23,6 +23,8 @@ export interface CTA {
 export interface NavLink {
   href: string;
   label: string;
+  /** Sub-links shown under a top-level nav item. */
+  children?: NavLink[];
 }
 
 export interface FooterColumn {
