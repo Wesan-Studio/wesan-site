@@ -8,11 +8,9 @@ const ContentContext = createContext<ContentBundle | null>(null);
 export function ContentProvider({
   value,
   children,
-    style,
 }: {
   value: ContentBundle;
   children: ReactNode;
-  style?: React.CSSProperties;
 }) {
   return <ContentContext.Provider value={value}>{children}</ContentContext.Provider>;
 }

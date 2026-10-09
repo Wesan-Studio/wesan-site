@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { SectionHead, SpotlightCard } from '../_components/lib';
 import { getContent } from '@/lib/content';
@@ -36,7 +37,7 @@ function MediaCell({ row }: { row: DivRow }) {
   if (row.image) {
     return (
       <div className={`media frame frame-cross${row.image.dim ? ' dim' : ''}`} style={row.image.dim ? { borderRight: '1px dashed var(--rule)' } : undefined}>
-        <img
+        <Image unoptimized width={1200} height={800}
           className={row.image.alt?.toLowerCase().includes('saturn') ? 'wmsketch' : 'wmsketch'}
           src={row.image.src}
           alt={row.image.alt}

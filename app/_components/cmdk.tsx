@@ -12,6 +12,8 @@ interface SearchEntry {
 }
 
 const SEARCH_INDEX: SearchEntry[] = [
+  { k: 'software/meltir', l: 'Meltir', t: ['workspace', 'mail', 'calendar', 'meetings'], section: 'Products' },
+  { k: 'software/levios-ai', l: 'Levios AI', t: ['social', 'photos', 'captions', 'business'], section: 'Products' },
   { k: '', l: 'Home', t: ['cathedral', 'front door'], section: 'COMPANY' },
   { k: 'about', l: 'About', t: ['founder', 'team', 'story', 'governance', 'yıldız'], section: 'COMPANY' },
   { k: 'mission', l: 'Mission', t: ['century', 'why', 'commitments', 'patient capital'], section: 'COMPANY' },
@@ -81,10 +83,6 @@ export function CommandPalette() {
       .sort((a, b) => b.s - a.s);
   }, [q]);
 
-  useEffect(() => {
-    setSel(0);
-  }, [q]);
-
   const go = (k: string) => {
     setOpen(false);
     setQ('');
@@ -116,7 +114,7 @@ export function CommandPalette() {
             className="cmdk-input"
             placeholder="Search pages, names, topics…"
             value={q}
-            onChange={(e) => setQ(e.target.value)}
+            onChange={(e) => { setQ(e.target.value); setSel(0); }}
             onKeyDown={onInputKey}
           />
           <span className="cmdk-esc">ESC</span>

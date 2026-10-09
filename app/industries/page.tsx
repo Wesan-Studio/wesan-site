@@ -29,7 +29,6 @@ export default async function IndustriesPage() {
           <h1 className="h-display" style={{ maxWidth: '22ch', color: 'var(--paper)' }}>{c.hero.title}</h1>
         </div>
         <Photo {...c.hero.photo} style={{ borderLeft: 'none', borderRight: 'none' }}>
-          <img className="wmsketch on-dark" src="https://commons.wikimedia.org/wiki/Special:FilePath/Saturn_v_schematic.svg" alt="Heavy-lift vehicle schematic - placeholder" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', maxHeight: '70%', maxWidth: '50%', opacity: 0.55, zIndex: 3 }} />
         </Photo>
       </section>
 

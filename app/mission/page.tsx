@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { TracingBeam } from '../_components/lib';
 import { getContent, type MissionBlock } from '@/lib/content';
@@ -21,7 +22,7 @@ function renderBlock(b: MissionBlock, i: number) {
           key={i}
           style={{ margin: '56px 0 48px', padding: '40px 0', borderTop: '1px solid var(--rule)', borderBottom: '1px solid var(--rule)' }}
         >
-          <img className="wmsketch" src={b.src} alt={b.alt} style={{ width: '100%', maxWidth: '720px', height: 'auto', margin: '0 auto' }} />
+          <Image unoptimized width={1200} height={800} className="wmsketch" src={b.src} alt={b.alt} style={{ width: '100%', maxWidth: '720px', height: 'auto', margin: '0 auto' }} />
           <figcaption className="mono mt-6" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.06em', textAlign: 'center', textTransform: 'uppercase' }}>
             {b.caption}<br />
             <span style={{ color: 'var(--ink-4)' }}>{b.credit}</span>

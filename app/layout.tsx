@@ -1,14 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter, Inter_Tight, Newsreader, JetBrains_Mono } from 'next/font/google';
+import { Inter, Newsreader, JetBrains_Mono } from 'next/font/google';
 import { Nav, Footer } from './_components/shared';
-import { DraftingFrame } from './_components/lib';
 import { CommandPalette } from './_components/cmdk';
 import { ContentProvider } from '@/lib/content-provider';
 import { getContent } from '@/lib/content';
 import './globals.css';
+import './site-refresh.css';
 
 const inter = Inter({ variable: '--font-inter', subsets: ['latin'] });
-const interTight = Inter_Tight({ variable: '--font-inter-tight', subsets: ['latin'] });
 const newsreader = Newsreader({ variable: '--font-newsreader', subsets: ['latin'], style: ['normal', 'italic'] });
 const jetbrainsMono = JetBrains_Mono({ variable: '--font-jetbrains-mono', subsets: ['latin'] });
 
@@ -29,16 +28,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const content = await getContent();
 
   return (
-    <html lang="en" className={`${inter.variable} ${interTight.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}>
       <body>
-        <ContentProvider style={{height: '100vh'}} value={content}>
-          <DraftingFrame />
+        <ContentProvider value={content}>
           <CommandPalette />
           <Nav />
-          <main style={{ animation: 'fadeIn 0.4s ease forwards' }}>{children}</main>
+          <main>{children}</main>
           <Footer />
         </ContentProvider>
-        <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }`}</style>
       </body>
     </html>
   );

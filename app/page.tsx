@@ -1,138 +1,64 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { Photo, Counter, Marquee, SectionHead, SpotlightCard, Telemetry } from './_components/lib';
-import { getContent, getNewsBySlugs } from '@/lib/content';
+import { getContent, getProducts, type HomeContent, type ProductPage } from '@/lib/content';
+
+function HomeHero({ hero }: { hero: HomeContent['hero'] }) {
+  return (
+    <section className="home-hero site-container">
+      <div className="home-hero-copy">
+        <h1>{hero.title}</h1><p>{hero.lead}</p>
+        <div className="home-actions">{hero.ctas.map((cta) => <Link key={cta.href} className={`site-button${cta.variant === 'solid' ? ' primary' : ''}`} href={cta.href}>{cta.label}<span aria-hidden="true">↗</span></Link>)}</div>
+      </div>
+      <div className="home-hero-art"><Image src="/images/wesan-horizon.webp" alt="Architectural study of silver structures opening onto a distant horizon" fill priority sizes="(max-width: 760px) 100vw, 55vw" /></div>
+    </section>
+  );
+}
+
+function FeaturedProduct({ product, image, intro }: { product: ProductPage; image: string; intro: string }) {
+  return (
+    <article className={`featured-product feature-${product.slug}`}>
+      <div className="product-story">
+        <span className="product-name">{product.name}</span><h2>{product.title}</h2><p>{intro}</p>
+        <Link href={`/software/${product.slug}`} className="text-link">Explore {product.name}<span aria-hidden="true">↗</span></Link>
+        <span className="availability">In development</span>
+      </div>
+      <div className="product-story-image"><Image src={image} alt={product.slug === 'meltir' ? 'A quiet desk with a laptop and notebook in natural daylight' : 'A cafe product photograph with espresso and a croissant'} fill sizes="(max-width: 760px) 100vw, 50vw" /></div>
+    </article>
+  );
+}
+
+function ProductDirectory({ products }: { products: ProductPage[] }) {
+  return (
+    <section className="product-directory site-container">
+      <h2>More of what we build.</h2><p>Distinct products, with a shared approach to useful software.</p>
+      <div className="product-rows">{products.map((p) => <Link key={p.slug} href={`/software/${p.slug}`}><span className="directory-name">{p.name}</span><span className="directory-title">{p.title.replace(/\n/g, ' ')}</span><span aria-hidden="true">↗</span></Link>)}</div>
+      <Link className="text-link" href="/studio">Discover our games<span aria-hidden="true">↗</span></Link>
+    </section>
+  );
+}
+
+function CompanyDirection() {
+  return (
+    <section className="company-direction site-container">
+      <h2>One studio.<br />A wider horizon.</h2>
+      <div><p>Wesan brings together AI workspaces, tools for businesses and mobile games. We start with a useful result, build the software behind it, and improve it through real use.</p><p>Our ambition reaches further. We are building the engineering foundation for a company that can take on larger work over time.</p><Link href="/about" className="text-link">Meet Wesan<span aria-hidden="true">↗</span></Link></div>
+    </section>
+  );
+}
 
 export default async function HomePage() {
-  const c = (await getContent()).pages.home;
-  const featured = await getNewsBySlugs(c.newsroomSlugs);
-
+  const [content, products] = await Promise.all([getContent(), getProducts()]);
+  const meltir = products.find((p) => p.slug === 'meltir');
+  const levios = products.find((p) => p.slug === 'levios-ai');
   return (
     <>
-      <section className="section" style={{ paddingTop: '64px', paddingBottom: '40px' }}>
-        <div className="container">
-          <div className="gap-12 mb-8" style={{ alignItems: 'center', flexWrap: 'wrap' }}>
-            {c.hero.tags.map((t) => (
-              <span key={t.label} className={`tag${t.variant === 'accent' ? ' accent' : ''}`}>{t.label}</span>
-            ))}
-            <span className="eyebrow" style={{ marginLeft: 'auto' }}>{c.hero.fig}</span>
-          </div>
-          <h1 className="h-display mb-6" style={{ maxWidth: '18ch', whiteSpace: 'pre-line' }}>
-            {c.hero.title}
-          </h1>
-          <p className="lead mb-8" style={{ fontSize: '20px' }}>{c.hero.lead}</p>
-          <div className="gap-12">
-            {c.hero.ctas.map((cta) => (
-              <Link key={cta.href} href={cta.href} className={`btn${cta.variant === 'solid' ? ' solid' : ''}`}>
-                {cta.label}{cta.variant === 'solid' ? <> <span className="arr">→</span></> : null}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="container mt-16">
-          <Photo tone={c.heroPhoto.tone} ratio={c.heroPhoto.ratio} caption={c.heroPhoto.caption} label={c.heroPhoto.label}>
-            {c.heroPhoto.overlay && (
-              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'flex-end', padding: '40px', zIndex: 3 }}>
-                <p className="serif" style={{ fontSize: '26px', color: 'rgba(255,255,255,0.85)', maxWidth: '36ch', lineHeight: 1.35, letterSpacing: '-0.01em' }}>
-                  {c.heroPhoto.overlay}
-                </p>
-              </div>
-            )}
-          </Photo>
-        </div>
-
-        <div className="container mt-4">
-          <Telemetry items={c.telemetry.map((t) => [t.label, <Counter key={t.label} to={t.value} suffix={t.suffix} />])} />
-        </div>
-      </section>
-
-      <Marquee label={c.marquee.label} items={c.marquee.items} />
-
-      <section className="section" style={{ background: 'var(--paper-2)' }}>
-        <div className="container">
-          <SectionHead num={c.manifesto.num} label={c.manifesto.label} title={null} />
-          <p className="serif" style={{ fontSize: '34px', lineHeight: 1.3, letterSpacing: '-0.015em', maxWidth: '32ch' }}>
-            {c.manifesto.body}
-          </p>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <SectionHead
-            num={c.divisionsHead.num}
-            label={c.divisionsHead.label}
-            title={c.divisionsHead.title}
-            sub={c.divisionsHead.sub}
-          />
-          <div className="bento mt-8">
-            {c.bento.map((card) => {
-              const real = !!(card.icons && card.icons.length > 0);
-              return (
-              <SpotlightCard key={card.href} href={card.href} className={`${card.size} photo ${real ? '' : card.tone}`}>
-                <div className="corners" />
-                {real && (
-                  <>
-                    <div aria-hidden style={{ position: 'absolute', inset: 0, zIndex: 0, backgroundImage: `url(${card.icons![0]})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(52px) saturate(1.3)', opacity: 0.5, transform: 'scale(1.25)' }} />
-                    <div style={{ position: 'absolute', top: '26px', left: '32px', display: 'flex', gap: '12px', zIndex: 3 }}>
-                      {card.icons!.map((ic) => (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img key={ic} src={ic} alt="" width={58} height={58} style={{ borderRadius: '13px', boxShadow: '0 8px 22px rgba(0,0,0,0.55)', border: '1px solid rgba(255,255,255,0.16)' }} />
-                      ))}
-                    </div>
-                  </>
-                )}
-                <span className="bento-arr">{card.arr}</span>
-                <span className="bento-label">{card.label}</span>
-                <h3 className="bento-title" style={card.titleSize ? { fontSize: `${card.titleSize}px` } : undefined}>{card.title}</h3>
-                <p className="bento-desc" style={card.size === 'b-4' ? { maxWidth: '60ch' } : undefined}>{card.desc}</p>
-                {card.tags && card.tags.length > 0 && (
-                  <div style={{ display: 'flex', gap: '8px', marginTop: '14px', flexWrap: 'wrap' }}>
-                    {card.tags.map((t) => (
-                      <span key={t} className="tag" style={{ background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.9)', borderColor: 'rgba(255,255,255,0.3)' }}>{t}</span>
-                    ))}
-                  </div>
-                )}
-              </SpotlightCard>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="section" style={{ background: 'var(--paper-2)' }}>
-        <div className="container">
-          <div className="between mb-8">
-            <SectionHead num={c.newsroomHead.num} label={c.newsroomHead.label} title={c.newsroomHead.title} />
-            <Link href={c.newsroomHead.viewAllHref!} className="btn ghost">{c.newsroomHead.viewAllLabel} <span className="arr">→</span></Link>
-          </div>
-          <div className="row row-3">
-            {featured.map((it) => {
-              const tone = it.who === 'STUDIO' ? 'stage' : it.who === 'INDUSTRIES' ? 'industrial' : it.who === 'WESAN' ? 'architecture' : 'workstation';
-              return (
-                <SpotlightCard key={it.slug} href={`/newsroom/${it.slug}`} className="media-link">
-                  <Photo tone={tone} ratio="16/10" style={{ marginBottom: '16px' }} caption={`· ${it.who}`} label={it.date.split('.').slice(1).join('.')} />
-                  <div className="gap-12 mb-2" style={{ alignItems: 'baseline' }}>
-                    <span className="mono" style={{ fontSize: '11px', color: 'var(--ink-3)' }}>{it.date}</span>
-                    <span className="mono" style={{ fontSize: '11px', color: 'var(--accent)', letterSpacing: '0.08em' }}>{it.who}</span>
-                  </div>
-                  <h3 className="serif" style={{ fontSize: '22px', lineHeight: 1.25 }}>{it.what}</h3>
-                </SpotlightCard>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container-narrow" style={{ textAlign: 'center' }}>
-          <span className="eyebrow">{c.founderLetter.label}</span>
-          <p className="serif mt-6 mb-8" style={{ fontSize: '30px', fontStyle: 'italic', lineHeight: 1.45, letterSpacing: '-0.01em' }}>
-            &ldquo;{c.founderLetter.quote}&rdquo;
-          </p>
-          <Link href={c.founderLetter.ctaHref} className="btn">{c.founderLetter.ctaLabel} <span className="arr">→</span></Link>
-        </div>
-      </section>
+      <HomeHero hero={content.pages.home.hero} />
+      <div className="featured-products site-container">
+        {meltir && <FeaturedProduct product={meltir} image="/images/meltir-workspace.webp" intro="Bring your calendar, mail, meeting notes and next steps into one AI workspace. Designed to help you prepare, follow through and keep context." />}
+        {levios && <FeaturedProduct product={levios} image="/images/levios-cafe.webp" intro="Turn a business photo and a short message into brand-aware social content. Choose the visual, refine the caption and prepare your next post." />}
+      </div>
+      <ProductDirectory products={products.filter((p) => !['meltir', 'levios-ai'].includes(p.slug))} />
+      <CompanyDirection />
     </>
   );
 }

@@ -11,7 +11,7 @@ import {
   type ReactNode,
 } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 interface PhotoProps {
   tone?: 'architecture' | 'workstation' | 'stage' | 'industrial' | 'dawn' | 'geology' | 'systems';
@@ -26,6 +26,7 @@ interface PhotoProps {
 export function Photo({ tone = 'architecture', ratio = '16/9', caption, label, children, style, className = '' }: PhotoProps) {
   return (
     <div className={`photo photo-cross ${tone} ${className}`} style={{ aspectRatio: ratio, ...style }}>
+      <Image src={tone === 'workstation' || tone === 'systems' ? '/images/meltir-workspace.webp' : '/images/wesan-horizon.webp'} alt="" fill sizes="(max-width: 760px) 100vw, 80vw" className="photo-image" />
       <div className="corners" />
       {label && <span className="cap-tr">{label}</span>}
       {caption && <span className="cap">{caption}</span>}
@@ -143,134 +144,8 @@ interface CounterProps {
   decimals?: number;
 }
 
-export function Counter({ to, duration = 1400, suffix = '', prefix = '', decimals = 0 }: CounterProps) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const [val, setVal] = useState(0);
-  const started = useRef(false);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) {
-      setVal(to);
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting && !started.current) {
-            started.current = true;
-            const start = performance.now();
-            const tick = (now: number) => {
-              const t = Math.min(1, (now - start) / duration);
-              const eased = 1 - Math.pow(1 - t, 3);
-              setVal(eased * to);
-              if (t < 1) requestAnimationFrame(tick);
-              else setVal(to);
-            };
-            requestAnimationFrame(tick);
-            io.disconnect();
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-    io.observe(ref.current);
-    return () => io.disconnect();
-  }, [to, duration]);
-
-  const display = decimals === 0 ? Math.round(val).toString() : val.toFixed(decimals);
-  return (
-    <span ref={ref} className="counter">
-      {prefix}
-      {display}
-      {suffix}
-    </span>
-  );
-}
-
-const pageMap: Record<string, string> = {
-  '/': '01',
-  '/about': '02',
-  '/divisions': '03',
-  '/software': '04',
-  '/studio': '05',
-  '/industries': '06',
-  '/mission': '07',
-  '/newsroom': '08',
-  '/careers': '09',
-  '/contact': '10',
-  '/press': '11',
-  '/legal': '12',
-  '/investors': '13',
-  '/reports': '14',
-  '/trust': '15',
-  '/now': '16',
-  '/sitemap': '17',
-  '/calendar': '18',
-};
-
-function fmtTime() {
-  const d = new Date();
-  const hh = String(d.getHours()).padStart(2, '0');
-  const mm = String(d.getMinutes()).padStart(2, '0');
-  return `${hh}:${mm} UTC+3`;
-}
-
-export function DraftingFrame() {
-  const pathname = usePathname() || '/';
-  const [scrollPct, setScrollPct] = useState(0);
-  const [time, setTime] = useState('');
-
-  useEffect(() => {
-    setTime(fmtTime());
-    const onScroll = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = max > 0 ? Math.min(100, Math.round((window.scrollY / max) * 100)) : 0;
-      setScrollPct(pct);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    const tid = setInterval(() => setTime(fmtTime()), 30000);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      clearInterval(tid);
-    };
-  }, []);
-
-  const pageLabel = (pathname === '/' ? 'HOME' : pathname.slice(1).toUpperCase()).replace(/-/g, ' · ');
-  const pageNum = pageMap[pathname] || '01';
-  const totalPages = '20';
-
-  return (
-    <>
-      <div className="ruler left" aria-hidden="true" />
-      <div className="ruler right" aria-hidden="true" />
-      <div className="tb tb-tl">
-        <strong>WESAN</strong>
-        <span className="sep" />
-        <span>EST. MMXXVI</span>
-      </div>
-      <div className="tb tb-tr">
-        <span>SHEET</span>
-        <strong>
-          {pageNum} / {totalPages}
-        </strong>
-        <span className="sep" />
-        <span>{pageLabel}</span>
-      </div>
-      <div className="tb tb-bl">
-        <span>İSTANBUL</span>
-        <span className="sep" />
-        <span>{time || '-'}</span>
-      </div>
-      <div className="tb tb-br">
-        <span>SCALE 1:1</span>
-        <span className="sep" />
-        <span>SCROLL</span>
-        <strong>{String(scrollPct).padStart(2, '0')}%</strong>
-      </div>
-    </>
-  );
+export function Counter({ to, suffix = '', prefix = '', decimals = 0 }: CounterProps) {
+  return <span className="counter">{prefix}{to.toFixed(decimals)}{suffix}</span>;
 }
 
 export function useReveal() {

@@ -22,8 +22,7 @@ export function Wordmark({ size = 18, withCrumb = null }: { size?: number; withC
 export function Nav() {
   const nav = useContent().nav;
   const pathname = usePathname() || '/';
-  const isDivisionDetail = ['/software', '/studio', '/industries'].includes(pathname);
-  const activeKey = isDivisionDetail ? '/divisions' : pathname;
+  const activeKey = pathname.startsWith('/software') ? '/software' : pathname.startsWith('/studio') ? '/studio' : pathname;
   const crumb =
     pathname === '/software' ? 'SOFTWARE' :
     pathname === '/studio' ? 'STUDIO' :
@@ -32,7 +31,8 @@ export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    setMobileOpen(false);
+    const frame = requestAnimationFrame(() => setMobileOpen(false));
+    return () => cancelAnimationFrame(frame);
   }, [pathname]);
 
   useEffect(() => {
@@ -115,13 +115,13 @@ export function Footer() {
       <div className="foot-inner">
         <div>
           <Link href="/" className="foot-mark">
-            <Image src="/logo-light.png" alt={c.common.brand} width={28} height={28} className="foot-logo" />
+            <Image src="/logo.png" alt={c.common.brand} width={28} height={28} className="foot-logo" />
             <span className="word">{c.common.brand}</span>
           </Link>
-          <p style={{ color: '#8c9098', fontSize: '13.5px', maxWidth: '300px', marginBottom: '20px' }}>
+          <p style={{ color: 'var(--ink-3)', fontSize: '13.5px', maxWidth: '300px', marginBottom: '20px' }}>
             {f.blurb}
           </p>
-          <div className="gap-8" style={{ color: '#6b6e74' }}>
+          <div className="gap-8" style={{ color: 'var(--ink-3)' }}>
             <a href="https://github.com/wesan-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Icon name="github" /></a>
             <a href="https://x.com/wesanco" target="_blank" rel="noopener noreferrer" aria-label="X"><Icon name="twitter" /></a>
             <a href="mailto:hello@wesan.co" aria-label="Email"><Icon name="mail" /></a>
