@@ -5,7 +5,7 @@ import { FRAG, SCENE_INDEX, VERT, type Scene } from './dither-shader';
 
 type RGB = [number, number, number];
 interface Gl { gl: WebGLRenderingContext; prog: WebGLProgram }
-interface Frame { scene: Scene; seed: number; time: number; light: [number, number]; ink: RGB; ground: RGB }
+interface Frame { scene: Scene; seed: number; gain: number; time: number; light: [number, number]; ink: RGB; ground: RGB }
 
 function compile(gl: WebGLRenderingContext, type: number, src: string) {
   const sh = gl.createShader(type)!;
@@ -42,6 +42,7 @@ function draw({ gl, prog }: Gl, w: number, h: number, f: Frame) {
   gl.uniform1f(u('uTime'), f.time);
   gl.uniform1f(u('uScene'), SCENE_INDEX[f.scene]);
   gl.uniform1f(u('uSeed'), f.seed);
+  gl.uniform1f(u('uGain'), f.gain);
   gl.uniform2f(u('uLight'), f.light[0], f.light[1]);
   gl.uniform3f(u('uInk'), ...f.ink);
   gl.uniform3f(u('uGround'), ...f.ground);
@@ -89,19 +90,20 @@ function fitCanvas(canvas: HTMLCanvasElement, cell: number) {
   return changed;
 }
 
-interface Props { scene: Scene; seed?: number; cell?: number; className?: string }
+// gain dims a scene so it can sit behind text without fighting it.
+interface Props { scene: Scene; seed?: number; cell?: number; gain?: number; className?: string }
 
-export function DitherStill({ scene, seed = 1, cell = 2, className = '' }: Props) {
+export function DitherStill({ scene, seed = 1, cell = 2, gain = 1, className = '' }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = ref.current!;
-    const paint = () => paintStill(canvas, { scene, seed, time: seed * 9, light: [0.7, 0.8], ...themeColors() });
+    const paint = () => paintStill(canvas, { scene, seed, gain, time: seed * 9, light: [0.7, 0.8], ...themeColors() });
     const ro = new ResizeObserver(() => { if (fitCanvas(canvas, cell)) paint(); });
     ro.observe(canvas);
     const off = onThemeChange(paint);
     return () => { ro.disconnect(); off(); };
-  }, [scene, seed, cell]);
+  }, [scene, seed, cell, gain]);
 
   return <canvas ref={ref} className={`dither ${className}`} aria-hidden="true" />;
 }
@@ -131,7 +133,7 @@ function runLoop(canvas: HTMLCanvasElement, ctx: Gl, o: { scene: Scene; seed: nu
     // Ease the light toward the pointer so the scene drifts, never jumps.
     light[0] += (target[0] - light[0]) * 0.04;
     light[1] += (target[1] - light[1]) * 0.04;
-    draw(ctx, canvas.width, canvas.height, { scene: o.scene, seed: o.seed, time: still ? 4 : (performance.now() - t0) / 1000, light, ...colors });
+    draw(ctx, canvas.width, canvas.height, { scene: o.scene, seed: o.seed, gain: 1, time: still ? 4 : (performance.now() - t0) / 1000, light, ...colors });
     if (!still && visible) raf = requestAnimationFrame(frame);
   };
   const onMove = (e: PointerEvent) => { target[0] = 0.35 + 0.55 * (e.clientX / innerWidth); };

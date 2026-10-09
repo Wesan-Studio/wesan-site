@@ -66,18 +66,15 @@ export default async function HomePage() {
               const real = !!(card.icons && card.icons.length > 0);
               return (
               <SpotlightCard key={card.href} href={card.href} className={`${card.size} photo`}>
-                {!real && card.tone && <DitherStill scene={TONE_SCENE[card.tone][0]} seed={TONE_SCENE[card.tone][1] + 10} />}
+                <DitherStill scene={TONE_SCENE[card.tone][0]} seed={TONE_SCENE[card.tone][1] + 10} gain={0.6} />
                 <div className="corners" />
                 {real && (
-                  <>
-                    <div aria-hidden style={{ position: 'absolute', inset: 0, zIndex: 0, backgroundImage: `url(${card.icons![0]})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(52px) saturate(1.3)', opacity: 0.5, transform: 'scale(1.25)' }} />
-                    <div style={{ position: 'absolute', top: '26px', left: '32px', display: 'flex', gap: '12px', zIndex: 3 }}>
-                      {card.icons!.map((ic) => (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img key={ic} src={ic} alt="" width={58} height={58} style={{ borderRadius: '13px', boxShadow: 'var(--glass-shadow)', border: '1px solid var(--glass-line)' }} />
-                      ))}
-                    </div>
-                  </>
+                  <div className="bento-icons">
+                    {card.icons!.map((ic) => (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img key={ic} src={ic} alt="" width={56} height={56} />
+                    ))}
+                  </div>
                 )}
                 <span className="bento-arr">{card.arr}</span>
                 <span className="bento-label">{card.label}</span>

@@ -1197,8 +1197,13 @@ li { margin-bottom: 6px; }
 @media (max-width: 900px) {
   .bento {
     grid-template-columns: 1fr;
-    grid-template-rows: 240px 240px 240px 240px;
+    grid-template-rows: none;
+    grid-auto-rows: auto;
   }
+  .bento > * { min-height: 300px; padding: 28px 24px; }
+  .bento > *:has(.bento-icons) { padding-top: 112px; }
+  .bento .bento-icons { top: 24px; left: 24px; }
+  .bento > .photo::after { background: linear-gradient(to top, rgb(var(--dither-ground) / 0.96) 0%, rgb(var(--dither-ground) / 0.86) 60%, rgb(var(--dither-ground) / 0.55) 100%); }
   .bento .b-1, .bento .b-4 { grid-column: auto; grid-row: auto; }
 }
 
@@ -1479,3 +1484,33 @@ canvas.dither { display: block; width: 100%; height: 100%; image-rendering: pixe
 :root[data-theme="dark"] .nav-logo, :root[data-theme="dark"] .foot-logo { filter: invert(1); }
 .foot-strip { align-items: center; }
 .tag.glass { border-radius: 4px; color: var(--ink-2); padding: 4px 9px; }
+
+/* Bento: every card is dither under a ground-colored scrim, so text always sits on ground. */
+.bento > .photo::after {
+  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: linear-gradient(to top, rgb(var(--dither-ground) / 0.96) 0%, rgb(var(--dither-ground) / 0.78) 42%, rgb(var(--dither-ground) / 0.15) 82%);
+}
+.bento .bento-icons { position: absolute; top: 26px; left: 32px; z-index: 2; display: flex; gap: 12px; }
+.bento .bento-icons img { border-radius: 13px; border: 1px solid var(--glass-line); box-shadow: var(--glass-shadow); }
+
+/* Detail pages: a shorter, still hero over a dimmed scene. */
+.hero-detail { min-height: min(68vh, 620px); padding-top: 140px; }
+.hero-detail .hero-inner { grid-template-columns: minmax(0, 1fr); }
+.hero-detail .hero-inner > div { max-width: 920px; }
+.back-link {
+  display: inline-block; margin-bottom: 28px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-3); transition: color 0.15s;
+}
+.back-link:hover { color: var(--ink); }
+.detail-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 24px; }
+/* Sentence-length titles read as sentences; uppercase is for short names. */
+.h-sentence { text-transform: none; letter-spacing: -0.015em; line-height: 1.05; }
+@media (max-width: 900px) { .hero-detail { padding-top: 110px; min-height: 0; } }
+/* App icons are drawn for a dark tile; keep that tile in both themes. */
+.bento .bento-icons img { background: rgb(27 30 35); }
+.hero-detail::after {
+  background:
+    linear-gradient(to right, rgb(var(--dither-ground) / 0.94) 0%, rgb(var(--dither-ground) / 0.78) 48%, rgb(var(--dither-ground) / 0.2) 80%),
+    linear-gradient(to top, rgb(var(--dither-ground) / 0.9) 0%, transparent 40%);
+}

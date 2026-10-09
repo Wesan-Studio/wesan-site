@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { TracingBeam } from '../../_components/lib';
+import { DetailHero } from '../../_components/detail-hero';
 import { getProduct, staticContent, type MissionBlock } from '@/lib/content';
 
 export function generateStaticParams() {
@@ -62,22 +63,19 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
   return (
     <>
-      <section className="section" style={{ paddingTop: '96px', paddingBottom: '32px' }}>
-        <div className="container-narrow">
-          <Link href="/software" className="mono" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.1em', display: 'inline-block', marginBottom: '24px' }}>
-            ← SOFTWARE
-          </Link>
-          <div className="gap-12 mb-8" style={{ flexWrap: 'wrap', alignItems: 'center' }}>
-            {p.tags.map((t) => (
-              <span key={t.label} className={`tag${t.variant === 'accent' ? ' accent' : ''}`}>{t.label}</span>
-            ))}
-          </div>
-          <h1 className="h-display" style={{ whiteSpace: 'pre-line' }}>{p.title}</h1>
-          <div className="mono mt-6" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-            {p.meta} · {p.status} · {p.url}
-          </div>
-        </div>
-      </section>
+      <DetailHero
+        back={{ href: '/software', label: '← Software' }}
+        scene="orbit"
+        seed={p.slug.length}
+        title={p.title}
+        meta={p.tags.map((t) => (
+          <span key={t.label} className={`tag glass${t.variant === 'accent' ? ' accent' : ''}`}>{t.label}</span>
+        ))}
+      >
+        <span className="mono" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+          {p.meta} · {p.status} · {p.url}
+        </span>
+      </DetailHero>
 
       <section className="section" style={{ paddingTop: '32px' }}>
         <div className="container-narrow">

@@ -32,6 +32,7 @@ uniform float uSeed;
 uniform vec2 uLight;
 uniform vec3 uInk;
 uniform vec3 uGround;
+uniform float uGain;
 
 // Arithmetic hash: sin()-based hashes lose float precision at pixel-sized
 // coordinates and print a visible grid.
@@ -116,6 +117,7 @@ void main() {
   vec2 uv = gl_FragCoord.xy / uRes;
   float asp = uRes.x / uRes.y;
   float l = uScene < 0.5 ? horizon(uv, asp) : uScene < 1.5 ? ridges(uv, asp) : uScene < 2.5 ? orbit(uv, asp) : swell(uv, asp);
+  l *= uGain;
   // A 1/64 floor keeps near-black luminance from printing a lattice at the zero threshold.
   float on = step(max(bayer8(gl_FragCoord.xy), 0.016), l);
   gl_FragColor = vec4(mix(uGround, uInk, on), 1.0);

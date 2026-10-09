@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Photo } from '../../_components/lib';
+import { DetailHero, sceneForDivision } from '../../_components/detail-hero';
 import { getContent, getNewsItem, getNewsItems, staticContent } from '@/lib/content';
 
 export function generateStaticParams() {
@@ -30,33 +30,20 @@ export default async function ReleasePage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
-      {/* Hero */}
-      <section className="section" style={{ paddingTop: '64px', paddingBottom: '32px' }}>
-        <div className="container-narrow">
-          <Link href="/newsroom" className="mono" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.1em', display: 'inline-block', marginBottom: '24px' }}>
-            {labels.backLabel}
-          </Link>
-          <div className="gap-12 mb-6" style={{ flexWrap: 'wrap', alignItems: 'baseline' }}>
+      <DetailHero
+        back={{ href: '/newsroom', label: labels.backLabel }}
+        scene={sceneForDivision(it.who)}
+        seed={idx + 2}
+        title={it.what}
+        lede={it.lede}
+        meta={
+          <>
             <span className="mono" style={{ fontSize: '12px', color: 'var(--ink-3)', letterSpacing: '0.1em' }}>{it.date}</span>
             <span className="mono" style={{ fontSize: '12px', color: 'var(--accent)', letterSpacing: '0.1em' }}>{it.who} · {labels.releaseLabel}</span>
             {it.featured && <span className="tag status-on">{labels.featuredLabel}</span>}
-          </div>
-          <h1 className="h-display" style={{ marginBottom: '24px' }}>{it.what}</h1>
-          <p className="serif" style={{ fontSize: '22px', lineHeight: 1.55, color: 'var(--ink-2)' }}>{it.lede}</p>
-        </div>
-      </section>
-
-      {/* Image */}
-      <section style={{ padding: '0 32px 32px' }}>
-        <div className="container-narrow">
-          <Photo
-            tone={it.who === 'STUDIO' ? 'stage' : it.who === 'INDUSTRIES' ? 'industrial' : it.who === 'WESAN' ? 'architecture' : 'workstation'}
-            ratio="21/9"
-            caption={`· ${it.who} · ${it.date}`}
-            label={`FIG · ${it.slug.toUpperCase()}`}
-          />
-        </div>
-      </section>
+          </>
+        }
+      />
 
       {/* Body */}
       <section className="section" style={{ paddingTop: '32px' }}>

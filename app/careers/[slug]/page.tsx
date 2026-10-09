@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { SectionHead } from '../../_components/lib';
+import { DetailHero, sceneForDivision } from '../../_components/detail-hero';
 import { getContent, getRole, getRoles, staticContent } from '@/lib/content';
 
 export function generateStaticParams() {
@@ -27,27 +28,26 @@ export default async function RolePage({ params }: { params: Promise<{ slug: str
 
   return (
     <>
-      <section className="section" style={{ paddingTop: '64px', paddingBottom: '32px' }}>
-        <div className="container">
-          <Link href="/careers" className="mono" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.1em', display: 'inline-block', marginBottom: '24px' }}>
-            ← ALL ROLES
-          </Link>
-          <div className="gap-12 mb-6" style={{ flexWrap: 'wrap', alignItems: 'baseline' }}>
-            <span className="tag accent">{role.div}</span>
+      <DetailHero
+        back={{ href: '/careers', label: '← All roles' }}
+        scene={sceneForDivision(role.div)}
+        seed={role.slug.length}
+        title={role.name}
+        lede={role.lede}
+        meta={
+          <>
+            <span className="tag accent glass">{role.div}</span>
             <span className="mono" style={{ fontSize: '11px', color: 'var(--ink-3)', letterSpacing: '0.08em' }}>{role.team}</span>
-            <span className="tag">{role.type}</span>
-            <span className="tag dashed">{role.where}</span>
-          </div>
-          <h1 className="h-display" style={{ maxWidth: '24ch' }}>{role.name}</h1>
-          <p className="serif mt-8" style={{ fontSize: '22px', lineHeight: 1.55, color: 'var(--ink-2)', maxWidth: '50ch' }}>{role.lede}</p>
-          <div className="gap-12 mt-8">
-            <a href={`mailto:hello@wesan.com?subject=Application · ${encodeURIComponent(role.name)}`} className="btn solid">
-              Apply by email <span className="arr">→</span>
-            </a>
-            <Link href="/careers" className="btn">Back to all roles</Link>
-          </div>
-        </div>
-      </section>
+            <span className="tag glass">{role.type}</span>
+            <span className="tag glass">{role.where}</span>
+          </>
+        }
+      >
+        <a href={`mailto:hello@wesan.com?subject=Application · ${encodeURIComponent(role.name)}`} className="btn solid">
+          Apply by email <span className="arr">→</span>
+        </a>
+        <Link href="/careers" className="btn">Back to all roles</Link>
+      </DetailHero>
 
       <div className="container">
         <div className="telemetry">
