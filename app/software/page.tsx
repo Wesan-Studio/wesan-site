@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Photo, Telemetry, SectionHead } from '../_components/lib';
 import { getContent, type Tone } from '@/lib/content';
 
-interface Product { name: string; version: string; url: string; tagline: string; meta: string; desc: string; status: string; img?: string }
+interface Product { slug?: string; name: string; version: string; url: string; tagline: string; meta: string; desc: string; status: string; img?: string }
 
 interface SoftwareContent {
   hero: { tags: { label: string; variant: string }[]; fig: string; title: string; photo: { tone: Tone; ratio: string; caption: string; label: string } };
@@ -20,7 +20,7 @@ interface SoftwareContent {
 
 function ProductCard({ p }: { p: Product }) {
   return (
-    <Link href={`/software/${p.name.toLowerCase()}`} className="card" style={{ display: 'flex', flexDirection: 'column', minHeight: '420px', color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}>
+    <Link href={`/software/${(p.slug ?? p.name.toLowerCase())}`} className="card" style={{ display: 'flex', flexDirection: 'column', minHeight: '420px', color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}>
       <div className="photo-cross" style={{ aspectRatio: '4/3', marginBottom: '20px', background: 'var(--ink)', border: '1px solid var(--rule)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <span className="corners" />
         {p.img ? (

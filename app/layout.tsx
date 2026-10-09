@@ -14,7 +14,7 @@ const jetbrainsMono = JetBrains_Mono({ variable: '--font-jetbrains-mono', subset
 
 export const metadata: Metadata = {
   title: 'Wesan',
-  description: 'The house under which the next century is built. Wesan - software, studio, industries.',
+  description: 'Wesan builds Meltir, an AI workspace, and Levios AI, a social content assistant for small businesses, alongside commerce software, daily tracking and mobile games.',
   icons: {
     // Dark mark by default (light browser chrome); white mark when the OS/browser is in dark mode.
     icon: [

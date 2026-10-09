@@ -2,12 +2,12 @@
   "_meta": {
     "lang": "en",
     "version": "1.0.0",
-    "updated": "2026-06-05"
+    "updated": "2026-10-09"
   },
 
   "common": {
     "brand": "Wesan",
-    "tagline": "The house under which the next century is built",
+    "tagline": "Practical AI software for everyday work",
     "founded": "EST. MMXXVI",
     "location": "Belgium",
     "year": "2026",
@@ -30,7 +30,7 @@
   },
 
   "footer": {
-    "blurb": "The house under which the next century is built. Software now. Studio next. Industries later.",
+    "blurb": "Wesan builds AI workspaces, small-business content tools, commerce software and mobile games.",
     "columns": [
       {
         "heading": "Divisions",
@@ -43,6 +43,9 @@
       {
         "heading": "Products",
         "links": [
+          { "href": "/software/meltir", "label": "Meltir" },
+          { "href": "/software/levios-ai", "label": "Levios AI" },
+          { "href": "/software/wesanjs", "label": "wesanjs" },
           { "href": "/software", "label": "Friday" },
           { "href": "/software", "label": "Dante" },
           { "href": "/software", "label": "Notch" }
@@ -83,10 +86,10 @@
 
         ],
         "fig": "FIG 01 / 09 · WESAN",
-        "title": "To dwell in the\nnext century,\nbuild the structure first.",
-        "lead": "Wesan is the house under which the next century is built. Software in early beta today, studio and industries in the long horizon. Each division allowed to take the time it needs.",
+        "title": "Practical AI.\nUseful software.\nBuilt around your work.",
+        "lead": "Wesan is an independent software studio building Meltir, an AI workspace for desktop and mobile, and Levios AI, a social content assistant for small businesses. Alongside them, we develop commerce tools, a daily tracker and mobile games.",
         "ctas": [
-          { "href": "/divisions", "label": "Explore the divisions", "variant": "solid" },
+          { "href": "/software", "label": "Explore our products", "variant": "solid" },
           { "href": "/mission", "label": "Read the mission", "variant": "default" }
         ]
       },
@@ -99,22 +102,18 @@
       },
       "telemetry": [
         { "value": 3, "label": "DIVISIONS" },
-        { "value": 3, "label": "PRODUCTS · IN BUILD" },
+        { "value": 7, "label": "PRODUCTS · IN BUILD" },
         { "value": 2026, "label": "YEAR ONE" },
         { "value": 100, "suffix": " YR", "label": "HORIZON" }
       ],
       "marquee": {
-        "label": "BUILT TO STANDARDS WE TAKE SERIOUSLY",
-        "items": [
-          "ISO 9001", "SOC 2 TYPE II", "CE MARK", "IEC 61508", "ISO 27001",
-          "GDPR · EU", "EN 50128", "AS9100", "PED 2014/68/EU",
-          "EXPORT CONTROL · DUAL-USE", "ITAR-READY", "İSTANBUL CHAMBER OF COMMERCE"
-        ]
+        "label": "WHAT WE ARE BUILDING",
+        "items": ["MELTIR", "LEVIOS AI", "WESANJS", "DANTE", "FRIDAY", "BIDBUNCH", "BLOCK FORGE", "EMPIRE INC."]
       },
       "manifesto": {
         "num": "02",
         "label": "A SENTENCE FROM US",
-        "body": "We build the things that have to be built once and used for a century - and we build the companies that build them. One person, three rooms, this year. That is the design, not the limitation."
+        "body": "We build around a useful result: a clearer working day, a photo ready to share, or a business workflow that takes less effort. Meltir and Levios AI are our current focus, with products in development and early testing."
       },
       "divisionsHead": {
         "num": "03",
@@ -128,8 +127,8 @@
           "arr": "01 / IN BUILD →",
           "label": "DIVISION 01",
           "title": "Software", "titleSize": 44,
-          "desc": "Four tools, one principle: consolidation. Dante for six trackers, Friday for coding agents, Notch for the daily log, Levios for generating panels.",
-          "tags": ["DANTE", "FRIDAY", "NOTCH", "LEVIOS"],
+          "desc": "Meltir brings daily work into one AI workspace. Levios AI turns business photos into social content. wesanjs supports commerce, Dante tracks daily life, and Friday supports development workflows.",
+          "tags": ["MELTIR", "LEVIOS AI", "WESANJS", "DANTE", "FRIDAY"],
           "icons": ["/products/dante-logo.png"]
         },
         {
@@ -453,10 +452,13 @@
         "title": "Software for the people who do the work.",
         "photo": { "tone": "systems", "ratio": "21/8", "caption": "THE MACHINES THAT RUN THE WORK", "label": "FIG · SOFTWARE" }
       },
-      "telemetry": [["DIVISION", "SOFTWARE"], ["STATUS", "EARLY BETA"], ["PRODUCTS", "04 · IN BUILD"], ["BASE", "Belgium"]],
-      "manifesto": "Four tools, one principle: consolidation. Friday runs the coding agents you already use, Dante folds six trackers into one, Notch keeps the discipline of a daily log, Levios generates the panels you'd otherwise hand-build. Each one for a real person doing a real job. Solo development today; small teams tomorrow.",
-      "productsHead": { "num": "02", "label": "PRODUCTS · IN BUILD", "title": "Four, in the shaping." },
+      "telemetry": [["DIVISION", "SOFTWARE"], ["STATUS", "EARLY BETA"], ["PRODUCTS", "07 · IN BUILD"], ["BASE", "Belgium"]],
+      "manifesto": "Our current focus is Meltir and Levios AI: an AI workspace for everyday work and a social content assistant for small businesses. Alongside them, wesanjs supports commerce, Dante brings daily tracking into one app, and Friday supports software development. Products are developed and tested separately.",
+      "productsHead": { "num": "02", "label": "PRODUCTS · IN BUILD", "title": "Our software portfolio." },
       "products": [
+      {"slug": "meltir", "name": "Meltir", "version": "In development", "url": "-", "tagline": "One workspace for your working day", "meta": "Desktop · Mobile", "desc": "An AI workspace in development, bringing calendar, email, tasks, voice and meeting notes into one assistant. Designed to connect context with practical actions while keeping the user in control.", "status": "WIP"},
+      {"slug": "levios-ai", "name": "Levios AI", "version": "In development", "url": "-", "tagline": "Your photos, ready to share", "meta": "Mobile · Small business", "desc": "A social content assistant in development for cafes, salons, shops and other small businesses. Upload a photo and describe the result. Get brand-aware visual variations, captions and a content plan to review.", "status": "WIP"},
+      {"slug": "wesanjs", "name": "wesanjs", "version": "In development", "url": "-", "tagline": "Commerce built around your business", "meta": "Web · Commerce platform", "desc": "A multi-tenant commerce platform in development, supporting storefronts, product data and business operations. It provides shared infrastructure for our commerce products.", "status": "WIP"},
         { "name": "Friday", "version": "v0.x", "url": "-", "tagline": "Agent runtime, not another agent", "meta": "macOS · Linux · Windows · Mobile companion", "desc": "A daemon that runs your coding agents. Claude Code today, others tomorrow. Detach, attach, ship from anywhere - terminal, desktop, or phone. BYOM. In development, no public link yet.", "status": "WIP" },
         { "name": "Dante", "version": "v0.x", "url": "danteapp.co", "tagline": "One app, six trackers", "meta": "iOS · iPad", "desc": "Tasks, workouts, nutrition, supplements, spending, habits - consolidated into one quiet surface. Turkish food + supplement database built in. Local-first. TestFlight now, App Store soon.", "status": "TESTFLIGHT", "img": "/products/dante-logo.png" },
         { "name": "Notch", "version": "v0.x", "url": "notch.dev", "tagline": "Habits, in the discipline of a daily log", "meta": "iOS · Mac", "desc": "A habit tracker built for people who already keep a log somewhere. One screen, one tap, end-of-day review. No streaks-as-pressure, no notifications. Just the checkmark, done quietly.", "status": "WIP", "img": "/products/notch.svg" },
@@ -476,9 +478,9 @@
       "principles": [
         ["SHIP WHEN READY", "No quarterly roadmap. A release ships the morning the work is done - sometimes that's next Tuesday, sometimes it's next year."],
         ["THE DIFF IS THE CONTRACT", "Every change a user can see is something they can refuse. We don't silently rewrite preferences, accounts, or files."],
-        ["SMALL TEAMS, LONG ROPES", "Each product has 3–6 people. They own the codebase, the customers, and the calendar. No matrix, no headcount theatre."]
+        ["SMALL TEAMS, LONG ROPES", "Founder-led development today. Product scope, customer feedback and tested releases guide how we grow."]
       ],
-      "footerStamp": { "eyebrow": "SOFTWARE IS A WESAN DIVISION", "line": "Started 2026 · Belgium · 3 products in build" }
+      "footerStamp": { "eyebrow": "SOFTWARE IS A WESAN DIVISION", "line": "Started 2026 · Belgium · 7 products in build" }
     },
 
     "studio": {
@@ -1247,6 +1249,9 @@
       }
     ],
     "products": [
+      {"slug": "meltir", "name": "Meltir", "status": "IN DEVELOPMENT", "meta": "Desktop · Mobile", "url": "-", "tags": [{"label": "MELTIR · WESAN SOFTWARE", "variant": "accent"}, {"label": "IN DEVELOPMENT"}], "title": "One workspace for your working day", "body": [{"kind": "p", "lead": true, "text": "An AI workspace in development, bringing calendar, email, tasks, voice and meeting notes into one assistant. Designed to connect context with practical actions while keeping the user in control."}, {"kind": "h2", "text": "Context in one place."}, {"kind": "p", "text": "Meltir is designed to connect conversations with calendar, mail, tasks and meeting notes. Planned voice and live transcription features help capture information without switching between tools."}, {"kind": "h2", "text": "Assistance that leads to action."}, {"kind": "p", "text": "We are developing model integrations and connected workflows for summarising context, preparing drafts and organising work. Product availability and integration coverage will be announced as they are tested."}], "continue": {"label": "MELTIR", "links": [{"href": "mailto:canakyuz@wesan.co?subject=Meltir", "label": "Contact the founder →"}, {"href": "/software", "label": "Back to Software →"}]}},
+      {"slug": "levios-ai", "name": "Levios AI", "status": "IN DEVELOPMENT", "meta": "Mobile · Small business", "url": "-", "tags": [{"label": "LEVIOS AI · WESAN SOFTWARE", "variant": "accent"}, {"label": "IN DEVELOPMENT"}], "title": "Your photos, ready to share", "body": [{"kind": "p", "lead": true, "text": "A social content assistant in development for cafes, salons, shops and other small businesses. Upload a photo and describe the result. Get brand-aware visual variations, captions and a content plan to review."}, {"kind": "h2", "text": "From a photo to a post."}, {"kind": "p", "text": "Send a photo and a short message, typed or spoken. The planned workflow applies your brand and product profiles, suggests two to four visual variations and a caption, and lets you choose or request a change. A simple editor handles text, cropping and size."}, {"kind": "h2", "text": "A week of content, reviewed by you."}, {"kind": "p", "text": "The planned batch workflow turns 10 to 20 photos into a weekly or monthly content calendar. You review each item before it is published. A short brand setup captures your logo, colours, tone, sector and example posts so you do not need to write a detailed prompt each time."}, {"kind": "h2", "text": "Built for small businesses."}, {"kind": "p", "text": "Our initial audience is businesses with one to ten people: cafes, restaurants, salons, boutiques, furniture shops, florists and estate agents. We are starting with customer discovery in Turkey and London."}, {"kind": "h2", "text": "Publishing is part of the roadmap."}, {"kind": "p", "text": "We plan scheduling and publishing for Instagram, Facebook and TikTok, subject to platform permissions and review. Direct publishing and handoff to the social app are separate paths. Music and native stickers depend on the platform and cannot be promised for every format. Video generation, team approvals and advanced analytics are later work."}], "continue": {"label": "LEVIOS AI", "links": [{"href": "mailto:canakyuz@wesan.co?subject=Levios%20AI", "label": "Contact the founder →"}, {"href": "/software", "label": "Back to Software →"}]}},
+      {"slug": "wesanjs", "name": "wesanjs", "status": "IN DEVELOPMENT", "meta": "Web · Commerce platform", "url": "-", "tags": [{"label": "WESANJS · WESAN SOFTWARE", "variant": "accent"}, {"label": "IN DEVELOPMENT"}], "title": "Commerce built around your business", "body": [{"kind": "p", "lead": true, "text": "A multi-tenant commerce platform in development, supporting storefronts, product data and business operations. It provides shared infrastructure for our commerce products."}], "continue": {"label": "WESANJS", "links": [{"href": "mailto:canakyuz@wesan.co?subject=wesanjs", "label": "Contact the founder →"}, {"href": "/software", "label": "Back to Software →"}]}},
       {
         "slug": "friday",
         "name": "Friday",
