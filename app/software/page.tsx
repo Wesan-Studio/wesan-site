@@ -3,7 +3,12 @@ import { Photo, SectionHead } from '../_components/lib';
 import { sentence } from '../_components/detail-hero';
 import { getContent, type Tone } from '@/lib/content';
 
-interface Product { slug?: string; name: string; version: string; url: string; tagline: string; meta: string; desc: string; status: string; img?: string }
+export const metadata = {
+  title: 'Software',
+  description: 'Meltir and Levios AI in focus, with Friday, Dante, Notch and wesanjs in development.',
+};
+
+interface Product { slug?: string; name: string; version: string; url: string; tagline: string; meta: string; desc: string; status: string; img?: string; focus?: boolean }
 
 interface SoftwareContent {
   hero: { tags: { label: string; variant: string }[]; fig: string; title: string; photo: { tone: Tone; ratio: string; caption: string; label: string } };
@@ -27,7 +32,9 @@ function ProductCard({ p }: { p: Product }) {
           <img src={p.img} alt="" width={40} height={40} className="product-logo" />
         )}
         <div>
-          <h3 className="card-title" style={{ marginBottom: 0 }}>{p.name}</h3>
+          <h3 className="card-title" style={{ marginBottom: 0 }}>
+            {p.name}{p.focus && <span className="tag accent" style={{ marginLeft: '10px', verticalAlign: 'middle' }}>In focus</span>}
+          </h3>
           <div className="product-sub">{p.tagline}</div>
         </div>
       </div>

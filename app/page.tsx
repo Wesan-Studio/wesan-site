@@ -4,17 +4,17 @@ import { DitherField, DitherStill } from './_components/dither';
 import { sceneForDivision } from './_components/detail-hero';
 import { getContent, getNewsBySlugs } from '@/lib/content';
 
-interface WorkItem { name: string; line: string; href: string; img?: string; external?: boolean }
+interface WorkItem { name: string; line: string; desc?: string; href: string; img?: string; external?: boolean; focus?: boolean }
 
 const SCENES: Scene[] = ['orbit', 'horizon', 'ridges', 'swell'];
 
 async function getWork(): Promise<WorkItem[]> {
   const pages = (await getContent()).pages as unknown as {
-    software: { products: { name: string; tagline: string; slug?: string; img?: string }[] };
+    software: { products: { name: string; tagline: string; desc: string; slug?: string; img?: string; focus?: boolean }[] };
     studio: { projects: { name: string; desc: string; href: string; img?: string }[] };
   };
   const software = pages.software.products.map((p) => ({
-    name: p.name, line: p.tagline, img: p.img, href: `/software/${p.slug ?? p.name.toLowerCase()}`,
+    name: p.name, line: p.tagline, desc: p.desc, img: p.img, focus: p.focus, href: `/software/${p.slug ?? p.name.toLowerCase()}`,
   }));
   const games = pages.studio.projects.map((g) => ({
     name: g.name, line: g.desc.split(':')[0], img: g.img, href: g.href, external: true,
@@ -22,7 +22,7 @@ async function getWork(): Promise<WorkItem[]> {
   return [...software, ...games];
 }
 
-function WorkTile({ item, index }: { item: WorkItem; index: number }) {
+function WorkTile({ item, index, large = false }: { item: WorkItem; index: number; large?: boolean }) {
   const body = (
     <>
       <div className="work-media">
@@ -36,22 +36,25 @@ function WorkTile({ item, index }: { item: WorkItem; index: number }) {
         <div>
           <h3 className="work-name">{item.name}</h3>
           <p className="work-line">{item.line}</p>
+          {large && item.desc && <p className="work-desc">{item.desc}</p>}
         </div>
         <span className="work-arr" aria-hidden="true">{item.external ? '↗' : '→'}</span>
       </div>
     </>
   );
   return item.external
-    ? <a href={item.href} target="_blank" rel="noreferrer" className="work-tile">{body}</a>
-    : <Link href={item.href} className="work-tile">{body}</Link>;
+    ? <a href={item.href} target="_blank" rel="noreferrer" className={`work-tile${large ? ' large' : ''}`}>{body}</a>
+    : <Link href={item.href} className={`work-tile${large ? ' large' : ''}`}>{body}</Link>;
 }
 
 export default async function HomePage() {
   const c = (await getContent()).pages.home;
   const featured = await getNewsBySlugs(c.newsroomSlugs);
   const work = await getWork();
+  const focus = work.filter((w) => w.focus);
+  const rest = work.filter((w) => !w.focus);
   const horizon = c.telemetry[c.telemetry.length - 1];
-  const [lead, ...rest] = featured;
+  const [lead, ...moreNews] = featured;
 
   return (
     <>
@@ -89,8 +92,12 @@ export default async function HomePage() {
             <h2 className="h-1">What we build</h2>
             <Link href="/software" className="text-link">All software →</Link>
           </div>
+          <div className="work-focus">
+            {focus.map((item, i) => <WorkTile key={item.name} item={item} index={i} large />)}
+          </div>
+          <h3 className="work-subhead">Also in development</h3>
           <div className="work-grid">
-            {work.map((item, i) => <WorkTile key={item.name} item={item} index={i} />)}
+            {rest.map((item, i) => <WorkTile key={item.name} item={item} index={i + focus.length} />)}
           </div>
         </div>
       </section>
@@ -123,7 +130,7 @@ export default async function HomePage() {
                 <h3 className="news-title">{lead.what}</h3>
               </Link>
               <div className="news-side">
-                {rest.map((it, i) => (
+                {moreNews.map((it, i) => (
                   <Link key={it.slug} href={`/newsroom/${it.slug}`} className="news-card">
                     <div className="photo news-media"><DitherStill scene={sceneForDivision(it.who)} seed={i + 5} gain={0.75} /></div>
                     <p className="news-meta">{it.date}</p>
