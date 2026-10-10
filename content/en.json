@@ -257,7 +257,7 @@
         { "kind": "p", "text": "<strong>Three.</strong> Plain reporting. Once a year, in April, every division publishes what worked, what didn't, and what it spent. Not a marketing report. A field report." },
         { "kind": "hr" },
         { "kind": "quote", "text": "We are not in a hurry, and we are not slow. We work on the timescale of the things we're building. If a thing should last a century, then the company that builds it should act like one. That is what we are trying to be." },
-        { "kind": "sign", "text": "- Can AKYUZ, FOUNDER · Belgium, MAY 2026" }
+        { "kind": "sign", "text": "- Can Akyuz, Founder · London, May 2026" }
       ],
       "continue": {
         "label": "CONTINUE",
@@ -538,7 +538,7 @@
         ["THE DIFF IS THE CONTRACT", "Every change a user can see is something they can refuse. We don't silently rewrite preferences, accounts, or files."],
         ["SMALL TEAMS, LONG ROPES", "Founder-led development today. Product scope, customer feedback and tested releases guide how we grow."]
       ],
-      "footerStamp": { "eyebrow": "SOFTWARE IS A WESAN DIVISION", "line": "Started 2026 · Belgium · 7 products in build" }
+      "footerStamp": { "eyebrow": "SOFTWARE IS A WESAN DIVISION", "line": "Started 2026 · London · Meltir and Levios AI in focus" }
     },
 
     "studio": {
@@ -571,7 +571,7 @@
         ["SMALL CREWS", "Each project carries 4-8 people, end-to-end. The same hand that designs the world writes the dialogue and edits the trailer."],
         ["ART OVER PRESSURE", "The studio is funded from the holding, not from the calendar. Nothing about the room is structured to reward looking busy."]
       ],
-      "footerStamp": { "eyebrow": "STUDIO IS A WESAN DIVISION", "line": "Two games live on the App Store · İstanbul" }
+      "footerStamp": { "eyebrow": "STUDIO IS A WESAN DIVISION", "line": "Two games live on the App Store · London" }
     },
 
     "industries": {
@@ -700,7 +700,6 @@
     "calendar": {
       "head": { "num": "01", "label": "CALENDAR · PUBLIC EVENTS", "title": "The things we do in public.", "sub": "Wesan is quiet by design. When we do show up - to give a talk, run a demo, or publish a report - it goes here, in advance. Usually three or four times a year." },
       "events": [
-        { "when": "2026.06.18", "weekday": "THU", "time": "19:00 UTC+3", "where": "Belgium · ALSANCAK", "type": "TALK", "title": "Building a holding-in-formation, alone, in 2026", "who": "Can Akyuz", "lede": "A short talk in Belgium. Open to the public, RSVP required. Drinks after. Date tentative - confirm via email.", "cta": "RSVP", "status": "TENTATIVE" },
         { "when": "TBD", "weekday": "-", "time": "-", "where": "ONLINE · TBD", "type": "DEMO", "title": "Friday · public beta demo + Q&A", "who": "Can Akyuz", "lede": "An online demo of Friday when the public beta opens wider. Live walkthrough, then open Q&A. Date posted here when set.", "cta": "REMIND ME", "status": "TENTATIVE" },
         { "when": "TBD", "weekday": "-", "time": "-", "where": "TBD", "type": "SHOWING", "title": "Wesan Studio · first prototype showing (when the studio forms)", "who": "Future team", "lede": "Studio is still an idea. When it forms and the first prototype is ready, the showing will be small and announced here.", "cta": "-", "status": "NOT YET" },
         { "when": "2027.04.15", "weekday": "THU", "time": "09:00 UTC+3", "where": "PUBLISHED ONLINE", "type": "REPORT", "title": "First annual field reports · year 2026", "who": "All divisions", "lede": "The first annual field reports drop. One per division, plus a roof-level report. No event, just publishing. Read them in your own time.", "cta": "REMIND ME", "status": "SCHEDULED" }
@@ -816,7 +815,7 @@
         "trademark": {
           "title": "Trademarks", "updated": "2026.10.09",
           "body": [
-            ["Wesan™ and the W-mark", "Wesan™ and the stylised W-mark are trademarks of Wesan, with registration pending in Türkiye, the EU, US, and Japan."],
+            ["Wesan™ and the W-mark", "Wesan™ and the stylised W-mark are trademarks of Wesan. They are not registered yet."],
             ["Product marks", "Meltir™, Levios AI™, Friday™, Dante™ and Notch™ are trademarks used by Wesan. They are not registered yet."],
             ["Fair use", "You may use the Wesan name and W-mark to refer to our company - in articles, presentations, news. You may not modify them, combine them with another mark, or use them in a way that suggests endorsement."],
             ["Press kit", "For official versions of the logos, see the press kit at /press."],
@@ -1108,7 +1107,7 @@
           "You've directed a shipped game. Indie or AA scale. We don't care about the budget; we care that you finished it.",
           "You can hire the right people, defend the calendar, and say no to feature creep with grace.",
           "You read books and watch films outside your medium. We will talk about them in the interview.",
-          "Comfortable living in İstanbul. The studio is on-site."
+          "Comfortable working on-site in London."
         ],
         "niceToHave": [
           "You have worked across genres. Narrative is the form, but the craft is broader.",
@@ -1188,16 +1187,12 @@
         "date": "2026.05.04",
         "who": "STUDIO",
         "what": "Wesan Studio is in formation - first prototype shown in Q4.",
-        "lede": "The studio is in formation. Two projects are in early scoping. The first prototype showing is on the calendar for November in İstanbul.",
+        "lede": "The studio is in formation. Two projects are in early scoping.",
         "body": [
           { "kind": "p", "content": "Wesan Studio - the second division of Wesan - is now in formation. We are hiring the game director and beginning early scoping on two projects, one narrative game and one short-film series." },
           { "kind": "h", "content": "The two projects" },
           { "kind": "p", "content": "Project 01 is a single-player game about return, set in a fictional Anatolian coastal town in the year after a small earthquake. We are giving it three years. Target team of six." },
-          { "kind": "p", "content": "Project 02 is a series of six ten-minute interactive shorts. Documentary form, fictional subject. First short due Q4 2026 at its own URL." },
-          { "kind": "h", "content": "The first showing" },
-          { "kind": "p", "content": "On November 21 2026 the studio will hold a small invite-only showing of the first prototype in Galata. The wait list is open. We will reveal what the prototype is on the night." },
-          { "kind": "h", "content": "Hiring" },
-          { "kind": "p", "content": "We are looking for two people: a Game Director (you have shipped a game; indie or AA scale) and a Technical Artist (shaders, lighting, tooling). Both roles are on-site in İstanbul. Both are full-time." }
+          { "kind": "p", "content": "Project 02 is a series of six ten-minute interactive shorts. Documentary form, fictional subject. First short due Q4 2026 at its own URL." }
         ],
         "links": [
           { "label": "Studio · division page", "href": "/studio" }
@@ -1278,9 +1273,9 @@
         "date": "2026.01.09",
         "who": "WESAN",
         "what": "Wesan announces itself.",
-        "lede": "Wesan starts in Belgium - one desk, three divisions, one mission. Entity registration to follow. Today is day one.",
+        "lede": "Wesan starts - one desk, three divisions, one mission. Entity registration to follow. Today is day one.",
         "body": [
-          { "kind": "p", "content": "Today, January 9 2026, Wesan starts taking shape. One person, one desk in Belgium. Formal entity registration to follow once the structure is settled." },
+          { "kind": "p", "content": "Today, January 9 2026, Wesan starts taking shape. One person, one desk. Formal entity registration to follow once the structure is settled." },
           { "kind": "h", "content": "What we're doing" },
           { "kind": "p", "content": "Wesan is the house under which the next century is built. Three divisions today: Software (shipping), Studio (forming), Industries (planned). The structure is designed for each division to have a 10-year runway, real autonomy, and plain annual reporting." },
           { "kind": "h", "content": "Why we wrote a mission" },
@@ -1323,7 +1318,7 @@
           { "kind": "p", "text": "Friday is built with Friday. The compounding is the whole point - and the reason a runtime, not another agent, is what was missing." },
           { "kind": "hr" },
           { "kind": "quote", "text": "The agent is the easy part. The runtime - the thing that keeps it alive and lets you reach it from anywhere - is the product." },
-          { "kind": "sign", "text": "- WESAN SOFTWARE · Belgium" }
+          { "kind": "sign", "text": "- WESAN SOFTWARE · London" }
         ],
         "continue": {
           "label": "FRIDAY",
@@ -1353,7 +1348,7 @@
           { "kind": "p", "text": "Every tracker you install is another notification, another login, another thing to forget. Dante's bet is the opposite: one place, six trackers, no noise. On TestFlight now; App Store soon." },
           { "kind": "hr" },
           { "kind": "quote", "text": "The best tracker is the one you actually open - and the one whose data never leaves your hands." },
-          { "kind": "sign", "text": "- WESAN SOFTWARE · Belgium" }
+          { "kind": "sign", "text": "- WESAN SOFTWARE · London" }
         ],
         "continue": {
           "label": "DANTE",
@@ -1381,7 +1376,7 @@
           { "kind": "p", "text": "Notch treats your habits the way a journal treats your days: an append-only log, one entry at a time, reviewed once at the end of the day. Nothing to optimise, no number to protect - only the quiet satisfaction of a checkmark and a record that's true. The log is the point." },
           { "kind": "hr" },
           { "kind": "quote", "text": "Discipline doesn't need a notification. The log is the reward." },
-          { "kind": "sign", "text": "- WESAN SOFTWARE · Belgium" }
+          { "kind": "sign", "text": "- WESAN SOFTWARE · London" }
         ],
         "continue": {
           "label": "NOTCH",
@@ -1407,7 +1402,7 @@
           { "kind": "p", "text": "Underneath is wesanjs - the runtime the rest of Wesan is built on. Levios is the layer that turns a wesanjs domain into a usable surface, so a new internal panel is a description, not a project. It is the tool that builds Wesan's own tools." },
           { "kind": "hr" },
           { "kind": "quote", "text": "Stop hand-building the same admin panel. Describe the domain; let the panels follow." },
-          { "kind": "sign", "text": "- WESAN SOFTWARE · Belgium" }
+          { "kind": "sign", "text": "- WESAN SOFTWARE · London" }
         ],
         "continue": {
           "label": "LEVIOS",
