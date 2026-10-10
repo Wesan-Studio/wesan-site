@@ -27,10 +27,6 @@ function ProductCard({ p }: { p: Product }) {
   return (
     <Link href={`/software/${(p.slug ?? p.name.toLowerCase())}`} className="card product-card">
       <div className="product-head">
-        {p.img && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={p.img} alt="" width={40} height={40} className="product-logo" />
-        )}
         <div>
           <h3 className="card-title" style={{ marginBottom: 0 }}>
             {p.name}{p.focus && <span className="tag accent" style={{ marginLeft: '10px', verticalAlign: 'middle' }}>In focus</span>}

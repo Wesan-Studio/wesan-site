@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { DetailHero, sceneForDivision, sentence } from '../../_components/detail-hero';
+import { DetailHero, sentence } from '../../_components/detail-hero';
+import { NEWS_SCENES } from '../../_components/dither-shader';
 import { getContent, getNewsItem, getNewsItems, staticContent } from '@/lib/content';
 
 export function generateStaticParams() {
@@ -35,7 +36,7 @@ export default async function ReleasePage({ params }: { params: Promise<{ slug: 
         meta={[it.date, sentence(it.who)]}
         title={it.what}
         lede={it.lede}
-        figure={{ scene: sceneForDivision(it.who), seed: idx + 2 }}
+        figure={{ scene: NEWS_SCENES[idx % NEWS_SCENES.length], seed: idx + 2 }}
       />
 
       <article className="read">

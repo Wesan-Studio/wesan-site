@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { DetailHero, sentence } from '../../_components/detail-hero';
+import { PRODUCT_SCENE } from '../../_components/dither-shader';
 import { renderBlock } from '../../_components/blocks';
 import { getProduct, staticContent } from '@/lib/content';
 
@@ -23,7 +24,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
   return (
     <>
-      <DetailHero back={{ href: '/software', label: '← Software' }} meta={meta} title={p.title} figure={{ scene: 'orbit', seed: p.slug.length }} />
+      <DetailHero back={{ href: '/software', label: '← Software' }} meta={meta} title={p.title} figure={{ scene: PRODUCT_SCENE[p.slug] ?? 'orbit', seed: p.slug.length }} />
 
       <article className="read">
         <div className="read-col">

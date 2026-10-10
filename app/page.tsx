@@ -1,36 +1,29 @@
 import Link from 'next/link';
-import type { Scene } from './_components/dither-shader';
+import { NEWS_SCENES, PRODUCT_SCENE } from './_components/dither-shader';
 import { DitherField, DitherStill } from './_components/dither';
-import { sceneForDivision } from './_components/detail-hero';
-import { getContent, getNewsBySlugs } from '@/lib/content';
+import { getContent, getNewsBySlugs, getNewsItems } from '@/lib/content';
 
-interface WorkItem { name: string; line: string; desc?: string; href: string; img?: string; external?: boolean; focus?: boolean }
-
-const SCENES: Scene[] = ['orbit', 'horizon', 'ridges', 'swell'];
+interface WorkItem { key: string; name: string; line: string; desc?: string; href: string; external?: boolean; focus?: boolean }
 
 async function getWork(): Promise<WorkItem[]> {
   const pages = (await getContent()).pages as unknown as {
-    software: { products: { name: string; tagline: string; desc: string; slug?: string; img?: string; focus?: boolean }[] };
-    studio: { projects: { name: string; desc: string; href: string; img?: string }[] };
+    software: { products: { name: string; tagline: string; desc: string; slug?: string; focus?: boolean }[] };
+    studio: { projects: { name: string; desc: string; href: string }[] };
   };
   const software = pages.software.products.map((p) => ({
-    name: p.name, line: p.tagline, desc: p.desc, img: p.img, focus: p.focus, href: `/software/${p.slug ?? p.name.toLowerCase()}`,
+    key: p.slug ?? p.name.toLowerCase(), name: p.name, line: p.tagline, desc: p.desc, focus: p.focus, href: `/software/${p.slug ?? p.name.toLowerCase()}`,
   }));
   const games = pages.studio.projects.map((g) => ({
-    name: g.name, line: g.desc.split(':')[0], img: g.img, href: g.href, external: true,
+    key: g.name.toLowerCase(), name: g.name, line: g.desc.split(':')[0], href: g.href, external: true,
   }));
   return [...software, ...games];
 }
 
-function WorkTile({ item, index, large = false }: { item: WorkItem; index: number; large?: boolean }) {
+function WorkTile({ item, large = false }: { item: WorkItem; large?: boolean }) {
   const body = (
     <>
       <div className="work-media">
-        <DitherStill scene={SCENES[index % SCENES.length]} seed={index + 3} gain={item.img ? 0.3 : 0.75} />
-        {item.img && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={item.img} alt="" width={96} height={96} className="work-icon" />
-        )}
+        <DitherStill scene={PRODUCT_SCENE[item.key] ?? 'orbit'} seed={item.key.length} gain={0.8} />
       </div>
       <div className="work-caption">
         <div>
@@ -50,6 +43,10 @@ function WorkTile({ item, index, large = false }: { item: WorkItem; index: numbe
 export default async function HomePage() {
   const c = (await getContent()).pages.home;
   const featured = await getNewsBySlugs(c.newsroomSlugs);
+  // Same scene as the release's own page, so a story keeps its picture everywhere.
+  const order = (await getNewsItems()).map((n) => n.slug);
+  const newsPos = (slug: string) => Math.max(0, order.indexOf(slug));
+  const newsScene = (slug: string) => NEWS_SCENES[newsPos(slug) % NEWS_SCENES.length];
   const work = await getWork();
   const focus = work.filter((w) => w.focus);
   const rest = work.filter((w) => !w.focus);
@@ -93,11 +90,11 @@ export default async function HomePage() {
             <Link href="/software" className="text-link">All software →</Link>
           </div>
           <div className="work-focus">
-            {focus.map((item, i) => <WorkTile key={item.name} item={item} index={i} large />)}
+            {focus.map((item) => <WorkTile key={item.name} item={item} large />)}
           </div>
           <h3 className="work-subhead">Also in development</h3>
           <div className="work-grid">
-            {rest.map((item, i) => <WorkTile key={item.name} item={item} index={i + focus.length} />)}
+            {rest.map((item) => <WorkTile key={item.name} item={item} />)}
           </div>
         </div>
       </section>
@@ -125,14 +122,14 @@ export default async function HomePage() {
             </div>
             <div className="news-grid">
               <Link href={`/newsroom/${lead.slug}`} className="news-card news-lead">
-                <div className="photo news-media"><DitherStill scene={sceneForDivision(lead.who)} seed={2} gain={0.75} /></div>
+                <div className="photo news-media"><DitherStill scene={newsScene(lead.slug)} seed={newsPos(lead.slug) + 2} gain={0.8} /></div>
                 <p className="news-meta">{lead.date}</p>
                 <h3 className="news-title">{lead.what}</h3>
               </Link>
               <div className="news-side">
-                {moreNews.map((it, i) => (
+                {moreNews.map((it) => (
                   <Link key={it.slug} href={`/newsroom/${it.slug}`} className="news-card">
-                    <div className="photo news-media"><DitherStill scene={sceneForDivision(it.who)} seed={i + 5} gain={0.75} /></div>
+                    <div className="photo news-media"><DitherStill scene={newsScene(it.slug)} seed={newsPos(it.slug) + 2} gain={0.8} /></div>
                     <p className="news-meta">{it.date}</p>
                     <h3 className="news-title small">{it.what}</h3>
                   </Link>
